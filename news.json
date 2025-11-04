@@ -1,0 +1,25 @@
+[
+  {
+    "id": "2025-11-04-privacy",
+    "date": "2025-11-04",
+    "title": { "ko": "개인정보 처리방침 페이지 공개", "en": "Privacy Policy is Live", "ja": "プライバシーポリシーを公開" },
+    "body": {
+      "ko": "motionly.net/privacy.html에서 확인 가능. 생년월일은 기기 키체인에만 저장됩니다.",
+      "en": "Now available at motionly.net/privacy.html. DOB stays only in Keychain.",
+      "ja": "motionly.net/privacy.html で確認できます。生年月日は端末のKeychainのみに保存。"
+    },
+    "tags": ["공지", "privacy"],
+    "pin": true
+  },
+  {
+    "id": "2025-11-01-launch-note",
+    "date": "2025-11-01",
+    "title": { "ko": "사이트 개편", "en": "Site Refresh", "ja": "サイト刷新" },
+    "body": {
+      "ko": "히어로/다국어/지원 메일 정리.",
+      "en": "Updated hero, i18n, support email.",
+      "ja": "ヒーロー・多言語・サポートメールを整理。"
+    },
+    "tags": ["업데이트"]
+  }
+]
