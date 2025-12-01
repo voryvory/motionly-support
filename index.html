@@ -1,40 +1,76 @@
 <!doctype html>
-<html lang="ko">
+<html lang="ja">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Motionly — Move Better, Live Brighter</title>
-  <meta name="description" content="Motionly: 실시간 운동 기록, 날씨 배지, 지도 경로, 온디바이스 AI.">
+  <meta name="description" content="Motionly: ラン・ウォーキングの軌跡をリアルタイムに記録し、天気バッジやプライバシー重視のオフライン設計に対応。">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <meta property="og:title" content="Motionly">
-  <meta property="og:description" content="실시간 운동 기록 · 지도 경로 · 온디바이스 AI">
+  <meta property="og:description" content="リアルタイム運動記録 · 地図ルート · オンデバイス設計">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://motionly.net/">
   <style>
     :root { --bg:#0f1220; --fg:#eaeaf2; --muted:#a7adcc; --accent:#7c3aed; --accent2:#22d3ee; --card:#151a2f; }
     *{box-sizing:border-box} html,body{height:100%}
-    body{margin:0;font-family:ui-sans-serif,system-ui,Apple SD Gothic Neo,Segoe UI,Roboto,Helvetica,Arial;
-         color:var(--fg); background:radial-gradient(1200px 700px at 80% -10%, rgba(124,58,237,.15), transparent 50%),
-                  radial-gradient(900px 600px at 10% 110%, rgba(34,211,238,.12), transparent 50%), var(--bg);}
+    body{
+      margin:0;
+      font-family:ui-sans-serif,system-ui,Apple SD Gothic Neo,Segoe UI,Roboto,Helvetica,Arial;
+      color:var(--fg);
+      background:
+        radial-gradient(1200px 700px at 80% -10%, rgba(124,58,237,.15), transparent 50%),
+        radial-gradient(900px 600px at 10% 110%, rgba(34,211,238,.12), transparent 50%),
+        var(--bg);
+    }
     .wrap{max-width:1080px;margin:0 auto;padding:24px}
     header{display:flex;align-items:center;justify-content:space-between; gap:16px}
     .logo{display:flex;align-items:center;gap:12px;font-weight:700;letter-spacing:.2px}
-    .logo-dot{width:12px;height:12px;border-radius:50%;
-               background:linear-gradient(45deg,var(--accent),var(--accent2));box-shadow:0 0 20px var(--accent);}
-    .btn{display:inline-block;padding:14px 18px;border-radius:14px;background:linear-gradient(90deg,var(--accent),var(--accent2));
-         color:#0b0f1a;text-decoration:none;font-weight:700;box-shadow:0 8px 24px rgba(34,211,238,.25)}
+    .logo-dot{
+      width:12px;height:12px;border-radius:50%;
+      background:linear-gradient(45deg,var(--accent),var(--accent2));
+      box-shadow:0 0 20px var(--accent);
+    }
+    .btn{
+      display:inline-block;padding:14px 18px;border-radius:14px;
+      background:linear-gradient(90deg,var(--accent),var(--accent2));
+      color:#0b0f1a;text-decoration:none;font-weight:700;
+      box-shadow:0 8px 24px rgba(34,211,238,.25)
+    }
     .btn:active{transform:translateY(1px)}
-    .hero{display:grid;grid-template-columns:1.2fr .8fr; gap:28px; margin:64px 0; align-items:center}
-    .card{background:rgba(21,26,47,.7); backdrop-filter: blur(10px); border:1px solid rgba(124,58,237,.25);
-           border-radius:20px;padding:20px}
+    .hero{
+      display:grid;grid-template-columns:1.2fr .8fr;
+      gap:28px;margin:64px 0;align-items:center
+    }
+    .card{
+      background:rgba(21,26,47,.7);
+      backdrop-filter: blur(10px);
+      border:1px solid rgba(124,58,237,.25);
+      border-radius:20px;padding:20px
+    }
     .kicker{color:var(--muted);font-size:.9rem;letter-spacing:.08em;text-transform:uppercase}
     h1{font-size:clamp(36px,6vw,56px);line-height:1.05;margin:10px 0 12px}
     p.lead{font-size:1.12rem;color:var(--muted)}
-    ul.features{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:18px 0 0;padding:0;list-style:none}
-    .badge{font-size:.85rem;color:#c7cff9;background:#0e1327;border:1px solid #2b3565;padding:6px 10px;border-radius:999px;display:inline-flex;gap:8px;align-items:center}
+    ul.features{
+      display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:10px;margin:18px 0 0;padding:0;list-style:none
+    }
+    .badge{
+      font-size:.85rem;color:#c7cff9;background:#0e1327;
+      border:1px solid #2b3565;padding:6px 10px;border-radius:999px;
+      display:inline-flex;gap:8px;align-items:center
+    }
     .glow{text-shadow:0 0 12px rgba(124,58,237,.6)}
     .lang{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
-    .lang a{color:var(--muted);text-decoration:none;border:1px solid #2b3565;padding:6px 10px;border-radius:10px}
+    .lang a{
+      color:var(--muted);text-decoration:none;
+      border:1px solid #2b3565;padding:6px 10px;border-radius:10px
+    }
+    .lang a.current{
+      color:#0b0f1a;
+      background:linear-gradient(90deg,var(--accent),var(--accent2));
+      border-color:transparent;
+      font-weight:700;
+    }
     footer{margin:60px 0 20px;color:#8891b8;font-size:.9rem;text-align:center}
     footer a{color:var(--accent2);text-decoration:none;margin-left:8px}
     footer a:hover{text-decoration:underline}
@@ -46,57 +82,58 @@
     <header>
       <div class="logo"><span class="logo-dot"></span><span>Motionly</span></div>
       <nav class="lang" aria-label="Languages">
-        <a href="#ko">한국어</a><a href="#en">EN</a><a href="#ja">日本語</a>
+        <a href="/ko.html">한국어</a>
+        <a href="/en.html">EN</a>
+        <a href="/" class="current">日本語</a>
       </nav>
     </header>
 
     <section class="hero">
       <div>
         <div class="kicker">Move Better · Live Brighter</div>
-        <h1 class="glow">지도 위에 그리는<br>당신의 운동 기록</h1>
-        <p class="lead">실시간 경로(MKPolyline), 날씨 배지(WeatherKit), 온디바이스 AI로 만드는 스마트한 러닝&워킹 경험. iOS 전용.</p>
+        <h1 class="glow">地図の上に描く<br>あなたの運動記録</h1>
+        <p class="lead">
+          リアルタイムのルート記録（MKPolyline）、天気バッジ（WeatherKit）、
+          オフラインでも安心して使える設計で、ラン＆ウォーキング体験をスマートにします。iOS 専用。
+        </p>
         <div style="display:flex;gap:12px;align-items:center;margin-top:22px">
           <a class="btn" href="https://apps.apple.com/jp/app/motionly/id6752832437" rel="noopener">App Store で入手 • JP</a>
-          <span class="badge">iOS 18+ • 한국어/英語/日本語</span>
+          <span class="badge">iOS 18+ • 韓国語 / 英語 / 日本語</span>
         </div>
 
-        <!-- 🔔 News 배지 추가 -->
         <p class="badge" style="margin-top:12px">
-          🔔 <a href="/news.html">공지 / Updates</a>
+          🔔 <a href="/news.html" style="color:#c9d3ff;text-decoration:none">お知らせ / Updates</a>
         </p>
 
-        <div id="ko" class="card" style="margin-top:12px">
-          <strong>한국어</strong>
-          <p style="margin:8px 0 0;color:var(--muted)">Motionly는 거리·칼로리·경로를 즉시 기록하고, 앱을 종료해도 안전하게 이어집니다.</p>
-        </div>
-        <div id="en" class="card" style="margin-top:12px">
-          <strong>English</strong>
-          <p style="margin:8px 0 0;color:var(--muted)">Motionly tracks distance, calories, and routes in real time—with on-device reliability.</p>
-        </div>
-        <div id="ja" class="card" style="margin-top:12px">
-          <strong>日本語</strong>
-          <p style="margin:8px 0 0;color:var(--muted)">Motionly はランやウォーキングの軌跡をリアルタイムで記録。天気バッジにも対応。</p>
+        <div class="card" style="margin-top:12px">
+          <strong>紹介</strong>
+          <p style="margin:8px 0 0;color:var(--muted)">
+            Motionly は、距離・カロリー・ルートをリアルタイムで記録し、
+            アプリを終了しても安全に継続できるフィットネスアプリです。
+          </p>
         </div>
       </div>
 
       <aside class="card">
         <h2 style="margin:0 0 8px">主な機能 / Key Features</h2>
         <ul class="features">
-          <li>• Real-time map tracking</li>
-          <li>• Weather badge</li>
-          <li>• Offline-first</li>
-          <li>• Privacy-friendly</li>
+          <li>• リアルタイム地図トラッキング</li>
+          <li>• 天気バッジ（WeatherKit）</li>
+          <li>• オフライン前提の設計</li>
+          <li>• プライバシー重視のローカル保存</li>
         </ul>
         <div style="height:14px"></div>
         <p style="color:var(--muted);font-size:.92rem">
-          Support: <a href="mailto:sposedon0@gmail.com" style="color:#c9d3ff">sposedon0@gmail.com</a><br>
-          🔒 <a href="/privacy.html" style="color:#22d3ee">개인정보 처리방침 / Privacy Policy</a><br>
-          🔔 <a href="/news.html" style="color:#22d3ee">공지 / Updates</a>
+          Support:
+          <a href="mailto:sposedon0@gmail.com" style="color:#c9d3ff">sposedon0@gmail.com</a><br>
+          🔒 <a href="/privacy.html" style="color:#22d3ee">個人情報保護方針 / Privacy Policy</a><br>
+          🔔 <a href="/news.html" style="color:#22d3ee">お知らせ / Updates</a>
         </p>
       </aside>
     </section>
 
-    <footer>© 2025 Motionly • All rights reserved.
+    <footer>
+      © 2025 Motionly • All rights reserved.
       <a href="/privacy.html">Privacy Policy</a>
       <a href="/news.html">Updates</a>
     </footer>
