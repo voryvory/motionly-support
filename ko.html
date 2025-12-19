@@ -3,80 +3,329 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Motionly — 지도로 그리는 당신의 운동 기록</title>
-  <meta name="description" content="실시간 운동 경로, 칼로리, 날씨 배지까지 한 번에 기록하는 iOS 전용 피트니스 앱 Motionly.">
+  <title>Motionly — Move Better, Live Brighter</title>
+  <meta name="description" content="Motionly: 날씨·운동·바이오리듬·랭킹·운동기록을 한 곳에서. 매일의 한 걸음을 더 쉽게.">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <meta property="og:title" content="Motionly">
-  <meta property="og:description" content="실시간 운동 기록 · 지도 경로 · 온디바이스 설계">
+  <meta property="og:description" content="날씨 · 운동 · 바이오리듬 · 랭킹 · 운동기록">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://motionly.net/ko.html">
+  <meta property="og:url" content="https://motionly.net/">
+
   <style>
-    :root { --bg:#0f1220; --fg:#eaeaf2; --muted:#a7adcc; --accent:#7c3aed; --accent2:#22d3ee; --card:#151a2f; }
+    :root{
+      --bg:#0f1220; --fg:#eaeaf2; --muted:#a7adcc;
+      --accent:#7c3aed; --accent2:#22d3ee;
+      --card:rgba(21,26,47,.62); --border:rgba(255,255,255,.08);
+
+      --phoneW: 340px;
+      --phoneRadius: 34px;
+      --inset: 14px;
+
+      /* ✅ 실제 스샷 파일 경로로 교체 */
+      --shotRun: url("/assets/shot_run.png");
+      --shotWalk: url("/assets/shot_walk.png");
+    }
+
     *{box-sizing:border-box} html,body{height:100%}
     body{
       margin:0;
       font-family:ui-sans-serif,system-ui,Apple SD Gothic Neo,Segoe UI,Roboto,Helvetica,Arial;
       color:var(--fg);
       background:
-        radial-gradient(1200px 700px at 80% -10%, rgba(124,58,237,.15), transparent 50%),
-        radial-gradient(900px 600px at 10% 110%, rgba(34,211,238,.12), transparent 50%),
+        radial-gradient(1200px 700px at 80% -10%, rgba(124,58,237,.14), transparent 55%),
+        radial-gradient(900px 600px at 10% 110%, rgba(34,211,238,.10), transparent 55%),
         var(--bg);
+      overflow-x:hidden;
     }
-    .wrap{max-width:1080px;margin:0 auto;padding:24px}
-    header{display:flex;align-items:center;justify-content:space-between; gap:16px}
+
+    .wrap{max-width:1120px;margin:0 auto;padding:24px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px}
     .logo{display:flex;align-items:center;gap:12px;font-weight:700;letter-spacing:.2px}
     .logo-dot{
       width:12px;height:12px;border-radius:50%;
       background:linear-gradient(45deg,var(--accent),var(--accent2));
-      box-shadow:0 0 20px var(--accent);
+      box-shadow:0 0 18px rgba(124,58,237,.55);
     }
-    .btn{
-      display:inline-block;padding:14px 18px;border-radius:14px;
-      background:linear-gradient(90deg,var(--accent),var(--accent2));
-      color:#0b0f1a;text-decoration:none;font-weight:700;
-      box-shadow:0 8px 24px rgba(34,211,238,.25)
-    }
-    .btn:active{transform:translateY(1px)}
-    .hero{
-      display:grid;grid-template-columns:1.2fr .8fr;
-      gap:28px;margin:64px 0;align-items:center
-    }
-    .card{
-      background:rgba(21,26,47,.7);
-      backdrop-filter: blur(10px);
-      border:1px solid rgba(124,58,237,.25);
-      border-radius:20px;padding:20px
-    }
-    .kicker{color:var(--muted);font-size:.9rem;letter-spacing:.08em;text-transform:uppercase}
-    h1{font-size:clamp(36px,6vw,56px);line-height:1.05;margin:10px 0 12px}
-    p.lead{font-size:1.12rem;color:var(--muted)}
-    ul.features{
-      display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
-      gap:10px;margin:18px 0 0;padding:0;list-style:none
-    }
-    .badge{
-      font-size:.85rem;color:#c7cff9;background:#0e1327;
-      border:1px solid #2b3565;padding:6px 10px;border-radius:999px;
-      display:inline-flex;gap:8px;align-items:center
-    }
-    .glow{text-shadow:0 0 12px rgba(124,58,237,.6)}
-    .lang{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+    .lang{display:flex;gap:8px;flex-wrap:wrap}
     .lang a{
       color:var(--muted);text-decoration:none;
-      border:1px solid #2b3565;padding:6px 10px;border-radius:10px
+      border:1px solid rgba(43,53,101,.75);
+      padding:6px 10px;border-radius:10px;
+      transition:transform .18s ease, border-color .18s ease;
     }
+    .lang a:hover{transform:translateY(-1px);border-color:rgba(34,211,238,.45)}
     .lang a.current{
       color:#0b0f1a;
       background:linear-gradient(90deg,var(--accent),var(--accent2));
       border-color:transparent;
-      font-weight:700;
+      font-weight:800;
     }
-    footer{margin:60px 0 20px;color:#8891b8;font-size:.9rem;text-align:center}
+
+    .btn{
+      display:inline-block;padding:14px 18px;border-radius:14px;
+      background:linear-gradient(90deg,var(--accent),var(--accent2));
+      color:#0b0f1a;text-decoration:none;font-weight:800;
+      box-shadow:0 10px 26px rgba(34,211,238,.18);
+      transition:transform .18s ease, box-shadow .18s ease;
+      white-space:nowrap;
+    }
+    .btn:hover{transform:translateY(-2px);box-shadow:0 16px 34px rgba(34,211,238,.22)}
+    .badge{
+      font-size:.85rem;color:#c7cff9;background:rgba(14,19,39,.7);
+      border:1px solid rgba(43,53,101,.75);
+      padding:7px 10px;border-radius:999px;
+      display:inline-flex;gap:8px;align-items:center
+    }
+
+    .hero{
+      display:grid;
+      grid-template-columns: 1.05fr .95fr 1.0fr;
+      gap:22px;
+      margin:64px 0 10px;
+      align-items:start;
+    }
+
+    .card{
+      background:var(--card);
+      backdrop-filter: blur(10px);
+      border:1px solid var(--border);
+      border-radius:22px;
+      padding:20px;
+    }
+
+    .kicker{color:var(--muted);font-size:.9rem;letter-spacing:.08em;text-transform:uppercase}
+    h1{font-size:clamp(34px,5.6vw,56px);line-height:1.05;margin:10px 0 12px}
+    .glow{text-shadow:0 0 10px rgba(124,58,237,.45)}
+    p.lead{font-size:1.08rem;color:var(--muted);margin:0;line-height:1.55}
+    .ctaRow{display:flex;gap:12px;align-items:center;margin-top:22px;flex-wrap:wrap}
+
+    .miniCard{margin-top:14px}
+    .miniCard strong{display:block;margin-bottom:6px}
+    .miniCard p{margin:0;color:var(--muted);line-height:1.6}
+
+    /* ========= Preview ========= */
+    .preview{
+      position:relative;
+      padding:16px;
+      border-radius:26px;
+      background:rgba(14,19,39,.52);
+      border:1px solid rgba(255,255,255,.08);
+      overflow:hidden;
+      min-height:560px;
+    }
+    .tabs{
+      display:flex;gap:10px;align-items:center;justify-content:center;
+      margin-bottom:12px;
+    }
+    .tab{
+      cursor:pointer; user-select:none;
+      padding:9px 12px;border-radius:999px;
+      border:1px solid rgba(43,53,101,.75);
+      background:rgba(14,19,39,.55);
+      color:#c7cff9;
+      font-size:.9rem;
+      display:inline-flex;gap:8px;align-items:center;
+      transition:transform .15s ease, border-color .15s ease;
+    }
+    .tab:hover{transform:translateY(-1px);border-color:rgba(34,211,238,.35)}
+    .tab.active{
+      color:#0b0f1a;border-color:transparent;
+      background:linear-gradient(90deg,var(--accent),var(--accent2));
+      font-weight:800;
+    }
+
+    .phone{
+      position:relative;
+      margin:0 auto;
+      width:min(var(--phoneW), 94%);
+      aspect-ratio: 9 / 19.5;
+      border-radius:var(--phoneRadius);
+      border:1px solid rgba(255,255,255,.12);
+      background:#0a0c18;
+      box-shadow:0 22px 70px rgba(0,0,0,.35);
+      overflow:hidden;
+      isolation:isolate;
+    }
+
+    /* ✅ 스샷을 background로 렌더 (이미지 없을 때 alt 깨짐 방지) */
+    .shotBg{
+      position:absolute;inset:0;
+      background-image: var(--shotRun);
+      background-size: cover;
+      background-position: center;
+      background-repeat:no-repeat;
+      transform:scale(1.02);
+      filter:saturate(1.02);
+      z-index:0;
+    }
+    .shotBg::after{
+      content:"";
+      position:absolute;inset:0;
+      background:
+        radial-gradient(700px 380px at 50% 15%, rgba(34,211,238,.10), transparent 60%),
+        radial-gradient(700px 380px at 50% 85%, rgba(124,58,237,.12), transparent 60%);
+      pointer-events:none;
+    }
+
+    .safe{
+      position:absolute;inset:0;
+      z-index:1;
+      padding:var(--inset);
+      display:grid;
+      grid-template-rows: auto 1fr auto;
+      gap:12px;
+      pointer-events:none;
+    }
+
+    .topPill{
+      width:100%;
+      max-width: 92%;
+      justify-self:center;
+      padding:10px 12px;
+      border-radius:18px;
+      background:rgba(0,0,0,.46);
+      border:1px solid rgba(255,255,255,.12);
+      backdrop-filter: blur(10px);
+      display:flex;align-items:center;justify-content:space-between;
+      gap:10px;
+    }
+    .topPill .left{
+      display:flex;flex-direction:column;gap:2px;
+      font-weight:900;font-size:.95rem;line-height:1.1;
+    }
+    .topPill .left span{
+      font-weight:700;font-size:.82rem;color:rgba(255,255,255,.75);
+    }
+    .topPill .right{
+      display:flex;align-items:center;gap:6px;
+      font-weight:900;font-size:.92rem;color:rgba(255,255,255,.92);
+      white-space:nowrap;
+    }
+
+    .midSpace{min-height:0}
+
+    .bottom{
+      width:100%;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:12px;
+    }
+
+    .statsCard{
+      width:100%;
+      border-radius:18px;
+      background:rgba(230,235,245,.16);
+      border:1px solid rgba(255,255,255,.12);
+      backdrop-filter: blur(12px);
+      padding:12px 12px;
+      color:rgba(255,255,255,.92);
+    }
+
+    /* ✅ 글자 겹침 방지: label=1fr / value=auto + 좁은 폰은 1열 */
+    .statsGrid{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap:10px 14px;
+      font-size:14px;
+      line-height:1.35;
+    }
+    .row{
+      display:grid;
+      grid-template-columns: 1fr auto;
+      align-items:center;
+      gap:10px;
+      min-width:0;
+    }
+    .row span{
+      color:rgba(255,255,255,.72);
+      font-weight:700;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+    .row b{
+      font-weight:900;
+      letter-spacing:.2px;
+      justify-self:end;
+      white-space:nowrap;
+    }
+    .row.wide{ grid-column: 1 / -1; }
+
+    .startBtn{
+      width:min(240px, 78%);
+      height:52px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.14);
+      background:linear-gradient(180deg, rgba(34,211,238,.95), rgba(124,58,237,.85));
+      color:#071018;
+      font-weight:900;
+      display:flex;align-items:center;justify-content:center;
+      gap:10px;
+      box-shadow:0 18px 36px rgba(34,211,238,.14);
+      user-select:none;
+    }
+    .play{
+      width:0;height:0;
+      border-left:12px solid #071018;
+      border-top:7px solid transparent;
+      border-bottom:7px solid transparent;
+      margin-left:2px;
+    }
+
+    .rightTitle{margin:0 0 10px;font-size:1.05rem;font-weight:800;color:#dfe3ff}
+    .featureList{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+    .feature{
+      display:flex;gap:10px;align-items:flex-start;
+      padding:10px 12px;border-radius:16px;
+      background:rgba(14,19,39,.55);
+      border:1px solid rgba(43,53,101,.55);
+    }
+    .ico{
+      width:30px;height:30px;border-radius:10px;
+      display:grid;place-items:center;
+      background:linear-gradient(135deg, rgba(124,58,237,.25), rgba(34,211,238,.18));
+      border:1px solid rgba(255,255,255,.06);
+      flex:0 0 auto;
+    }
+    .ft h3{margin:0;font-size:.98rem}
+    .ft p{margin:2px 0 0;color:var(--muted);font-size:.9rem;line-height:1.45}
+
+    .subRow{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+    .chip{
+      font-size:.85rem;color:#c7cff9;background:rgba(14,19,39,.7);
+      border:1px solid rgba(43,53,101,.65);
+      padding:7px 10px;border-radius:999px;
+      display:inline-flex;gap:8px;align-items:center
+    }
+
+    .support{
+      margin-top:14px;color:var(--muted);font-size:.92rem;line-height:1.55
+    }
+    .support a{color:#c9d3ff;text-decoration:none}
+    .support a:hover{text-decoration:underline}
+    .support .link{color:var(--accent2);text-decoration:none}
+    .support .link:hover{text-decoration:underline}
+
+    footer{margin:50px 0 20px;color:#8891b8;font-size:.9rem;text-align:center}
     footer a{color:var(--accent2);text-decoration:none;margin-left:8px}
     footer a:hover{text-decoration:underline}
-    @media (max-width:920px){ .hero{grid-template-columns:1fr} }
+
+    @media (max-width:1100px){
+      .hero{grid-template-columns:1fr;gap:18px}
+      .preview{min-height:auto}
+    }
+
+    @media (max-width:420px){
+      :root{ --phoneW: 320px; --inset: 12px; }
+      .startBtn{width:min(220px, 80%)}
+      .topPill{max-width: 94%}
+      .statsGrid{ grid-template-columns: 1fr; gap:10px; }
+      .row.wide{ grid-column: auto; }
+    }
   </style>
 </head>
+
 <body>
   <div class="wrap">
     <header>
@@ -89,47 +338,136 @@
     </header>
 
     <section class="hero">
+      <!-- Left -->
       <div>
         <div class="kicker">Move Better · Live Brighter</div>
-        <h1 class="glow">지도 위에 그리는<br>당신의 운동 기록</h1>
+        <h1 class="glow">지도 위에 그리는<br>나의 운동 기록</h1>
         <p class="lead">
-          실시간 경로(MKPolyline), 날씨 배지(WeatherKit), 온디바이스 중심 설계로
-          러닝·워킹을 더 안전하고 스마트하게 기록합니다. iOS 전용.
+          날씨·운동·바이오리듬·랭킹·운동기록.<br>
+          “지속 가능함”을 최우선으로, 매일의 한 걸음을 더 쉽게. iOS 전용.
         </p>
-        <div style="display:flex;gap:12px;align-items:center;margin-top:22px">
-          <a class="btn" href="https://apps.apple.com/jp/app/motionly/id6752832437" rel="noopener">App Store에서 다운로드 (JP)</a>
+
+        <div class="ctaRow">
+          <a class="btn" href="https://apps.apple.com/jp/app/motionly/id6752832437" rel="noopener">App Store에서 받기 • JP</a>
           <span class="badge">iOS 18+ • 한국어 / 영어 / 일본어</span>
         </div>
 
         <p class="badge" style="margin-top:12px">
-          🔔 <a href="/news.html" style="color:#c9d3ff;text-decoration:none">공지 / Updates</a>
+          🔔 <a href="/news.html" style="color:#c9d3ff;text-decoration:none">업데이트 / Updates</a>
         </p>
 
-        <div class="card" style="margin-top:12px">
-          <strong>Motionly 소개</strong>
-          <p style="margin:8px 0 0;color:var(--muted)">
-            Motionly는 거리·칼로리·경로를 실시간으로 기록하고,
-            앱을 종료해도 안전하게 이어지는 러닝 & 워킹 전용 앱입니다.
-            모든 기록은 기기 안에 저장되어 프라이버시를 지켜줍니다.
+        <div class="card miniCard">
+          <strong>소개</strong>
+          <p>
+            Motionly는 거리·칼로리·루트를 기록하면서,
+            날씨와 오늘 컨디션까지 한 번에 확인할 수 있게 만들어
+            운동을 “습관”으로 이어가도록 돕는 피트니스 앱입니다.
           </p>
         </div>
       </div>
 
+      <!-- Middle -->
+      <div class="preview" aria-label="App preview">
+        <div class="tabs" role="tablist" aria-label="Workout type">
+          <div class="tab active" role="tab" aria-selected="true" data-mode="run">🏃 RUN</div>
+          <div class="tab" role="tab" aria-selected="false" data-mode="walk">🚶 WALK</div>
+        </div>
+
+        <div class="phone" aria-label="Phone mock">
+          <div class="shotBg" id="shotBg" aria-hidden="true"></div>
+
+          <div class="safe">
+            <div class="topPill" aria-label="Weather bar">
+              <div class="left">
+                <div id="pillMain">24 / 40</div>
+                <span id="pillSub">Biorhythm</span>
+              </div>
+              <div class="right">
+                <span id="pillIcon">☁️</span>
+                <span id="pillTemp">10°</span>
+              </div>
+            </div>
+
+            <div class="midSpace" aria-hidden="true"></div>
+
+            <div class="bottom" aria-label="Workout HUD">
+              <div class="statsCard">
+                <div class="statsGrid">
+                  <div class="row"><span>경과 시간</span><b id="sTime">00:00:00</b></div>
+                  <div class="row"><span>거리</span><b id="sDist">0.00 m</b></div>
+                  <div class="row"><span>칼로리</span><b id="sKcal">0.0 kcal</b></div>
+                  <div class="row"><span>걸음수</span><b id="sSteps">7151</b></div>
+                  <div class="row wide"><span>고도</span><b id="sAlt">0.0 m</b></div>
+                </div>
+              </div>
+
+              <div class="startBtn" aria-label="Start button">
+                <span class="play" aria-hidden="true"></span>
+                <span id="startLabel">Start</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right -->
       <aside class="card">
-        <h2 style="margin:0 0 8px">주요 기능 / Key Features</h2>
-        <ul class="features">
-          <li>• 실시간 지도 경로 기록</li>
-          <li>• 날씨 배지(WeatherKit) 표시</li>
-          <li>• 오프라인 우선 설계</li>
-          <li>• 온디바이스 저장으로 개인정보 보호</li>
+        <h2 class="rightTitle">핵심 기능</h2>
+
+        <ul class="featureList">
+          <li class="feature">
+            <div class="ico">🌤</div>
+            <div class="ft">
+              <h3>날씨</h3>
+              <p>오늘 날씨를 배지로 확인하고, 운동 여부를 빠르게 판단.</p>
+            </div>
+          </li>
+
+          <li class="feature">
+            <div class="ico">🏃</div>
+            <div class="ft">
+              <h3>운동</h3>
+              <p>거리·시간·칼로리를 기록해서, 매일의 누적을 단순하게 확인.</p>
+            </div>
+          </li>
+
+          <li class="feature">
+            <div class="ico">🫀</div>
+            <div class="ft">
+              <h3>바이오리듬</h3>
+              <p>오늘 컨디션을 참고해 무리 없이 꾸준히 이어가기 위한 지표.</p>
+            </div>
+          </li>
+
+          <li class="feature">
+            <div class="ico">🏆</div>
+            <div class="ft">
+              <h3>랭킹</h3>
+              <p>친구와 비교해 동기 부여. 숫자는 심플하게.</p>
+            </div>
+          </li>
+
+          <li class="feature">
+            <div class="ico">🗓</div>
+            <div class="ft">
+              <h3>운동 기록</h3>
+              <p>지난 기록을 한눈에. 꾸준함이 “증거”로 남는다.</p>
+            </div>
+          </li>
         </ul>
-        <div style="height:14px"></div>
-        <p style="color:var(--muted);font-size:.92rem">
-          문의:
-          <a href="mailto:sposedon0@gmail.com" style="color:#c9d3ff">sposedon0@gmail.com</a><br>
-          🔒 <a href="/privacy.html" style="color:#22d3ee">개인정보 처리방침 / Privacy Policy</a><br>
-          🔔 <a href="/news.html" style="color:#22d3ee">공지 / Updates</a>
-        </p>
+
+        <div class="subRow">
+          <span class="chip">🔒 프라이버시 우선</span>
+          <span class="chip">📍 루트 기록</span>
+          <span class="chip">☁️ 최소 권한</span>
+        </div>
+
+        <div class="support">
+          Support:
+          <a href="mailto:sposedon0@gmail.com">sposedon0@gmail.com</a><br>
+          🔒 <a class="link" href="/privacy.html">개인정보처리방침 / Privacy Policy</a><br>
+          🔔 <a class="link" href="/news.html">업데이트 / Updates</a>
+        </div>
       </aside>
     </section>
 
@@ -139,5 +477,69 @@
       <a href="/news.html">Updates</a>
     </footer>
   </div>
+
+  <script>
+    (function(){
+      const tabs = Array.from(document.querySelectorAll('.tab'));
+      const shotBg = document.getElementById('shotBg');
+
+      const pillMain = document.getElementById('pillMain');
+      const pillSub  = document.getElementById('pillSub');
+      const pillIcon = document.getElementById('pillIcon');
+      const pillTemp = document.getElementById('pillTemp');
+
+      const sTime  = document.getElementById('sTime');
+      const sDist  = document.getElementById('sDist');
+      const sKcal  = document.getElementById('sKcal');
+      const sSteps = document.getElementById('sSteps');
+      const sAlt   = document.getElementById('sAlt');
+
+      const DATA = {
+        run: {
+          shotVar: "--shotRun",
+          pillMain: "24 / 40",
+          pillSub: "Biorhythm",
+          pillIcon: "☁️",
+          pillTemp: "10°",
+          stats: { time:"00:00:00", dist:"0.00 m", kcal:"0.0 kcal", steps:"7151", alt:"0.0 m" }
+        },
+        walk: {
+          shotVar: "--shotWalk",
+          pillMain: "18 / 40",
+          pillSub: "Biorhythm",
+          pillIcon: "🌤",
+          pillTemp: "16°",
+          stats: { time:"00:00:00", dist:"0.00 m", kcal:"0.0 kcal", steps:"7151", alt:"0.0 m" }
+        }
+      };
+
+      function setMode(mode){
+        const d = DATA[mode] || DATA.run;
+
+        tabs.forEach(t=>{
+          const on = t.dataset.mode === mode;
+          t.classList.toggle('active', on);
+          t.setAttribute('aria-selected', on ? 'true' : 'false');
+        });
+
+        shotBg.style.backgroundImage =
+          getComputedStyle(document.documentElement).getPropertyValue(d.shotVar).trim() || "none";
+
+        pillMain.textContent = d.pillMain;
+        pillSub.textContent  = d.pillSub;
+        pillIcon.textContent = d.pillIcon;
+        pillTemp.textContent = d.pillTemp;
+
+        sTime.textContent  = d.stats.time;
+        sDist.textContent  = d.stats.dist;
+        sKcal.textContent  = d.stats.kcal;
+        sSteps.textContent = d.stats.steps;
+        sAlt.textContent   = d.stats.alt;
+      }
+
+      tabs.forEach(t => t.addEventListener('click', () => setMode(t.dataset.mode)));
+      setMode('run');
+    })();
+  </script>
 </body>
 </html>
