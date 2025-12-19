@@ -223,18 +223,18 @@
       color:rgba(255,255,255,.92);
     }
 
-    /* ✅ 깨짐 방지: “아이템 2열” + “라벨/값 2컬럼” 고정 */
+    /* ✅ 깨짐 방지(수정본): label=1fr / value=auto + 모바일 1열 전환 */
     .statsGrid{
       display:grid;
       grid-template-columns: repeat(2, minmax(0,1fr));
       gap:10px 14px;
-      font-size:clamp(.80rem, 1.85vw, .92rem);
-      line-height:1.25;
+      font-size:14px;
+      line-height:1.35;
     }
     .row{
       display:grid;
-      grid-template-columns: auto 1fr; /* 라벨 / 값 */
-      align-items:baseline;
+      grid-template-columns: 1fr auto;
+      align-items:center;
       gap:10px;
       min-width:0;
     }
@@ -242,15 +242,16 @@
       color:rgba(255,255,255,.72);
       font-weight:700;
       white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
     }
     .row b{
       font-weight:900;
       letter-spacing:.2px;
       justify-self:end;
       white-space:nowrap;
-      min-width:0;
     }
-    .row.wide{grid-column:1 / -1}
+    .row.wide{ grid-column: 1 / -1; }
 
     .startBtn{
       width:min(240px, 78%);
@@ -316,12 +317,14 @@
       .preview{min-height:auto}
     }
 
-    /* ✅ 더 좁은 폰 프리뷰에서 안정화 */
     @media (max-width:420px){
       :root{ --phoneW: 320px; --inset: 12px; }
       .startBtn{width:min(220px, 80%)}
       .topPill{max-width: 94%}
-      .statsGrid{font-size:.82rem;gap:9px 10px}
+
+      /* ✅ 폰 폭 좁으면 stats는 1열로 내려서 겹침 완전 차단 */
+      .statsGrid{ grid-template-columns: 1fr; gap:10px; }
+      .row.wide{ grid-column: auto; }
     }
   </style>
 </head>
@@ -522,8 +525,8 @@
           t.setAttribute('aria-selected', on ? 'true' : 'false');
         });
 
-        // background-image를 CSS 변수로 스위칭
-        shotBg.style.backgroundImage = getComputedStyle(document.documentElement).getPropertyValue(d.shotVar).trim() || "none";
+        shotBg.style.backgroundImage =
+          getComputedStyle(document.documentElement).getPropertyValue(d.shotVar).trim() || "none";
 
         pillMain.textContent = d.pillMain;
         pillSub.textContent  = d.pillSub;
