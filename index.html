@@ -4,66 +4,42 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Motionly — Move Better, Live Brighter</title>
-  <meta name="description" content="Motionly: ラン・ウォーキングの軌跡をリアルタイムに記録し、天気バッジやプライバシー重視のオフライン設計に対応。">
+  <meta name="description" content="Motionly: 天気・運動・バイオリズム・ランキング・運動記録をまとめて、毎日の一歩を続けやすく。">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <meta property="og:title" content="Motionly">
-  <meta property="og:description" content="リアルタイム運動記録 · 地図ルート · オンデバイス設計">
+  <meta property="og:description" content="天気・運動・バイオリズム・ランキング・運動記録">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://motionly.net/">
   <style>
-    :root { --bg:#0f1220; --fg:#eaeaf2; --muted:#a7adcc; --accent:#7c3aed; --accent2:#22d3ee; --card:#151a2f; }
+    :root{
+      --bg:#0f1220; --fg:#eaeaf2; --muted:#a7adcc;
+      --accent:#7c3aed; --accent2:#22d3ee;
+      --card:rgba(21,26,47,.62); --border:rgba(255,255,255,.08);
+      --chip:#0e1327;
+    }
     *{box-sizing:border-box} html,body{height:100%}
     body{
       margin:0;
       font-family:ui-sans-serif,system-ui,Apple SD Gothic Neo,Segoe UI,Roboto,Helvetica,Arial;
       color:var(--fg);
       background:
-        radial-gradient(1200px 700px at 80% -10%, rgba(124,58,237,.15), transparent 50%),
-        radial-gradient(900px 600px at 10% 110%, rgba(34,211,238,.12), transparent 50%),
+        radial-gradient(1200px 700px at 80% -10%, rgba(124,58,237,.14), transparent 55%),
+        radial-gradient(900px 600px at 10% 110%, rgba(34,211,238,.10), transparent 55%),
         var(--bg);
     }
     .wrap{max-width:1080px;margin:0 auto;padding:24px}
-    header{display:flex;align-items:center;justify-content:space-between; gap:16px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px}
     .logo{display:flex;align-items:center;gap:12px;font-weight:700;letter-spacing:.2px}
     .logo-dot{
       width:12px;height:12px;border-radius:50%;
       background:linear-gradient(45deg,var(--accent),var(--accent2));
-      box-shadow:0 0 20px var(--accent);
+      box-shadow:0 0 18px rgba(124,58,237,.55);
     }
-    .btn{
-      display:inline-block;padding:14px 18px;border-radius:14px;
-      background:linear-gradient(90deg,var(--accent),var(--accent2));
-      color:#0b0f1a;text-decoration:none;font-weight:700;
-      box-shadow:0 8px 24px rgba(34,211,238,.25)
-    }
-    .btn:active{transform:translateY(1px)}
-    .hero{
-      display:grid;grid-template-columns:1.2fr .8fr;
-      gap:28px;margin:64px 0;align-items:center
-    }
-    .card{
-      background:rgba(21,26,47,.7);
-      backdrop-filter: blur(10px);
-      border:1px solid rgba(124,58,237,.25);
-      border-radius:20px;padding:20px
-    }
-    .kicker{color:var(--muted);font-size:.9rem;letter-spacing:.08em;text-transform:uppercase}
-    h1{font-size:clamp(36px,6vw,56px);line-height:1.05;margin:10px 0 12px}
-    p.lead{font-size:1.12rem;color:var(--muted)}
-    ul.features{
-      display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
-      gap:10px;margin:18px 0 0;padding:0;list-style:none
-    }
-    .badge{
-      font-size:.85rem;color:#c7cff9;background:#0e1327;
-      border:1px solid #2b3565;padding:6px 10px;border-radius:999px;
-      display:inline-flex;gap:8px;align-items:center
-    }
-    .glow{text-shadow:0 0 12px rgba(124,58,237,.6)}
     .lang{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
     .lang a{
       color:var(--muted);text-decoration:none;
-      border:1px solid #2b3565;padding:6px 10px;border-radius:10px
+      border:1px solid rgba(43,53,101,.75);
+      padding:6px 10px;border-radius:10px
     }
     .lang a.current{
       color:#0b0f1a;
@@ -71,55 +47,85 @@
       border-color:transparent;
       font-weight:700;
     }
+
+    .btn{
+      display:inline-block;padding:14px 18px;border-radius:14px;
+      background:linear-gradient(90deg,var(--accent),var(--accent2));
+      color:#0b0f1a;text-decoration:none;font-weight:800;
+      box-shadow:0 10px 26px rgba(34,211,238,.18);
+      white-space:nowrap;
+    }
+    .btn:active{transform:translateY(1px)}
+    .badge{
+      font-size:.85rem;color:#c7cff9;background:rgba(14,19,39,.7);
+      border:1px solid rgba(43,53,101,.75);
+      padding:7px 10px;border-radius:999px;
+      display:inline-flex;gap:8px;align-items:center
+    }
+
+    .hero{
+      display:grid;grid-template-columns:1.15fr .85fr;
+      gap:28px;margin:64px 0;align-items:start
+    }
+    .card{
+      background:var(--card);
+      backdrop-filter: blur(10px);
+      border:1px solid var(--border);
+      border-radius:22px;
+      padding:20px
+    }
+    .kicker{color:var(--muted);font-size:.9rem;letter-spacing:.08em;text-transform:uppercase}
+    h1{font-size:clamp(36px,6vw,56px);line-height:1.05;margin:10px 0 12px}
+    .glow{text-shadow:0 0 10px rgba(124,58,237,.45)}
+    p.lead{font-size:1.12rem;color:var(--muted);margin:0}
+
+    .ctaRow{display:flex;gap:12px;align-items:center;margin-top:22px;flex-wrap:wrap}
+
+    .miniCard{margin-top:14px}
+    .miniCard strong{display:block;margin-bottom:6px}
+    .miniCard p{margin:0;color:var(--muted);line-height:1.6}
+
+    /* Right side: simple, clean “what you get” */
+    .rightTitle{margin:0 0 10px;font-size:1.05rem;font-weight:800;color:#dfe3ff}
+    .featureList{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+    .feature{
+      display:flex;gap:10px;align-items:flex-start;
+      padding:10px 12px;border-radius:16px;
+      background:rgba(14,19,39,.55);
+      border:1px solid rgba(43,53,101,.55);
+    }
+    .ico{
+      width:30px;height:30px;border-radius:10px;
+      display:grid;place-items:center;
+      background:linear-gradient(135deg, rgba(124,58,237,.25), rgba(34,211,238,.18));
+      border:1px solid rgba(255,255,255,.06);
+      flex:0 0 auto;
+    }
+    .ft h3{margin:0;font-size:.98rem}
+    .ft p{margin:2px 0 0;color:var(--muted);font-size:.9rem;line-height:1.45}
+
+    .subRow{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+    .chip{
+      font-size:.85rem;color:#c7cff9;background:rgba(14,19,39,.7);
+      border:1px solid rgba(43,53,101,.65);
+      padding:7px 10px;border-radius:999px;
+      display:inline-flex;gap:8px;align-items:center
+    }
+
+    .support{
+      margin-top:14px;color:var(--muted);font-size:.92rem;line-height:1.55
+    }
+    .support a{color:#c9d3ff;text-decoration:none}
+    .support a:hover{text-decoration:underline}
+    .support .link{color:var(--accent2);text-decoration:none}
+    .support .link:hover{text-decoration:underline}
+
     footer{margin:60px 0 20px;color:#8891b8;font-size:.9rem;text-align:center}
     footer a{color:var(--accent2);text-decoration:none;margin-left:8px}
     footer a:hover{text-decoration:underline}
-    @media (max-width:920px){ .hero{grid-template-columns:1fr} }
 
-    /* ▼ 운동 느낌(루트/리듬/스크린샷) 강화 */
-    .routeCard{position:relative;overflow:hidden}
-    .routeBg{
-      position:absolute;inset:-40px;
-      background:
-        radial-gradient(600px 300px at 30% 30%, rgba(34,211,238,.18), transparent 60%),
-        radial-gradient(600px 300px at 70% 70%, rgba(124,58,237,.22), transparent 60%);
-      filter: blur(8px);
-      animation: drift 8s ease-in-out infinite alternate;
-    }
-    @keyframes drift{ from{transform:translate3d(-10px,-8px,0)} to{transform:translate3d(12px,10px,0)} }
-
-    .routeLine{
-      position:relative;
-      width:100%;height:220px;border-radius:16px;
-      background:rgba(14,19,39,.6);
-      border:1px solid rgba(43,53,101,.8);
-      display:flex;align-items:center;justify-content:center;
-      overflow:hidden;
-    }
-    .stats{
-      display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
-      gap:10px;margin-top:12px
-    }
-    .stat{
-      background:#0e1327;border:1px solid #2b3565;border-radius:14px;
-      padding:10px 12px
-    }
-    .stat b{display:block;font-size:1.05rem}
-    .stat span{color:var(--muted);font-size:.86rem}
-
-    .shots{
-      display:flex;gap:10px;margin-top:14px;overflow:auto;padding-bottom:6px
-    }
-    .shot{
-      flex:0 0 140px;height:280px;border-radius:18px;
-      border:1px solid rgba(43,53,101,.9);
-      background:linear-gradient(180deg, rgba(124,58,237,.20), rgba(34,211,238,.12));
-    }
-    .pillRow{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
-    .pill{
-      font-size:.85rem;color:#c7cff9;background:#0e1327;
-      border:1px solid #2b3565;padding:7px 10px;border-radius:999px;
-      display:inline-flex;gap:8px;align-items:center
+    @media (max-width:920px){
+      .hero{grid-template-columns:1fr}
     }
   </style>
 </head>
@@ -135,14 +141,16 @@
     </header>
 
     <section class="hero">
+      <!-- Left -->
       <div>
         <div class="kicker">Move Better · Live Brighter</div>
         <h1 class="glow">地図の上に描く<br>あなたの運動記録</h1>
         <p class="lead">
-          リアルタイムのルート記録（MKPolyline）、天気バッジ（WeatherKit）、
-          オフラインでも安心して使える設計で、ラン＆ウォーキング体験をスマートにします。iOS 専用。
+          天気・運動・バイオリズム・ランキング・運動記録。<br>
+          “続けやすさ”を最優先に、毎日の一歩を整えます。iOS 専用。
         </p>
-        <div style="display:flex;gap:12px;align-items:center;margin-top:22px;flex-wrap:wrap">
+
+        <div class="ctaRow">
           <a class="btn" href="https://apps.apple.com/jp/app/motionly/id6752832437" rel="noopener">App Store で入手 • JP</a>
           <span class="badge">iOS 18+ • 韓国語 / 英語 / 日本語</span>
         </div>
@@ -151,66 +159,74 @@
           🔔 <a href="/news.html" style="color:#c9d3ff;text-decoration:none">お知らせ / Updates</a>
         </p>
 
-        <div class="card" style="margin-top:12px">
+        <div class="card miniCard">
           <strong>紹介</strong>
-          <p style="margin:8px 0 0;color:var(--muted)">
-            Motionly は、距離・カロリー・ルートをリアルタイムで記録し、
-            アプリを終了しても安全に継続できるフィットネスアプリです。
+          <p>
+            Motionly は、距離・カロリー・ルートを記録しながら、
+            天気や日々のコンディションも一緒に見える化して、
+            習慣化をサポートするフィットネスアプリです。
           </p>
         </div>
       </div>
 
-      <!-- ▼ 운동 감성 강화 카드 -->
-      <aside class="card routeCard">
-        <div class="routeBg" aria-hidden="true"></div>
+      <!-- Right -->
+      <aside class="card">
+        <h2 class="rightTitle">主な機能 / Key Features</h2>
 
-        <h2 style="margin:0 0 10px;position:relative">今日の一歩を、地図に残す</h2>
+        <ul class="featureList">
+          <li class="feature">
+            <div class="ico">🌤</div>
+            <div class="ft">
+              <h3>天気 / Weather</h3>
+              <p>その日の天気をバッジで確認。運動の判断をスムーズに。</p>
+            </div>
+          </li>
 
-        <div class="routeLine" style="position:relative">
-          <!-- “지도 느낌” 대신, 루트가 움직이는 느낌만 주는 SVG -->
-          <svg width="100%" height="220" viewBox="0 0 640 220" fill="none" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0">
-            <path d="M40 170 C120 70, 220 210, 320 120 C420 30, 520 160, 600 60"
-                  stroke="rgba(124,58,237,.9)" stroke-width="6" stroke-linecap="round"/>
-            <path d="M40 170 C120 70, 220 210, 320 120 C420 30, 520 160, 600 60"
-                  stroke="rgba(34,211,238,.85)" stroke-width="3" stroke-linecap="round"
-                  stroke-dasharray="10 12">
-              <animate attributeName="stroke-dashoffset" from="0" to="-220" dur="2.6s" repeatCount="indefinite"/>
-            </path>
-            <circle cx="40" cy="170" r="7" fill="rgba(34,211,238,.95)"/>
-            <circle cx="600" cy="60" r="7" fill="rgba(124,58,237,.95)"/>
-          </svg>
+          <li class="feature">
+            <div class="ico">🏃</div>
+            <div class="ft">
+              <h3>運動 / Workout</h3>
+              <p>距離・時間・カロリーを記録して、毎日の積み上げを可視化。</p>
+            </div>
+          </li>
 
-          <div class="pillRow" style="position:relative;justify-content:center">
-            <span class="pill">🏃 Run</span>
-            <span class="pill">🚶 Walk</span>
-            <span class="pill">🌤 Weather Badge</span>
-            <span class="pill">🔒 Offline</span>
-          </div>
+          <li class="feature">
+            <div class="ico">🫀</div>
+            <div class="ft">
+              <h3>バイオリズム / Biorhythm</h3>
+              <p>今日のコンディションを目安に、無理なく続けるための指標。</p>
+            </div>
+          </li>
+
+          <li class="feature">
+            <div class="ico">🏆</div>
+            <div class="ft">
+              <h3>ランキング / Ranking</h3>
+              <p>友だちと比べてモチベーション維持。数字はシンプルに。</p>
+            </div>
+          </li>
+
+          <li class="feature">
+            <div class="ico">🗓</div>
+            <div class="ft">
+              <h3>運動記録 / History</h3>
+              <p>過去の記録を一覧で振り返り。継続の証拠が残る。</p>
+            </div>
+          </li>
+        </ul>
+
+        <div class="subRow">
+          <span class="chip">🔒 プライバシー重視</span>
+          <span class="chip">📍 ルート記録</span>
+          <span class="chip">☁️ 必要最小限</span>
         </div>
 
-        <div class="stats" style="position:relative">
-          <div class="stat"><b>3.2 km</b><span>Distance</span></div>
-          <div class="stat"><b>28 min</b><span>Time</span></div>
-          <div class="stat"><b>312 kcal</b><span>Calories</span></div>
-        </div>
-
-        <div style="position:relative;margin-top:12px;color:var(--muted);font-size:.92rem">
-          “見える化”されると、続く。<br>ルート・天気・記録を、軽く・安全に。
-        </div>
-
-        <!-- 스크린샷(목업) 자리: 나중에 실제 이미지로 교체 -->
-        <div class="shots" aria-label="Screenshots" style="position:relative">
-          <div class="shot" title="Screenshot 1"></div>
-          <div class="shot" title="Screenshot 2"></div>
-          <div class="shot" title="Screenshot 3"></div>
-        </div>
-
-        <p style="color:var(--muted);font-size:.92rem;margin-top:12px;position:relative">
+        <div class="support">
           Support:
-          <a href="mailto:sposedon0000@gmail.com" style="color:#c9d3ff">sposedon0000@gmail.com</a><br>
-          🔒 <a href="/privacy.html" style="color:#22d3ee">個人情報保護方針 / Privacy Policy</a><br>
-          🔔 <a href="/news.html" style="color:#22d3ee">お知らせ / Updates</a>
-        </p>
+          <a href="mailto:sposedon0@gmail.com">sposedon0@gmail.com</a><br>
+          🔒 <a class="link" href="/privacy.html">個人情報保護方針 / Privacy Policy</a><br>
+          🔔 <a class="link" href="/news.html">お知らせ / Updates</a>
+        </div>
       </aside>
     </section>
 
