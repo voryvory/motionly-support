@@ -3,132 +3,470 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Motionly — Map Your Runs in Real Time</title>
-  <meta name="description" content="Motionly is a fitness app that logs your distance, calories, and GPS routes in real time, with weather badges and on-device privacy.">
+  <title>Motionly — Move Better, Live Brighter</title>
+  <meta name="description" content="Motionly: Weather, Workout, Biorhythm, Ranking, and History—built to help you stay consistent every day.">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <meta property="og:title" content="Motionly">
-  <meta property="og:description" content="Real-time fitness tracking • Map routes • On-device design">
+  <meta property="og:description" content="Weather · Workout · Biorhythm · Ranking · History">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://motionly.net/en.html">
+  <meta property="og:url" content="https://motionly.net/">
+
   <style>
-    :root { --bg:#0f1220; --fg:#eaeaf2; --muted:#a7adcc; --accent:#7c3aed; --accent2:#22d3ee; --card:#151a2f; }
+    :root{
+      --bg:#0f1220; --fg:#eaeaf2; --muted:#a7adcc;
+      --accent:#7c3aed; --accent2:#22d3ee;
+      --card:rgba(21,26,47,.62); --border:rgba(255,255,255,.08);
+
+      --phoneW: 340px;
+      --phoneRadius: 34px;
+      --inset: 14px;
+
+      /* ✅ Replace these with your real asset paths */
+      --shotRun: url("/assets/shot_run.png");
+      --shotWalk: url("/assets/shot_walk.png");
+    }
+
     *{box-sizing:border-box} html,body{height:100%}
     body{
       margin:0;
       font-family:ui-sans-serif,system-ui,Apple SD Gothic Neo,Segoe UI,Roboto,Helvetica,Arial;
       color:var(--fg);
       background:
-        radial-gradient(1200px 700px at 80% -10%, rgba(124,58,237,.15), transparent 50%),
-        radial-gradient(900px 600px at 10% 110%, rgba(34,211,238,.12), transparent 50%),
+        radial-gradient(1200px 700px at 80% -10%, rgba(124,58,237,.14), transparent 55%),
+        radial-gradient(900px 600px at 10% 110%, rgba(34,211,238,.10), transparent 55%),
         var(--bg);
+      overflow-x:hidden;
     }
-    .wrap{max-width:1080px;margin:0 auto;padding:24px}
-    header{display:flex;align-items:center;justify-content:space-between; gap:16px}
+
+    .wrap{max-width:1120px;margin:0 auto;padding:24px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px}
     .logo{display:flex;align-items:center;gap:12px;font-weight:700;letter-spacing:.2px}
     .logo-dot{
       width:12px;height:12px;border-radius:50%;
       background:linear-gradient(45deg,var(--accent),var(--accent2));
-      box-shadow:0 0 20px var(--accent);
+      box-shadow:0 0 18px rgba(124,58,237,.55);
     }
-    .btn{
-      display:inline-block;padding:14px 18px;border-radius:14px;
-      background:linear-gradient(90deg,var(--accent),var(--accent2));
-      color:#0b0f1a;text-decoration:none;font-weight:700;
-      box-shadow:0 8px 24px rgba(34,211,238,.25)
-    }
-    .btn:active{transform:translateY(1px)}
-    .hero{
-      display:grid;grid-template-columns:1.2fr .8fr;
-      gap:28px;margin:64px 0;align-items:center
-    }
-    .card{
-      background:rgba(21,26,47,.7);
-      backdrop-filter: blur(10px);
-      border:1px solid rgba(124,58,237,.25);
-      border-radius:20px;padding:20px
-    }
-    .kicker{color:var(--muted);font-size:.9rem;letter-spacing:.08em;text-transform:uppercase}
-    h1{font-size:clamp(36px,6vw,56px);line-height:1.05;margin:10px 0 12px}
-    p.lead{font-size:1.12rem;color:var(--muted)}
-    ul.features{
-      display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
-      gap:10px;margin:18px 0 0;padding:0;list-style:none
-    }
-    .badge{
-      font-size:.85rem;color:#c7cff9;background:#0e1327;
-      border:1px solid #2b3565;padding:6px 10px;border-radius:999px;
-      display:inline-flex;gap:8px;align-items:center
-    }
-    .glow{text-shadow:0 0 12px rgba(124,58,237,.6)}
-    .lang{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+    .lang{display:flex;gap:8px;flex-wrap:wrap}
     .lang a{
       color:var(--muted);text-decoration:none;
-      border:1px solid #2b3565;padding:6px 10px;border-radius:10px
+      border:1px solid rgba(43,53,101,.75);
+      padding:6px 10px;border-radius:10px;
+      transition:transform .18s ease, border-color .18s ease;
     }
+    .lang a:hover{transform:translateY(-1px);border-color:rgba(34,211,238,.45)}
     .lang a.current{
       color:#0b0f1a;
       background:linear-gradient(90deg,var(--accent),var(--accent2));
       border-color:transparent;
-      font-weight:700;
+      font-weight:800;
     }
-    footer{margin:60px 0 20px;color:#8891b8;font-size:.9rem;text-align:center}
+
+    .btn{
+      display:inline-block;padding:14px 18px;border-radius:14px;
+      background:linear-gradient(90deg,var(--accent),var(--accent2));
+      color:#0b0f1a;text-decoration:none;font-weight:800;
+      box-shadow:0 10px 26px rgba(34,211,238,.18);
+      transition:transform .18s ease, box-shadow .18s ease;
+      white-space:nowrap;
+    }
+    .btn:hover{transform:translateY(-2px);box-shadow:0 16px 34px rgba(34,211,238,.22)}
+    .badge{
+      font-size:.85rem;color:#c7cff9;background:rgba(14,19,39,.7);
+      border:1px solid rgba(43,53,101,.75);
+      padding:7px 10px;border-radius:999px;
+      display:inline-flex;gap:8px;align-items:center
+    }
+
+    .hero{
+      display:grid;
+      grid-template-columns: 1.05fr .95fr 1.0fr;
+      gap:22px;
+      margin:64px 0 10px;
+      align-items:start;
+    }
+
+    .card{
+      background:var(--card);
+      backdrop-filter: blur(10px);
+      border:1px solid var(--border);
+      border-radius:22px;
+      padding:20px;
+    }
+
+    .kicker{color:var(--muted);font-size:.9rem;letter-spacing:.08em;text-transform:uppercase}
+    h1{font-size:clamp(34px,5.6vw,56px);line-height:1.05;margin:10px 0 12px}
+    .glow{text-shadow:0 0 10px rgba(124,58,237,.45)}
+    p.lead{font-size:1.08rem;color:var(--muted);margin:0;line-height:1.55}
+    .ctaRow{display:flex;gap:12px;align-items:center;margin-top:22px;flex-wrap:wrap}
+
+    .miniCard{margin-top:14px}
+    .miniCard strong{display:block;margin-bottom:6px}
+    .miniCard p{margin:0;color:var(--muted);line-height:1.6}
+
+    /* ========= Preview ========= */
+    .preview{
+      position:relative;
+      padding:16px;
+      border-radius:26px;
+      background:rgba(14,19,39,.52);
+      border:1px solid rgba(255,255,255,.08);
+      overflow:hidden;
+      min-height:560px;
+    }
+    .tabs{
+      display:flex;gap:10px;align-items:center;justify-content:center;
+      margin-bottom:12px;
+    }
+    .tab{
+      cursor:pointer; user-select:none;
+      padding:9px 12px;border-radius:999px;
+      border:1px solid rgba(43,53,101,.75);
+      background:rgba(14,19,39,.55);
+      color:#c7cff9;
+      font-size:.9rem;
+      display:inline-flex;gap:8px;align-items:center;
+      transition:transform .15s ease, border-color .15s ease;
+    }
+    .tab:hover{transform:translateY(-1px);border-color:rgba(34,211,238,.35)}
+    .tab.active{
+      color:#0b0f1a;border-color:transparent;
+      background:linear-gradient(90deg,var(--accent),var(--accent2));
+      font-weight:800;
+    }
+
+    .phone{
+      position:relative;
+      margin:0 auto;
+      width:min(var(--phoneW), 94%);
+      aspect-ratio: 9 / 19.5;
+      border-radius:var(--phoneRadius);
+      border:1px solid rgba(255,255,255,.12);
+      background:#0a0c18;
+      box-shadow:0 22px 70px rgba(0,0,0,.35);
+      overflow:hidden;
+      isolation:isolate;
+    }
+
+    /* ✅ Render screenshot as background (prevents broken alt text) */
+    .shotBg{
+      position:absolute;inset:0;
+      background-image: var(--shotRun);
+      background-size: cover;
+      background-position: center;
+      background-repeat:no-repeat;
+      transform:scale(1.02);
+      filter:saturate(1.02);
+      z-index:0;
+    }
+    .shotBg::after{
+      content:"";
+      position:absolute;inset:0;
+      background:
+        radial-gradient(700px 380px at 50% 15%, rgba(34,211,238,.10), transparent 60%),
+        radial-gradient(700px 380px at 50% 85%, rgba(124,58,237,.12), transparent 60%);
+      pointer-events:none;
+    }
+
+    .safe{
+      position:absolute;inset:0;
+      z-index:1;
+      padding:var(--inset);
+      display:grid;
+      grid-template-rows: auto 1fr auto;
+      gap:12px;
+      pointer-events:none;
+    }
+
+    .topPill{
+      width:100%;
+      max-width: 92%;
+      justify-self:center;
+      padding:10px 12px;
+      border-radius:18px;
+      background:rgba(0,0,0,.46);
+      border:1px solid rgba(255,255,255,.12);
+      backdrop-filter: blur(10px);
+      display:flex;align-items:center;justify-content:space-between;
+      gap:10px;
+    }
+    .topPill .left{
+      display:flex;flex-direction:column;gap:2px;
+      font-weight:900;font-size:.95rem;line-height:1.1;
+    }
+    .topPill .left span{
+      font-weight:700;font-size:.82rem;color:rgba(255,255,255,.75);
+    }
+    .topPill .right{
+      display:flex;align-items:center;gap:6px;
+      font-weight:900;font-size:.92rem;color:rgba(255,255,255,.92);
+      white-space:nowrap;
+    }
+
+    .midSpace{min-height:0}
+
+    .bottom{
+      width:100%;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:12px;
+    }
+
+    .statsCard{
+      width:100%;
+      border-radius:18px;
+      background:rgba(230,235,245,.16);
+      border:1px solid rgba(255,255,255,.12);
+      backdrop-filter: blur(12px);
+      padding:12px 12px;
+      color:rgba(255,255,255,.92);
+    }
+
+    /* ✅ Prevent text overlap: label=1fr / value=auto + 1-column on narrow phones */
+    .statsGrid{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap:10px 14px;
+      font-size:14px;
+      line-height:1.35;
+    }
+    .row{
+      display:grid;
+      grid-template-columns: 1fr auto;
+      align-items:center;
+      gap:10px;
+      min-width:0;
+    }
+    .row span{
+      color:rgba(255,255,255,.72);
+      font-weight:700;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+    .row b{
+      font-weight:900;
+      letter-spacing:.2px;
+      justify-self:end;
+      white-space:nowrap;
+    }
+    .row.wide{ grid-column: 1 / -1; }
+
+    .startBtn{
+      width:min(240px, 78%);
+      height:52px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.14);
+      background:linear-gradient(180deg, rgba(34,211,238,.95), rgba(124,58,237,.85));
+      color:#071018;
+      font-weight:900;
+      display:flex;align-items:center;justify-content:center;
+      gap:10px;
+      box-shadow:0 18px 36px rgba(34,211,238,.14);
+      user-select:none;
+    }
+    .play{
+      width:0;height:0;
+      border-left:12px solid #071018;
+      border-top:7px solid transparent;
+      border-bottom:7px solid transparent;
+      margin-left:2px;
+    }
+
+    .rightTitle{margin:0 0 10px;font-size:1.05rem;font-weight:800;color:#dfe3ff}
+    .featureList{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+    .feature{
+      display:flex;gap:10px;align-items:flex-start;
+      padding:10px 12px;border-radius:16px;
+      background:rgba(14,19,39,.55);
+      border:1px solid rgba(43,53,101,.55);
+    }
+    .ico{
+      width:30px;height:30px;border-radius:10px;
+      display:grid;place-items:center;
+      background:linear-gradient(135deg, rgba(124,58,237,.25), rgba(34,211,238,.18));
+      border:1px solid rgba(255,255,255,.06);
+      flex:0 0 auto;
+    }
+    .ft h3{margin:0;font-size:.98rem}
+    .ft p{margin:2px 0 0;color:var(--muted);font-size:.9rem;line-height:1.45}
+
+    .subRow{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+    .chip{
+      font-size:.85rem;color:#c7cff9;background:rgba(14,19,39,.7);
+      border:1px solid rgba(43,53,101,.65);
+      padding:7px 10px;border-radius:999px;
+      display:inline-flex;gap:8px;align-items:center
+    }
+
+    .support{
+      margin-top:14px;color:var(--muted);font-size:.92rem;line-height:1.55
+    }
+    .support a{color:#c9d3ff;text-decoration:none}
+    .support a:hover{text-decoration:underline}
+    .support .link{color:var(--accent2);text-decoration:none}
+    .support .link:hover{text-decoration:underline}
+
+    footer{margin:50px 0 20px;color:#8891b8;font-size:.9rem;text-align:center}
     footer a{color:var(--accent2);text-decoration:none;margin-left:8px}
     footer a:hover{text-decoration:underline}
-    @media (max-width:920px){ .hero{grid-template-columns:1fr} }
+
+    @media (max-width:1100px){
+      .hero{grid-template-columns:1fr;gap:18px}
+      .preview{min-height:auto}
+    }
+
+    @media (max-width:420px){
+      :root{ --phoneW: 320px; --inset: 12px; }
+      .startBtn{width:min(220px, 80%)}
+      .topPill{max-width: 94%}
+      .statsGrid{ grid-template-columns: 1fr; gap:10px; }
+      .row.wide{ grid-column: auto; }
+    }
   </style>
 </head>
+
 <body>
   <div class="wrap">
     <header>
       <div class="logo"><span class="logo-dot"></span><span>Motionly</span></div>
       <nav class="lang" aria-label="Languages">
-        <a href="/ko.html">한국어</a>
+        <a href="/ko.html">KR</a>
         <a href="/en.html" class="current">EN</a>
-        <a href="/">日本語</a>
+        <a href="/">JP</a>
       </nav>
     </header>
 
     <section class="hero">
+      <!-- Left -->
       <div>
         <div class="kicker">Move Better · Live Brighter</div>
-        <h1 class="glow">Map your workouts<br>without losing your data</h1>
+        <h1 class="glow">Your workouts,<br>drawn on the map</h1>
         <p class="lead">
-          Motionly logs distance, calories, and GPS routes in real time.
-          Weather badges and an offline-first, on-device design keep your runs reliable and private.
+          Weather, Workout, Biorhythm, Ranking, and History.<br>
+          Built for consistency—so your daily step feels lighter. iOS only.
         </p>
-        <div style="display:flex;gap:12px;align-items:center;margin-top:22px">
-          <a class="btn" href="https://apps.apple.com/jp/app/motionly/id6752832437" rel="noopener">Get on App Store (JP)</a>
+
+        <div class="ctaRow">
+          <a class="btn" href="https://apps.apple.com/jp/app/motionly/id6752832437" rel="noopener">Get on the App Store • JP</a>
           <span class="badge">iOS 18+ • Korean / English / Japanese</span>
         </div>
 
         <p class="badge" style="margin-top:12px">
-          🔔 <a href="/news.html" style="color:#c9d3ff;text-decoration:none">News / Updates</a>
+          🔔 <a href="/news.html" style="color:#c9d3ff;text-decoration:none">Updates</a>
         </p>
 
-        <div class="card" style="margin-top:12px">
-          <strong>What is Motionly?</strong>
-          <p style="margin:8px 0 0;color:var(--muted)">
-            Motionly is a lightweight fitness companion focused on walking and running.
-            Your workout data lives on your device, not in the cloud, so you stay in control of your history.
+        <div class="card miniCard">
+          <strong>About</strong>
+          <p>
+            Motionly helps you track distance, calories, and routes—while also showing
+            your weather and daily condition at a glance, so you can build a habit that lasts.
           </p>
         </div>
       </div>
 
+      <!-- Middle -->
+      <div class="preview" aria-label="App preview">
+        <div class="tabs" role="tablist" aria-label="Workout type">
+          <div class="tab active" role="tab" aria-selected="true" data-mode="run">🏃 RUN</div>
+          <div class="tab" role="tab" aria-selected="false" data-mode="walk">🚶 WALK</div>
+        </div>
+
+        <div class="phone" aria-label="Phone mock">
+          <div class="shotBg" id="shotBg" aria-hidden="true"></div>
+
+          <div class="safe">
+            <div class="topPill" aria-label="Weather bar">
+              <div class="left">
+                <div id="pillMain">24 / 40</div>
+                <span id="pillSub">Biorhythm</span>
+              </div>
+              <div class="right">
+                <span id="pillIcon">☁️</span>
+                <span id="pillTemp">10°</span>
+              </div>
+            </div>
+
+            <div class="midSpace" aria-hidden="true"></div>
+
+            <div class="bottom" aria-label="Workout HUD">
+              <div class="statsCard">
+                <div class="statsGrid">
+                  <div class="row"><span>Elapsed Time</span><b id="sTime">00:00:00</b></div>
+                  <div class="row"><span>Distance</span><b id="sDist">0.00 m</b></div>
+                  <div class="row"><span>Calories</span><b id="sKcal">0.0 kcal</b></div>
+                  <div class="row"><span>Steps</span><b id="sSteps">7151</b></div>
+                  <div class="row wide"><span>Altitude</span><b id="sAlt">0.0 m</b></div>
+                </div>
+              </div>
+
+              <div class="startBtn" aria-label="Start button">
+                <span class="play" aria-hidden="true"></span>
+                <span id="startLabel">Start</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right -->
       <aside class="card">
-        <h2 style="margin:0 0 8px">Key Features</h2>
-        <ul class="features">
-          <li>• Real-time map route tracking</li>
-          <li>• Weather badge using WeatherKit</li>
-          <li>• Offline-first reliability</li>
-          <li>• On-device storage for privacy</li>
+        <h2 class="rightTitle">Key Features</h2>
+
+        <ul class="featureList">
+          <li class="feature">
+            <div class="ico">🌤</div>
+            <div class="ft">
+              <h3>Weather</h3>
+              <p>Check today’s weather at a glance and decide your workout faster.</p>
+            </div>
+          </li>
+
+          <li class="feature">
+            <div class="ico">🏃</div>
+            <div class="ft">
+              <h3>Workout</h3>
+              <p>Track distance, time, and calories—simple progress that adds up.</p>
+            </div>
+          </li>
+
+          <li class="feature">
+            <div class="ico">🫀</div>
+            <div class="ft">
+              <h3>Biorhythm</h3>
+              <p>A daily condition guide to help you stay consistent without overdoing it.</p>
+            </div>
+          </li>
+
+          <li class="feature">
+            <div class="ico">🏆</div>
+            <div class="ft">
+              <h3>Ranking</h3>
+              <p>Stay motivated with friends—keep it simple, keep it fun.</p>
+            </div>
+          </li>
+
+          <li class="feature">
+            <div class="ico">🗓</div>
+            <div class="ft">
+              <h3>History</h3>
+              <p>Look back anytime—your consistency becomes proof.</p>
+            </div>
+          </li>
         </ul>
-        <div style="height:14px"></div>
-        <p style="color:var(--muted);font-size:.92rem">
+
+        <div class="subRow">
+          <span class="chip">🔒 Privacy-first</span>
+          <span class="chip">📍 Route tracking</span>
+          <span class="chip">☁️ Minimal data</span>
+        </div>
+
+        <div class="support">
           Support:
-          <a href="mailto:sposedon0@gmail.com" style="color:#c9d3ff">sposedon0@gmail.com</a><br>
-          🔒 <a href="/privacy.html" style="color:#22d3ee">Privacy Policy</a><br>
-          🔔 <a href="/news.html" style="color:#22d3ee">News / Updates</a>
-        </p>
+          <a href="mailto:sposedon0@gmail.com">sposedon0@gmail.com</a><br>
+          🔒 <a class="link" href="/privacy.html">Privacy Policy</a><br>
+          🔔 <a class="link" href="/news.html">Updates</a>
+        </div>
       </aside>
     </section>
 
@@ -138,5 +476,69 @@
       <a href="/news.html">Updates</a>
     </footer>
   </div>
+
+  <script>
+    (function(){
+      const tabs = Array.from(document.querySelectorAll('.tab'));
+      const shotBg = document.getElementById('shotBg');
+
+      const pillMain = document.getElementById('pillMain');
+      const pillSub  = document.getElementById('pillSub');
+      const pillIcon = document.getElementById('pillIcon');
+      const pillTemp = document.getElementById('pillTemp');
+
+      const sTime  = document.getElementById('sTime');
+      const sDist  = document.getElementById('sDist');
+      const sKcal  = document.getElementById('sKcal');
+      const sSteps = document.getElementById('sSteps');
+      const sAlt   = document.getElementById('sAlt');
+
+      const DATA = {
+        run: {
+          shotVar: "--shotRun",
+          pillMain: "24 / 40",
+          pillSub: "Biorhythm",
+          pillIcon: "☁️",
+          pillTemp: "10°",
+          stats: { time:"00:00:00", dist:"0.00 m", kcal:"0.0 kcal", steps:"7151", alt:"0.0 m" }
+        },
+        walk: {
+          shotVar: "--shotWalk",
+          pillMain: "18 / 40",
+          pillSub: "Biorhythm",
+          pillIcon: "🌤",
+          pillTemp: "16°",
+          stats: { time:"00:00:00", dist:"0.00 m", kcal:"0.0 kcal", steps:"7151", alt:"0.0 m" }
+        }
+      };
+
+      function setMode(mode){
+        const d = DATA[mode] || DATA.run;
+
+        tabs.forEach(t=>{
+          const on = t.dataset.mode === mode;
+          t.classList.toggle('active', on);
+          t.setAttribute('aria-selected', on ? 'true' : 'false');
+        });
+
+        shotBg.style.backgroundImage =
+          getComputedStyle(document.documentElement).getPropertyValue(d.shotVar).trim() || "none";
+
+        pillMain.textContent = d.pillMain;
+        pillSub.textContent  = d.pillSub;
+        pillIcon.textContent = d.pillIcon;
+        pillTemp.textContent = d.pillTemp;
+
+        sTime.textContent  = d.stats.time;
+        sDist.textContent  = d.stats.dist;
+        sKcal.textContent  = d.stats.kcal;
+        sSteps.textContent = d.stats.steps;
+        sAlt.textContent   = d.stats.alt;
+      }
+
+      tabs.forEach(t => t.addEventListener('click', () => setMode(t.dataset.mode)));
+      setMode('run');
+    })();
+  </script>
 </body>
 </html>
