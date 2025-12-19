@@ -16,7 +16,6 @@
       --bg:#0f1220; --fg:#eaeaf2; --muted:#a7adcc;
       --accent:#7c3aed; --accent2:#22d3ee;
       --card:rgba(21,26,47,.62); --border:rgba(255,255,255,.08);
-      --chip:#0e1327;
     }
     *{box-sizing:border-box} html,body{height:100%}
     body{
@@ -57,12 +56,10 @@
       background:linear-gradient(90deg,var(--accent),var(--accent2));
       color:#0b0f1a;text-decoration:none;font-weight:800;
       box-shadow:0 10px 26px rgba(34,211,238,.18);
-      transition:transform .18s ease, box-shadow .18s ease, filter .18s ease;
-      will-change:transform;
+      transition:transform .18s ease, box-shadow .18s ease;
       white-space:nowrap;
     }
     .btn:hover{transform:translateY(-2px);box-shadow:0 16px 34px rgba(34,211,238,.22)}
-    .btn:active{transform:translateY(0px);filter:saturate(1.05)}
     .badge{
       font-size:.85rem;color:#c7cff9;background:rgba(14,19,39,.7);
       border:1px solid rgba(43,53,101,.75);
@@ -70,14 +67,12 @@
       display:inline-flex;gap:8px;align-items:center
     }
 
-    /* 레이아웃: 좌(카피) / 중(앱 프리뷰) / 우(기능) */
     .hero{
       display:grid;
       grid-template-columns: 1.05fr .95fr 1.0fr;
       gap:22px;
       margin:64px 0 10px;
       align-items:start;
-      position:relative;
     }
 
     .card{
@@ -97,7 +92,7 @@
     .miniCard strong{display:block;margin-bottom:6px}
     .miniCard p{margin:0;color:var(--muted);line-height:1.6}
 
-    /* ✅ 앱 프리뷰(폰) */
+    /* ========= 캡처1 기반: 폰 프리뷰 ========= */
     .preview{
       position:relative;
       padding:16px;
@@ -105,15 +100,14 @@
       background:rgba(14,19,39,.52);
       border:1px solid rgba(255,255,255,.08);
       overflow:hidden;
-      min-height:540px;
+      min-height:560px;
     }
     .tabs{
       display:flex;gap:10px;align-items:center;justify-content:center;
       margin-bottom:12px;
     }
     .tab{
-      cursor:pointer;
-      user-select:none;
+      cursor:pointer; user-select:none;
       padding:9px 12px;border-radius:999px;
       border:1px solid rgba(43,53,101,.75);
       background:rgba(14,19,39,.55);
@@ -124,8 +118,7 @@
     }
     .tab:hover{transform:translateY(-1px);border-color:rgba(34,211,238,.35)}
     .tab.active{
-      color:#0b0f1a;
-      border-color:transparent;
+      color:#0b0f1a;border-color:transparent;
       background:linear-gradient(90deg,var(--accent),var(--accent2));
       font-weight:800;
     }
@@ -133,87 +126,100 @@
     .phone{
       position:relative;
       margin:0 auto;
-      width:min(320px, 92%);
+      width:min(340px, 94%);
       aspect-ratio: 9 / 19.5;
       border-radius:34px;
       border:1px solid rgba(255,255,255,.12);
-      background:rgba(10,12,24,.55);
+      background:#0a0c18;
       box-shadow:0 22px 70px rgba(0,0,0,.35);
       overflow:hidden;
-    }
-    .phone::before{
-      content:"";
-      position:absolute;inset:0;
-      background:
-        radial-gradient(500px 260px at 50% 0%, rgba(34,211,238,.10), transparent 60%),
-        radial-gradient(520px 320px at 0% 100%, rgba(124,58,237,.12), transparent 65%);
-      pointer-events:none;
-      z-index:1;
     }
     .shot{
       position:absolute;inset:0;
       width:100%;height:100%;
       object-fit:cover;
-      transform:scale(1.01);
       z-index:0;
+      transform:scale(1.02);
+      filter:saturate(1.02);
     }
 
-    /* ✅ “내 앱의 날씨 배지” 느낌: 오버레이 */
-    .weatherBadge{
-      position:absolute;top:14px;left:14px;
+    /* 상단 “날씨 바(섬 느낌)” */
+    .topPill{
+      position:absolute;top:16px;left:50%;
+      transform:translateX(-50%);
       z-index:2;
-      padding:10px 12px;border-radius:16px;
-      background:rgba(15,18,32,.72);
-      border:1px solid rgba(255,255,255,.10);
+      width:min(260px, 86%);
+      padding:10px 12px;
+      border-radius:18px;
+      background:rgba(0,0,0,.45);
+      border:1px solid rgba(255,255,255,.12);
       backdrop-filter: blur(10px);
-      display:flex;gap:10px;align-items:center;
-      box-shadow:0 12px 28px rgba(0,0,0,.25);
-    }
-    .wIcon{
-      width:34px;height:34px;border-radius:12px;
-      display:grid;place-items:center;
-      background:linear-gradient(135deg, rgba(124,58,237,.25), rgba(34,211,238,.18));
-      border:1px solid rgba(255,255,255,.08);
-      font-size:18px;
-    }
-    .wText b{display:block;font-size:.95rem}
-    .wText span{display:block;color:var(--muted);font-size:.82rem;margin-top:1px}
-
-    /* ✅ 운동 기록 오버레이 */
-    .hud{
-      position:absolute;left:14px;right:14px;bottom:14px;
-      z-index:2;
-      display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+      display:flex;align-items:center;justify-content:space-between;
       gap:10px;
     }
-    .hudItem{
-      padding:10px 10px;border-radius:16px;
-      background:rgba(15,18,32,.72);
-      border:1px solid rgba(255,255,255,.10);
-      backdrop-filter: blur(10px);
+    .topPill .left{
+      display:flex;flex-direction:column;gap:2px;
+      font-weight:800;font-size:.95rem;
     }
-    .hudItem b{display:block;font-size:1.02rem}
-    .hudItem span{display:block;color:var(--muted);font-size:.82rem;margin-top:2px}
+    .topPill .left span{
+      font-weight:700;font-size:.82rem;color:rgba(255,255,255,.75);
+    }
+    .topPill .right{
+      display:flex;align-items:center;gap:6px;
+      font-weight:800;font-size:.92rem;color:rgba(255,255,255,.9);
+    }
 
-    /* ✅ “달리는 느낌”은 과장 없이: HUD 상단에 심박/리듬 파형 */
-    .pulse{
-      position:absolute;left:14px;right:14px;top:78px;
+    /* 하단 스탯 카드 + Start 버튼(캡처1 느낌) */
+    .bottomStack{
+      position:absolute;left:14px;right:14px;bottom:18px;
       z-index:2;
-      height:24px;
-      opacity:.75;
-      pointer-events:none;
+      display:flex;flex-direction:column;gap:12px;
+      align-items:center;
     }
-    .pulse path{
-      stroke:rgba(34,211,238,.55);
-      stroke-width:2.5;
-      fill:none;
-      stroke-linecap:round;
-      stroke-dasharray: 10 12;
-      animation: dashMove 1.5s linear infinite;
+    .statsCard{
+      width:100%;
+      border-radius:18px;
+      background:rgba(230,235,245,.15);
+      border:1px solid rgba(255,255,255,.12);
+      backdrop-filter: blur(12px);
+      padding:12px 12px;
+      color:rgba(255,255,255,.92);
     }
-    @keyframes dashMove { from{stroke-dashoffset:0} to{stroke-dashoffset:-220} }
+    .statsGrid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:8px 14px;
+      font-size:.88rem;
+    }
+    .row{
+      display:flex;justify-content:space-between;gap:10px;
+      opacity:.95;
+    }
+    .row span{color:rgba(255,255,255,.72)}
+    .row b{font-weight:900;letter-spacing:.2px}
 
-    /* 오른쪽 기능 */
+    .startBtn{
+      width:min(250px, 78%);
+      height:52px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.14);
+      background:linear-gradient(180deg, rgba(34,211,238,.95), rgba(124,58,237,.85));
+      color:#071018;
+      font-weight:900;
+      display:flex;align-items:center;justify-content:center;
+      gap:10px;
+      box-shadow:0 18px 36px rgba(34,211,238,.14);
+      user-select:none;
+    }
+    .play{
+      width:0;height:0;
+      border-left:12px solid #071018;
+      border-top:7px solid transparent;
+      border-bottom:7px solid transparent;
+      margin-left:2px;
+    }
+
+    /* 우측 기능 카드 */
     .rightTitle{margin:0 0 10px;font-size:1.05rem;font-weight:800;color:#dfe3ff}
     .featureList{margin:0;padding:0;list-style:none;display:grid;gap:10px}
     .feature{
@@ -255,9 +261,6 @@
     @media (max-width:1100px){
       .hero{grid-template-columns:1fr;gap:18px}
       .preview{min-height:auto}
-    }
-    @media (prefers-reduced-motion: reduce){
-      .pulse path{animation:none !important}
     }
   </style>
 </head>
@@ -302,7 +305,7 @@
         </div>
       </div>
 
-      <!-- Middle: App Preview (RUN/WALK + Weather + Stats) -->
+      <!-- Middle: 캡처1 기반 폰 프리뷰 -->
       <div class="preview" aria-label="App preview">
         <div class="tabs" role="tablist" aria-label="Workout type">
           <div class="tab active" role="tab" aria-selected="true" data-mode="run">🏃 RUN</div>
@@ -310,35 +313,38 @@
         </div>
 
         <div class="phone" aria-label="Phone mock">
-          <!-- ✅ 형이 실제 캡처 넣을 자리 -->
-          <!-- 파일 넣기: /assets/shot_run.jpg , /assets/shot_walk.jpg -->
-          <img class="shot" id="shot" src="/assets/shot_run.jpg" alt="Motionly screenshot">
+          <!-- ✅ 캡처1 넣기: assets/shot_run.png -->
+          <img class="shot" id="shot" src="/assets/shot_run.png" alt="Motionly screenshot">
 
-          <!-- Weather badge overlay -->
-          <div class="weatherBadge" aria-label="Weather badge">
-            <div class="wIcon" id="wIcon">🌤</div>
-            <div class="wText">
-              <b id="wTitle">Sunny · 16°C</b>
-              <span id="wSub">Feels like 15°C · Wind 2m/s</span>
+          <!-- 상단 날씨 바 -->
+          <div class="topPill" aria-label="Weather bar">
+            <div class="left">
+              <div id="pillMain">24 / 40</div>
+              <span id="pillSub">Biorhythm</span>
+            </div>
+            <div class="right">
+              <span id="pillIcon">☁️</span>
+              <span id="pillTemp">10°</span>
             </div>
           </div>
 
-          <!-- subtle pulse line (rhythm) -->
-          <svg class="pulse" viewBox="0 0 600 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M0 34 L60 34 L88 20 L114 44 L140 30 L176 30 L208 14 L240 46 L276 34 L320 34 L352 22 L382 44 L412 30 L450 30 L486 16 L520 46 L560 34 L600 34"></path>
-          </svg>
+          <!-- 하단 스탯 + Start -->
+          <div class="bottomStack" aria-label="Workout HUD">
+            <div class="statsCard">
+              <div class="statsGrid">
+                <div class="row"><span>Elapsed Time</span><b id="sTime">00:00:00</b></div>
+                <div class="row"><span>Distance</span><b id="sDist">0.00 m</b></div>
+                <div class="row"><span>Calories</span><b id="sKcal">0.0 kcal</b></div>
+                <div class="row"><span>Steps</span><b id="sSteps">7151</b></div>
+                <div class="row" style="grid-column:1 / -1"><span>Altitude</span><b id="sAlt">0.0 m</b></div>
+              </div>
+            </div>
 
-          <!-- workout HUD -->
-          <div class="hud" aria-label="Workout stats">
-            <div class="hudItem"><b id="s1">3.2 km</b><span>Distance</span></div>
-            <div class="hudItem"><b id="s2">28 min</b><span>Time</span></div>
-            <div class="hudItem"><b id="s3">312 kcal</b><span>Calories</span></div>
+            <div class="startBtn" aria-label="Start button">
+              <span class="play" aria-hidden="true"></span>
+              <span id="startLabel">Start</span>
+            </div>
           </div>
-        </div>
-
-        <div style="margin-top:14px;color:var(--muted);font-size:.9rem;line-height:1.55;text-align:center">
-          ※ ここに “実際のアプリ画面” を置くと、運動アプリ感が一気に上がる。<br>
-          RUN/WALK 切替でスクショと数値が変わる。
         </div>
       </div>
 
@@ -411,37 +417,43 @@
   </div>
 
   <script>
-    // RUN/WALK 토글: 스크린샷 + 날씨 배지 + 스탯을 “운동하는 것처럼” 바꿔치기
+    // RUN/WALK 토글: 캡처1 기반으로 “실제 화면”이 보이게 (이미지 + 상단바/하단 HUD만 바꿔치기)
     (function(){
       const tabs = Array.from(document.querySelectorAll('.tab'));
       const shot = document.getElementById('shot');
-      const wIcon = document.getElementById('wIcon');
-      const wTitle = document.getElementById('wTitle');
-      const wSub = document.getElementById('wSub');
-      const s1 = document.getElementById('s1');
-      const s2 = document.getElementById('s2');
-      const s3 = document.getElementById('s3');
+
+      const pillMain = document.getElementById('pillMain');
+      const pillSub  = document.getElementById('pillSub');
+      const pillIcon = document.getElementById('pillIcon');
+      const pillTemp = document.getElementById('pillTemp');
+
+      const sTime  = document.getElementById('sTime');
+      const sDist  = document.getElementById('sDist');
+      const sKcal  = document.getElementById('sKcal');
+      const sSteps = document.getElementById('sSteps');
+      const sAlt   = document.getElementById('sAlt');
 
       const DATA = {
         run: {
-          img: "/assets/shot_run.jpg",
-          weatherIcon: "🌤",
-          weatherTitle: "Sunny · 16°C",
-          weatherSub: "Feels like 15°C · Wind 2m/s",
-          stats: ["5.4 km", "32 min", "420 kcal"]
+          img: "/assets/shot_run.png",
+          pillMain: "24 / 40",
+          pillSub: "Biorhythm",
+          pillIcon: "☁️",
+          pillTemp: "10°",
+          stats: { time:"00:00:00", dist:"0.00 m", kcal:"0.0 kcal", steps:"7151", alt:"0.0 m" }
         },
         walk: {
-          img: "/assets/shot_walk.jpg",
-          weatherIcon: "🌧",
-          weatherTitle: "Light Rain · 12°C",
-          weatherSub: "Feels like 11°C · Wind 3m/s",
-          stats: ["3.2 km", "28 min", "312 kcal"]
+          img: "/assets/shot_walk.png", // 없으면 동일 이미지 써도 됨
+          pillMain: "18 / 40",
+          pillSub: "Biorhythm",
+          pillIcon: "🌤",
+          pillTemp: "16°",
+          stats: { time:"00:00:00", dist:"0.00 m", kcal:"0.0 kcal", steps:"7151", alt:"0.0 m" }
         }
       };
 
       function setMode(mode){
-        const d = DATA[mode];
-        if(!d) return;
+        const d = DATA[mode] || DATA.run;
 
         tabs.forEach(t=>{
           const on = t.dataset.mode === mode;
@@ -449,13 +461,18 @@
           t.setAttribute('aria-selected', on ? 'true' : 'false');
         });
 
-        shot.src = d.img; // ✅ 여기만 실제 캡처로 교체하면 “앱 느낌” 확 살아남
-        wIcon.textContent = d.weatherIcon;
-        wTitle.textContent = d.weatherTitle;
-        wSub.textContent = d.weatherSub;
-        s1.textContent = d.stats[0];
-        s2.textContent = d.stats[1];
-        s3.textContent = d.stats[2];
+        shot.src = d.img;
+
+        pillMain.textContent = d.pillMain;
+        pillSub.textContent  = d.pillSub;
+        pillIcon.textContent = d.pillIcon;
+        pillTemp.textContent = d.pillTemp;
+
+        sTime.textContent  = d.stats.time;
+        sDist.textContent  = d.stats.dist;
+        sKcal.textContent  = d.stats.kcal;
+        sSteps.textContent = d.stats.steps;
+        sAlt.textContent   = d.stats.alt;
       }
 
       tabs.forEach(t => t.addEventListener('click', () => setMode(t.dataset.mode)));
