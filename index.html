@@ -75,6 +75,52 @@
     footer a{color:var(--accent2);text-decoration:none;margin-left:8px}
     footer a:hover{text-decoration:underline}
     @media (max-width:920px){ .hero{grid-template-columns:1fr} }
+
+    /* ▼ 운동 느낌(루트/리듬/스크린샷) 강화 */
+    .routeCard{position:relative;overflow:hidden}
+    .routeBg{
+      position:absolute;inset:-40px;
+      background:
+        radial-gradient(600px 300px at 30% 30%, rgba(34,211,238,.18), transparent 60%),
+        radial-gradient(600px 300px at 70% 70%, rgba(124,58,237,.22), transparent 60%);
+      filter: blur(8px);
+      animation: drift 8s ease-in-out infinite alternate;
+    }
+    @keyframes drift{ from{transform:translate3d(-10px,-8px,0)} to{transform:translate3d(12px,10px,0)} }
+
+    .routeLine{
+      position:relative;
+      width:100%;height:220px;border-radius:16px;
+      background:rgba(14,19,39,.6);
+      border:1px solid rgba(43,53,101,.8);
+      display:flex;align-items:center;justify-content:center;
+      overflow:hidden;
+    }
+    .stats{
+      display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:10px;margin-top:12px
+    }
+    .stat{
+      background:#0e1327;border:1px solid #2b3565;border-radius:14px;
+      padding:10px 12px
+    }
+    .stat b{display:block;font-size:1.05rem}
+    .stat span{color:var(--muted);font-size:.86rem}
+
+    .shots{
+      display:flex;gap:10px;margin-top:14px;overflow:auto;padding-bottom:6px
+    }
+    .shot{
+      flex:0 0 140px;height:280px;border-radius:18px;
+      border:1px solid rgba(43,53,101,.9);
+      background:linear-gradient(180deg, rgba(124,58,237,.20), rgba(34,211,238,.12));
+    }
+    .pillRow{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+    .pill{
+      font-size:.85rem;color:#c7cff9;background:#0e1327;
+      border:1px solid #2b3565;padding:7px 10px;border-radius:999px;
+      display:inline-flex;gap:8px;align-items:center
+    }
   </style>
 </head>
 <body>
@@ -96,7 +142,7 @@
           リアルタイムのルート記録（MKPolyline）、天気バッジ（WeatherKit）、
           オフラインでも安心して使える設計で、ラン＆ウォーキング体験をスマートにします。iOS 専用。
         </p>
-        <div style="display:flex;gap:12px;align-items:center;margin-top:22px">
+        <div style="display:flex;gap:12px;align-items:center;margin-top:22px;flex-wrap:wrap">
           <a class="btn" href="https://apps.apple.com/jp/app/motionly/id6752832437" rel="noopener">App Store で入手 • JP</a>
           <span class="badge">iOS 18+ • 韓国語 / 英語 / 日本語</span>
         </div>
@@ -114,18 +160,54 @@
         </div>
       </div>
 
-      <aside class="card">
-        <h2 style="margin:0 0 8px">主な機能 / Key Features</h2>
-        <ul class="features">
-          <li>• リアルタイム地図トラッキング</li>
-          <li>• 天気バッジ（WeatherKit）</li>
-          <li>• オフライン前提の設計</li>
-          <li>• プライバシー重視のローカル保存</li>
-        </ul>
-        <div style="height:14px"></div>
-        <p style="color:var(--muted);font-size:.92rem">
+      <!-- ▼ 운동 감성 강화 카드 -->
+      <aside class="card routeCard">
+        <div class="routeBg" aria-hidden="true"></div>
+
+        <h2 style="margin:0 0 10px;position:relative">今日の一歩を、地図に残す</h2>
+
+        <div class="routeLine" style="position:relative">
+          <!-- “지도 느낌” 대신, 루트가 움직이는 느낌만 주는 SVG -->
+          <svg width="100%" height="220" viewBox="0 0 640 220" fill="none" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0">
+            <path d="M40 170 C120 70, 220 210, 320 120 C420 30, 520 160, 600 60"
+                  stroke="rgba(124,58,237,.9)" stroke-width="6" stroke-linecap="round"/>
+            <path d="M40 170 C120 70, 220 210, 320 120 C420 30, 520 160, 600 60"
+                  stroke="rgba(34,211,238,.85)" stroke-width="3" stroke-linecap="round"
+                  stroke-dasharray="10 12">
+              <animate attributeName="stroke-dashoffset" from="0" to="-220" dur="2.6s" repeatCount="indefinite"/>
+            </path>
+            <circle cx="40" cy="170" r="7" fill="rgba(34,211,238,.95)"/>
+            <circle cx="600" cy="60" r="7" fill="rgba(124,58,237,.95)"/>
+          </svg>
+
+          <div class="pillRow" style="position:relative;justify-content:center">
+            <span class="pill">🏃 Run</span>
+            <span class="pill">🚶 Walk</span>
+            <span class="pill">🌤 Weather Badge</span>
+            <span class="pill">🔒 Offline</span>
+          </div>
+        </div>
+
+        <div class="stats" style="position:relative">
+          <div class="stat"><b>3.2 km</b><span>Distance</span></div>
+          <div class="stat"><b>28 min</b><span>Time</span></div>
+          <div class="stat"><b>312 kcal</b><span>Calories</span></div>
+        </div>
+
+        <div style="position:relative;margin-top:12px;color:var(--muted);font-size:.92rem">
+          “見える化”されると、続く。<br>ルート・天気・記録を、軽く・安全に。
+        </div>
+
+        <!-- 스크린샷(목업) 자리: 나중에 실제 이미지로 교체 -->
+        <div class="shots" aria-label="Screenshots" style="position:relative">
+          <div class="shot" title="Screenshot 1"></div>
+          <div class="shot" title="Screenshot 2"></div>
+          <div class="shot" title="Screenshot 3"></div>
+        </div>
+
+        <p style="color:var(--muted);font-size:.92rem;margin-top:12px;position:relative">
           Support:
-          <a href="mailto:sposedon0@gmail.com" style="color:#c9d3ff">sposedon0@gmail.com</a><br>
+          <a href="mailto:sposedon0000@gmail.com" style="color:#c9d3ff">sposedon0000@gmail.com</a><br>
           🔒 <a href="/privacy.html" style="color:#22d3ee">個人情報保護方針 / Privacy Policy</a><br>
           🔔 <a href="/news.html" style="color:#22d3ee">お知らせ / Updates</a>
         </p>
