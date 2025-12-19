@@ -26,6 +26,7 @@
         radial-gradient(1200px 700px at 80% -10%, rgba(124,58,237,.14), transparent 55%),
         radial-gradient(900px 600px at 10% 110%, rgba(34,211,238,.10), transparent 55%),
         var(--bg);
+      overflow-x:hidden;
     }
     .wrap{max-width:1080px;margin:0 auto;padding:24px}
     header{display:flex;align-items:center;justify-content:space-between;gap:16px}
@@ -39,8 +40,10 @@
     .lang a{
       color:var(--muted);text-decoration:none;
       border:1px solid rgba(43,53,101,.75);
-      padding:6px 10px;border-radius:10px
+      padding:6px 10px;border-radius:10px;
+      transition:transform .18s ease, border-color .18s ease, background .18s ease;
     }
+    .lang a:hover{transform:translateY(-1px);border-color:rgba(34,211,238,.55)}
     .lang a.current{
       color:#0b0f1a;
       background:linear-gradient(90deg,var(--accent),var(--accent2));
@@ -54,8 +57,11 @@
       color:#0b0f1a;text-decoration:none;font-weight:800;
       box-shadow:0 10px 26px rgba(34,211,238,.18);
       white-space:nowrap;
+      transition:transform .18s ease, box-shadow .18s ease, filter .18s ease;
+      will-change:transform;
     }
-    .btn:active{transform:translateY(1px)}
+    .btn:hover{transform:translateY(-2px);box-shadow:0 16px 34px rgba(34,211,238,.22)}
+    .btn:active{transform:translateY(0px);filter:saturate(1.05)}
     .badge{
       font-size:.85rem;color:#c7cff9;background:rgba(14,19,39,.7);
       border:1px solid rgba(43,53,101,.75);
@@ -65,27 +71,54 @@
 
     .hero{
       display:grid;grid-template-columns:1.15fr .85fr;
-      gap:28px;margin:64px 0;align-items:start
+      gap:28px;margin:64px 0;align-items:start;
+      position:relative;
     }
+
+    /* ✅ 운동감: 히어로 뒤로 흐르는 “루트 라인” */
+    .routeHero{
+      position:absolute;inset:-90px -120px auto -120px;height:420px;
+      pointer-events:none;opacity:.55;
+      filter:blur(.0px);
+      animation:routeFloat 6.8s ease-in-out infinite alternate;
+    }
+    @keyframes routeFloat{
+      from{transform:translate3d(0,0,0) scale(1)}
+      to{transform:translate3d(0,10px,0) scale(1.01)}
+    }
+    .routeHero path.glow{
+      stroke:rgba(34,211,238,.55);
+      filter:drop-shadow(0 0 18px rgba(34,211,238,.25));
+    }
+    .routeHero path.dash{
+      stroke:rgba(124,58,237,.85);
+      stroke-dasharray:12 14;
+      animation:dashMove 1.8s linear infinite;
+    }
+    @keyframes dashMove{
+      from{stroke-dashoffset:0}
+      to{stroke-dashoffset:-260}
+    }
+
     .card{
       background:var(--card);
       backdrop-filter: blur(10px);
       border:1px solid var(--border);
       border-radius:22px;
-      padding:20px
+      padding:20px;
+      transition:transform .18s ease, border-color .18s ease;
     }
+
     .kicker{color:var(--muted);font-size:.9rem;letter-spacing:.08em;text-transform:uppercase}
     h1{font-size:clamp(36px,6vw,56px);line-height:1.05;margin:10px 0 12px}
     .glow{text-shadow:0 0 10px rgba(124,58,237,.45)}
     p.lead{font-size:1.12rem;color:var(--muted);margin:0}
-
     .ctaRow{display:flex;gap:12px;align-items:center;margin-top:22px;flex-wrap:wrap}
 
     .miniCard{margin-top:14px}
     .miniCard strong{display:block;margin-bottom:6px}
     .miniCard p{margin:0;color:var(--muted);line-height:1.6}
 
-    /* Right side: simple, clean “what you get” */
     .rightTitle{margin:0 0 10px;font-size:1.05rem;font-weight:800;color:#dfe3ff}
     .featureList{margin:0;padding:0;list-style:none;display:grid;gap:10px}
     .feature{
@@ -93,7 +126,9 @@
       padding:10px 12px;border-radius:16px;
       background:rgba(14,19,39,.55);
       border:1px solid rgba(43,53,101,.55);
+      transition:transform .18s ease, border-color .18s ease;
     }
+    .feature:hover{transform:translateY(-1px);border-color:rgba(34,211,238,.35)}
     .ico{
       width:30px;height:30px;border-radius:10px;
       display:grid;place-items:center;
@@ -109,8 +144,10 @@
       font-size:.85rem;color:#c7cff9;background:rgba(14,19,39,.7);
       border:1px solid rgba(43,53,101,.65);
       padding:7px 10px;border-radius:999px;
-      display:inline-flex;gap:8px;align-items:center
+      display:inline-flex;gap:8px;align-items:center;
+      transition:transform .18s ease;
     }
+    .chip:hover{transform:translateY(-1px)}
 
     .support{
       margin-top:14px;color:var(--muted);font-size:.92rem;line-height:1.55
@@ -120,12 +157,32 @@
     .support .link{color:var(--accent2);text-decoration:none}
     .support .link:hover{text-decoration:underline}
 
+    /* ✅ 운동감: 숫자 카운트업 영역(히어로 아래 작은 스탯) */
+    .quickStats{
+      display:flex;gap:10px;flex-wrap:wrap;
+      margin-top:14px;
+    }
+    .qstat{
+      background:rgba(14,19,39,.55);
+      border:1px solid rgba(43,53,101,.55);
+      border-radius:16px;
+      padding:10px 12px;
+      min-width:150px;
+    }
+    .qstat b{display:block;font-size:1.06rem}
+    .qstat span{color:var(--muted);font-size:.86rem}
+
     footer{margin:60px 0 20px;color:#8891b8;font-size:.9rem;text-align:center}
     footer a{color:var(--accent2);text-decoration:none;margin-left:8px}
     footer a:hover{text-decoration:underline}
 
     @media (max-width:920px){
       .hero{grid-template-columns:1fr}
+      .routeHero{height:300px;inset:-70px -80px auto -80px}
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .routeHero, .routeHero path.dash, .btn, .feature, .chip { animation:none !important; transition:none !important; }
     }
   </style>
 </head>
@@ -141,6 +198,16 @@
     </header>
 
     <section class="hero">
+      <!-- ✅ 배경 루트 애니메이션(운동 느낌) -->
+      <svg class="routeHero" viewBox="0 0 1200 420" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path class="glow" d="M40 320 C180 120, 320 360, 470 210 C640 40, 820 330, 980 150 C1080 40, 1140 120, 1160 90"
+              stroke-width="10" stroke-linecap="round"/>
+        <path class="dash" d="M40 320 C180 120, 320 360, 470 210 C640 40, 820 330, 980 150 C1080 40, 1140 120, 1160 90"
+              stroke-width="5" stroke-linecap="round"/>
+        <circle cx="40" cy="320" r="8" fill="rgba(34,211,238,.85)"/>
+        <circle cx="1160" cy="90" r="8" fill="rgba(124,58,237,.9)"/>
+      </svg>
+
       <!-- Left -->
       <div>
         <div class="kicker">Move Better · Live Brighter</div>
@@ -149,6 +216,13 @@
           天気・運動・バイオリズム・ランキング・運動記録。<br>
           “続けやすさ”を最優先に、毎日の一歩を整えます。iOS 専用。
         </p>
+
+        <!-- ✅ 숫자 카운트업 -->
+        <div class="quickStats">
+          <div class="qstat"><b><span data-count="3.2" data-suffix=" km">0</span></b><span>Today Distance</span></div>
+          <div class="qstat"><b><span data-count="28" data-suffix=" min">0</span></b><span>Today Time</span></div>
+          <div class="qstat"><b><span data-count="312" data-suffix=" kcal">0</span></b><span>Today Calories</span></div>
+        </div>
 
         <div class="ctaRow">
           <a class="btn" href="https://apps.apple.com/jp/app/motionly/id6752832437" rel="noopener">App Store で入手 • JP</a>
@@ -236,5 +310,39 @@
       <a href="/news.html">Updates</a>
     </footer>
   </div>
+
+  <script>
+    // ✅ 숫자 카운트업(가벼운 애니메이션) — 외부 라이브러리 없음
+    (function(){
+      const els = document.querySelectorAll('[data-count]');
+      if(!els.length) return;
+
+      const prefersReduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if(prefersReduce){
+        els.forEach(el => {
+          const v = el.getAttribute('data-count') || '0';
+          const suf = el.getAttribute('data-suffix') || '';
+          el.textContent = v + suf;
+        });
+        return;
+      }
+
+      const start = performance.now();
+      const dur = 900; // ms
+      function tick(now){
+        const t = Math.min(1, (now - start) / dur);
+        const ease = 1 - Math.pow(1 - t, 3);
+        els.forEach(el => {
+          const raw = parseFloat(el.getAttribute('data-count') || '0');
+          const suf = el.getAttribute('data-suffix') || '';
+          const isFloat = String(el.getAttribute('data-count')).includes('.');
+          const val = raw * ease;
+          el.textContent = (isFloat ? val.toFixed(1) : Math.round(val)) + suf;
+        });
+        if(t < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    })();
+  </script>
 </body>
 </html>
