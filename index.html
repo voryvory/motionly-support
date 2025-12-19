@@ -16,7 +16,15 @@
       --bg:#0f1220; --fg:#eaeaf2; --muted:#a7adcc;
       --accent:#7c3aed; --accent2:#22d3ee;
       --card:rgba(21,26,47,.62); --border:rgba(255,255,255,.08);
+
+      --phoneW: 340px;
+      --phoneRadius: 34px;
+
+      --inset: 14px;              /* 폰 안쪽 기본 안전 여백 */
+      --topBarH: 56px;            /* 상단 Pill 영역 높이 (대략) */
+      --bottomAreaH: 176px;       /* 하단 HUD+Start 영역 확보 높이 */
     }
+
     *{box-sizing:border-box} html,body{height:100%}
     body{
       margin:0;
@@ -28,6 +36,7 @@
         var(--bg);
       overflow-x:hidden;
     }
+
     .wrap{max-width:1120px;margin:0 auto;padding:24px}
     header{display:flex;align-items:center;justify-content:space-between;gap:16px}
     .logo{display:flex;align-items:center;gap:12px;font-weight:700;letter-spacing:.2px}
@@ -82,6 +91,7 @@
       border-radius:22px;
       padding:20px;
     }
+
     .kicker{color:var(--muted);font-size:.9rem;letter-spacing:.08em;text-transform:uppercase}
     h1{font-size:clamp(34px,5.6vw,56px);line-height:1.05;margin:10px 0 12px}
     .glow{text-shadow:0 0 10px rgba(124,58,237,.45)}
@@ -92,7 +102,7 @@
     .miniCard strong{display:block;margin-bottom:6px}
     .miniCard p{margin:0;color:var(--muted);line-height:1.6}
 
-    /* ========= 캡처1 기반: 폰 프리뷰 ========= */
+    /* ========= Preview ========= */
     .preview{
       position:relative;
       padding:16px;
@@ -126,14 +136,17 @@
     .phone{
       position:relative;
       margin:0 auto;
-      width:min(340px, 94%);
+      width:min(var(--phoneW), 94%);
       aspect-ratio: 9 / 19.5;
-      border-radius:34px;
+      border-radius:var(--phoneRadius);
       border:1px solid rgba(255,255,255,.12);
       background:#0a0c18;
       box-shadow:0 22px 70px rgba(0,0,0,.35);
       overflow:hidden;
+      isolation:isolate; /* 오버레이가 더 안정적으로 보이게 */
     }
+
+    /* ✅ 스샷: 무조건 가득 채우되, 오버레이는 별도 레이어 */
     .shot{
       position:absolute;inset:0;
       width:100%;height:100%;
@@ -143,15 +156,25 @@
       filter:saturate(1.02);
     }
 
-    /* 상단 “날씨 바(섬 느낌)” */
+    /* ✅ 폰 안 “안전 영역” (깨짐 방지 핵심) */
+    .safe{
+      position:absolute;inset:0;
+      z-index:1;
+      padding:var(--inset);
+      display:grid;
+      grid-template-rows: auto 1fr auto; /* top / body / bottom */
+      gap:12px;
+      pointer-events:none; /* 데모 UI는 클릭 필요 없으니 */
+    }
+
+    /* TOP: 캡처1 스타일 상단 바 */
     .topPill{
-      position:absolute;top:16px;left:50%;
-      transform:translateX(-50%);
-      z-index:2;
-      width:min(260px, 86%);
+      width:100%;
+      max-width: 92%;
+      justify-self:center;
       padding:10px 12px;
       border-radius:18px;
-      background:rgba(0,0,0,.45);
+      background:rgba(0,0,0,.46);
       border:1px solid rgba(255,255,255,.12);
       backdrop-filter: blur(10px);
       display:flex;align-items:center;justify-content:space-between;
@@ -159,47 +182,64 @@
     }
     .topPill .left{
       display:flex;flex-direction:column;gap:2px;
-      font-weight:800;font-size:.95rem;
+      font-weight:900;font-size:.95rem;line-height:1.1;
     }
     .topPill .left span{
       font-weight:700;font-size:.82rem;color:rgba(255,255,255,.75);
     }
     .topPill .right{
       display:flex;align-items:center;gap:6px;
-      font-weight:800;font-size:.92rem;color:rgba(255,255,255,.9);
+      font-weight:900;font-size:.92rem;color:rgba(255,255,255,.92);
+      white-space:nowrap;
     }
 
-    /* 하단 스탯 카드 + Start 버튼(캡처1 느낌) */
-    .bottomStack{
-      position:absolute;left:14px;right:14px;bottom:18px;
-      z-index:2;
-      display:flex;flex-direction:column;gap:12px;
+    /* MIDDLE: 여기는 스샷이 보이는 영역 (UI 없음) */
+    .midSpace{min-height:0}
+
+    /* BOTTOM: Stats + Start (절대좌표 X, 안전영역에서 자동 배치) */
+    .bottom{
+      width:100%;
+      display:flex;
+      flex-direction:column;
       align-items:center;
+      gap:12px;
     }
+
     .statsCard{
       width:100%;
       border-radius:18px;
-      background:rgba(230,235,245,.15);
+      background:rgba(230,235,245,.16);
       border:1px solid rgba(255,255,255,.12);
       backdrop-filter: blur(12px);
       padding:12px 12px;
       color:rgba(255,255,255,.92);
     }
+
+    /* ✅ 글자 깨짐 방지: 라벨/값을 한 줄 고정 + 최소폭 보장 */
     .statsGrid{
       display:grid;
       grid-template-columns: 1fr 1fr;
-      gap:8px 14px;
-      font-size:.88rem;
+      gap:10px 14px;
+      font-size:clamp(.82rem, 1.9vw, .9rem);
+      line-height:1.25;
     }
     .row{
-      display:flex;justify-content:space-between;gap:10px;
-      opacity:.95;
+      display:flex;
+      justify-content:space-between;
+      align-items:baseline;
+      gap:10px;
+      min-width:0;
+      white-space:nowrap;        /* 줄바꿈 금지 */
+      overflow:hidden;
+      text-overflow:ellipsis;
     }
-    .row span{color:rgba(255,255,255,.72)}
+    .row span{color:rgba(255,255,255,.72);font-weight:700}
     .row b{font-weight:900;letter-spacing:.2px}
 
+    .row.wide{grid-column:1 / -1}
+
     .startBtn{
-      width:min(250px, 78%);
+      width:min(240px, 78%);
       height:52px;
       border-radius:16px;
       border:1px solid rgba(255,255,255,.14);
@@ -219,7 +259,7 @@
       margin-left:2px;
     }
 
-    /* 우측 기능 카드 */
+    /* Right */
     .rightTitle{margin:0 0 10px;font-size:1.05rem;font-weight:800;color:#dfe3ff}
     .featureList{margin:0;padding:0;list-style:none;display:grid;gap:10px}
     .feature{
@@ -261,6 +301,13 @@
     @media (max-width:1100px){
       .hero{grid-template-columns:1fr;gap:18px}
       .preview{min-height:auto}
+    }
+
+    /* ✅ 아주 작은 화면에서 더 안 깨지게 */
+    @media (max-width:420px){
+      :root{ --phoneW: 320px; --inset: 12px; }
+      .startBtn{width:min(220px, 80%)}
+      .topPill{max-width: 94%}
     }
   </style>
 </head>
@@ -305,7 +352,7 @@
         </div>
       </div>
 
-      <!-- Middle: 캡처1 기반 폰 프리뷰 -->
+      <!-- Middle: 캡처1 기반 폰 프리뷰 (깨짐 방지 버전) -->
       <div class="preview" aria-label="App preview">
         <div class="tabs" role="tablist" aria-label="Workout type">
           <div class="tab active" role="tab" aria-selected="true" data-mode="run">🏃 RUN</div>
@@ -313,36 +360,42 @@
         </div>
 
         <div class="phone" aria-label="Phone mock">
-          <!-- ✅ 캡처1 넣기: assets/shot_run.png -->
+          <!-- ✅ 캡처1: assets/shot_run.png -->
           <img class="shot" id="shot" src="/assets/shot_run.png" alt="Motionly screenshot">
 
-          <!-- 상단 날씨 바 -->
-          <div class="topPill" aria-label="Weather bar">
-            <div class="left">
-              <div id="pillMain">24 / 40</div>
-              <span id="pillSub">Biorhythm</span>
-            </div>
-            <div class="right">
-              <span id="pillIcon">☁️</span>
-              <span id="pillTemp">10°</span>
-            </div>
-          </div>
-
-          <!-- 하단 스탯 + Start -->
-          <div class="bottomStack" aria-label="Workout HUD">
-            <div class="statsCard">
-              <div class="statsGrid">
-                <div class="row"><span>Elapsed Time</span><b id="sTime">00:00:00</b></div>
-                <div class="row"><span>Distance</span><b id="sDist">0.00 m</b></div>
-                <div class="row"><span>Calories</span><b id="sKcal">0.0 kcal</b></div>
-                <div class="row"><span>Steps</span><b id="sSteps">7151</b></div>
-                <div class="row" style="grid-column:1 / -1"><span>Altitude</span><b id="sAlt">0.0 m</b></div>
+          <!-- ✅ 안전영역 레이아웃 -->
+          <div class="safe">
+            <!-- TOP -->
+            <div class="topPill" aria-label="Weather bar">
+              <div class="left">
+                <div id="pillMain">24 / 40</div>
+                <span id="pillSub">Biorhythm</span>
+              </div>
+              <div class="right">
+                <span id="pillIcon">☁️</span>
+                <span id="pillTemp">10°</span>
               </div>
             </div>
 
-            <div class="startBtn" aria-label="Start button">
-              <span class="play" aria-hidden="true"></span>
-              <span id="startLabel">Start</span>
+            <!-- MID (screenshot visible area) -->
+            <div class="midSpace" aria-hidden="true"></div>
+
+            <!-- BOTTOM -->
+            <div class="bottom" aria-label="Workout HUD">
+              <div class="statsCard">
+                <div class="statsGrid">
+                  <div class="row"><span>Elapsed Time</span><b id="sTime">00:00:00</b></div>
+                  <div class="row"><span>Distance</span><b id="sDist">0.00 m</b></div>
+                  <div class="row"><span>Calories</span><b id="sKcal">0.0 kcal</b></div>
+                  <div class="row"><span>Steps</span><b id="sSteps">7151</b></div>
+                  <div class="row wide"><span>Altitude</span><b id="sAlt">0.0 m</b></div>
+                </div>
+              </div>
+
+              <div class="startBtn" aria-label="Start button">
+                <span class="play" aria-hidden="true"></span>
+                <span id="startLabel">Start</span>
+              </div>
             </div>
           </div>
         </div>
@@ -417,7 +470,6 @@
   </div>
 
   <script>
-    // RUN/WALK 토글: 캡처1 기반으로 “실제 화면”이 보이게 (이미지 + 상단바/하단 HUD만 바꿔치기)
     (function(){
       const tabs = Array.from(document.querySelectorAll('.tab'));
       const shot = document.getElementById('shot');
@@ -443,7 +495,7 @@
           stats: { time:"00:00:00", dist:"0.00 m", kcal:"0.0 kcal", steps:"7151", alt:"0.0 m" }
         },
         walk: {
-          img: "/assets/shot_walk.png", // 없으면 동일 이미지 써도 됨
+          img: "/assets/shot_walk.png",
           pillMain: "18 / 40",
           pillSub: "Biorhythm",
           pillIcon: "🌤",
@@ -461,7 +513,9 @@
           t.setAttribute('aria-selected', on ? 'true' : 'false');
         });
 
+        // WALK 스샷이 없으면 RUN으로 폴백
         shot.src = d.img;
+        shot.onerror = () => { shot.src = DATA.run.img; };
 
         pillMain.textContent = d.pillMain;
         pillSub.textContent  = d.pillSub;
