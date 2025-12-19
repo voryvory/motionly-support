@@ -10,6 +10,7 @@
   <meta property="og:description" content="天気・運動・バイオリズム・ランキング・運動記録">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://motionly.net/">
+
   <style>
     :root{
       --bg:#0f1220; --fg:#eaeaf2; --muted:#a7adcc;
@@ -28,7 +29,7 @@
         var(--bg);
       overflow-x:hidden;
     }
-    .wrap{max-width:1080px;margin:0 auto;padding:24px}
+    .wrap{max-width:1120px;margin:0 auto;padding:24px}
     header{display:flex;align-items:center;justify-content:space-between;gap:16px}
     .logo{display:flex;align-items:center;gap:12px;font-weight:700;letter-spacing:.2px}
     .logo-dot{
@@ -36,19 +37,19 @@
       background:linear-gradient(45deg,var(--accent),var(--accent2));
       box-shadow:0 0 18px rgba(124,58,237,.55);
     }
-    .lang{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+    .lang{display:flex;gap:8px;flex-wrap:wrap}
     .lang a{
       color:var(--muted);text-decoration:none;
       border:1px solid rgba(43,53,101,.75);
       padding:6px 10px;border-radius:10px;
-      transition:transform .18s ease, border-color .18s ease, background .18s ease;
+      transition:transform .18s ease, border-color .18s ease;
     }
-    .lang a:hover{transform:translateY(-1px);border-color:rgba(34,211,238,.55)}
+    .lang a:hover{transform:translateY(-1px);border-color:rgba(34,211,238,.45)}
     .lang a.current{
       color:#0b0f1a;
       background:linear-gradient(90deg,var(--accent),var(--accent2));
       border-color:transparent;
-      font-weight:700;
+      font-weight:800;
     }
 
     .btn{
@@ -56,9 +57,9 @@
       background:linear-gradient(90deg,var(--accent),var(--accent2));
       color:#0b0f1a;text-decoration:none;font-weight:800;
       box-shadow:0 10px 26px rgba(34,211,238,.18);
-      white-space:nowrap;
       transition:transform .18s ease, box-shadow .18s ease, filter .18s ease;
       will-change:transform;
+      white-space:nowrap;
     }
     .btn:hover{transform:translateY(-2px);box-shadow:0 16px 34px rgba(34,211,238,.22)}
     .btn:active{transform:translateY(0px);filter:saturate(1.05)}
@@ -69,35 +70,14 @@
       display:inline-flex;gap:8px;align-items:center
     }
 
+    /* 레이아웃: 좌(카피) / 중(앱 프리뷰) / 우(기능) */
     .hero{
-      display:grid;grid-template-columns:1.15fr .85fr;
-      gap:28px;margin:64px 0;align-items:start;
+      display:grid;
+      grid-template-columns: 1.05fr .95fr 1.0fr;
+      gap:22px;
+      margin:64px 0 10px;
+      align-items:start;
       position:relative;
-    }
-
-    /* ✅ 운동감: 히어로 뒤로 흐르는 “루트 라인” */
-    .routeHero{
-      position:absolute;inset:-90px -120px auto -120px;height:420px;
-      pointer-events:none;opacity:.55;
-      filter:blur(.0px);
-      animation:routeFloat 6.8s ease-in-out infinite alternate;
-    }
-    @keyframes routeFloat{
-      from{transform:translate3d(0,0,0) scale(1)}
-      to{transform:translate3d(0,10px,0) scale(1.01)}
-    }
-    .routeHero path.glow{
-      stroke:rgba(34,211,238,.55);
-      filter:drop-shadow(0 0 18px rgba(34,211,238,.25));
-    }
-    .routeHero path.dash{
-      stroke:rgba(124,58,237,.85);
-      stroke-dasharray:12 14;
-      animation:dashMove 1.8s linear infinite;
-    }
-    @keyframes dashMove{
-      from{stroke-dashoffset:0}
-      to{stroke-dashoffset:-260}
     }
 
     .card{
@@ -106,19 +86,134 @@
       border:1px solid var(--border);
       border-radius:22px;
       padding:20px;
-      transition:transform .18s ease, border-color .18s ease;
     }
-
     .kicker{color:var(--muted);font-size:.9rem;letter-spacing:.08em;text-transform:uppercase}
-    h1{font-size:clamp(36px,6vw,56px);line-height:1.05;margin:10px 0 12px}
+    h1{font-size:clamp(34px,5.6vw,56px);line-height:1.05;margin:10px 0 12px}
     .glow{text-shadow:0 0 10px rgba(124,58,237,.45)}
-    p.lead{font-size:1.12rem;color:var(--muted);margin:0}
+    p.lead{font-size:1.08rem;color:var(--muted);margin:0;line-height:1.55}
     .ctaRow{display:flex;gap:12px;align-items:center;margin-top:22px;flex-wrap:wrap}
 
     .miniCard{margin-top:14px}
     .miniCard strong{display:block;margin-bottom:6px}
     .miniCard p{margin:0;color:var(--muted);line-height:1.6}
 
+    /* ✅ 앱 프리뷰(폰) */
+    .preview{
+      position:relative;
+      padding:16px;
+      border-radius:26px;
+      background:rgba(14,19,39,.52);
+      border:1px solid rgba(255,255,255,.08);
+      overflow:hidden;
+      min-height:540px;
+    }
+    .tabs{
+      display:flex;gap:10px;align-items:center;justify-content:center;
+      margin-bottom:12px;
+    }
+    .tab{
+      cursor:pointer;
+      user-select:none;
+      padding:9px 12px;border-radius:999px;
+      border:1px solid rgba(43,53,101,.75);
+      background:rgba(14,19,39,.55);
+      color:#c7cff9;
+      font-size:.9rem;
+      display:inline-flex;gap:8px;align-items:center;
+      transition:transform .15s ease, border-color .15s ease;
+    }
+    .tab:hover{transform:translateY(-1px);border-color:rgba(34,211,238,.35)}
+    .tab.active{
+      color:#0b0f1a;
+      border-color:transparent;
+      background:linear-gradient(90deg,var(--accent),var(--accent2));
+      font-weight:800;
+    }
+
+    .phone{
+      position:relative;
+      margin:0 auto;
+      width:min(320px, 92%);
+      aspect-ratio: 9 / 19.5;
+      border-radius:34px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(10,12,24,.55);
+      box-shadow:0 22px 70px rgba(0,0,0,.35);
+      overflow:hidden;
+    }
+    .phone::before{
+      content:"";
+      position:absolute;inset:0;
+      background:
+        radial-gradient(500px 260px at 50% 0%, rgba(34,211,238,.10), transparent 60%),
+        radial-gradient(520px 320px at 0% 100%, rgba(124,58,237,.12), transparent 65%);
+      pointer-events:none;
+      z-index:1;
+    }
+    .shot{
+      position:absolute;inset:0;
+      width:100%;height:100%;
+      object-fit:cover;
+      transform:scale(1.01);
+      z-index:0;
+    }
+
+    /* ✅ “내 앱의 날씨 배지” 느낌: 오버레이 */
+    .weatherBadge{
+      position:absolute;top:14px;left:14px;
+      z-index:2;
+      padding:10px 12px;border-radius:16px;
+      background:rgba(15,18,32,.72);
+      border:1px solid rgba(255,255,255,.10);
+      backdrop-filter: blur(10px);
+      display:flex;gap:10px;align-items:center;
+      box-shadow:0 12px 28px rgba(0,0,0,.25);
+    }
+    .wIcon{
+      width:34px;height:34px;border-radius:12px;
+      display:grid;place-items:center;
+      background:linear-gradient(135deg, rgba(124,58,237,.25), rgba(34,211,238,.18));
+      border:1px solid rgba(255,255,255,.08);
+      font-size:18px;
+    }
+    .wText b{display:block;font-size:.95rem}
+    .wText span{display:block;color:var(--muted);font-size:.82rem;margin-top:1px}
+
+    /* ✅ 운동 기록 오버레이 */
+    .hud{
+      position:absolute;left:14px;right:14px;bottom:14px;
+      z-index:2;
+      display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:10px;
+    }
+    .hudItem{
+      padding:10px 10px;border-radius:16px;
+      background:rgba(15,18,32,.72);
+      border:1px solid rgba(255,255,255,.10);
+      backdrop-filter: blur(10px);
+    }
+    .hudItem b{display:block;font-size:1.02rem}
+    .hudItem span{display:block;color:var(--muted);font-size:.82rem;margin-top:2px}
+
+    /* ✅ “달리는 느낌”은 과장 없이: HUD 상단에 심박/리듬 파형 */
+    .pulse{
+      position:absolute;left:14px;right:14px;top:78px;
+      z-index:2;
+      height:24px;
+      opacity:.75;
+      pointer-events:none;
+    }
+    .pulse path{
+      stroke:rgba(34,211,238,.55);
+      stroke-width:2.5;
+      fill:none;
+      stroke-linecap:round;
+      stroke-dasharray: 10 12;
+      animation: dashMove 1.5s linear infinite;
+    }
+    @keyframes dashMove { from{stroke-dashoffset:0} to{stroke-dashoffset:-220} }
+
+    /* 오른쪽 기능 */
     .rightTitle{margin:0 0 10px;font-size:1.05rem;font-weight:800;color:#dfe3ff}
     .featureList{margin:0;padding:0;list-style:none;display:grid;gap:10px}
     .feature{
@@ -126,9 +221,7 @@
       padding:10px 12px;border-radius:16px;
       background:rgba(14,19,39,.55);
       border:1px solid rgba(43,53,101,.55);
-      transition:transform .18s ease, border-color .18s ease;
     }
-    .feature:hover{transform:translateY(-1px);border-color:rgba(34,211,238,.35)}
     .ico{
       width:30px;height:30px;border-radius:10px;
       display:grid;place-items:center;
@@ -144,10 +237,8 @@
       font-size:.85rem;color:#c7cff9;background:rgba(14,19,39,.7);
       border:1px solid rgba(43,53,101,.65);
       padding:7px 10px;border-radius:999px;
-      display:inline-flex;gap:8px;align-items:center;
-      transition:transform .18s ease;
+      display:inline-flex;gap:8px;align-items:center
     }
-    .chip:hover{transform:translateY(-1px)}
 
     .support{
       margin-top:14px;color:var(--muted);font-size:.92rem;line-height:1.55
@@ -157,35 +248,20 @@
     .support .link{color:var(--accent2);text-decoration:none}
     .support .link:hover{text-decoration:underline}
 
-    /* ✅ 운동감: 숫자 카운트업 영역(히어로 아래 작은 스탯) */
-    .quickStats{
-      display:flex;gap:10px;flex-wrap:wrap;
-      margin-top:14px;
-    }
-    .qstat{
-      background:rgba(14,19,39,.55);
-      border:1px solid rgba(43,53,101,.55);
-      border-radius:16px;
-      padding:10px 12px;
-      min-width:150px;
-    }
-    .qstat b{display:block;font-size:1.06rem}
-    .qstat span{color:var(--muted);font-size:.86rem}
-
-    footer{margin:60px 0 20px;color:#8891b8;font-size:.9rem;text-align:center}
+    footer{margin:50px 0 20px;color:#8891b8;font-size:.9rem;text-align:center}
     footer a{color:var(--accent2);text-decoration:none;margin-left:8px}
     footer a:hover{text-decoration:underline}
 
-    @media (max-width:920px){
-      .hero{grid-template-columns:1fr}
-      .routeHero{height:300px;inset:-70px -80px auto -80px}
+    @media (max-width:1100px){
+      .hero{grid-template-columns:1fr;gap:18px}
+      .preview{min-height:auto}
     }
-
     @media (prefers-reduced-motion: reduce){
-      .routeHero, .routeHero path.dash, .btn, .feature, .chip { animation:none !important; transition:none !important; }
+      .pulse path{animation:none !important}
     }
   </style>
 </head>
+
 <body>
   <div class="wrap">
     <header>
@@ -198,16 +274,6 @@
     </header>
 
     <section class="hero">
-      <!-- ✅ 배경 루트 애니메이션(운동 느낌) -->
-      <svg class="routeHero" viewBox="0 0 1200 420" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path class="glow" d="M40 320 C180 120, 320 360, 470 210 C640 40, 820 330, 980 150 C1080 40, 1140 120, 1160 90"
-              stroke-width="10" stroke-linecap="round"/>
-        <path class="dash" d="M40 320 C180 120, 320 360, 470 210 C640 40, 820 330, 980 150 C1080 40, 1140 120, 1160 90"
-              stroke-width="5" stroke-linecap="round"/>
-        <circle cx="40" cy="320" r="8" fill="rgba(34,211,238,.85)"/>
-        <circle cx="1160" cy="90" r="8" fill="rgba(124,58,237,.9)"/>
-      </svg>
-
       <!-- Left -->
       <div>
         <div class="kicker">Move Better · Live Brighter</div>
@@ -216,13 +282,6 @@
           天気・運動・バイオリズム・ランキング・運動記録。<br>
           “続けやすさ”を最優先に、毎日の一歩を整えます。iOS 専用。
         </p>
-
-        <!-- ✅ 숫자 카운트업 -->
-        <div class="quickStats">
-          <div class="qstat"><b><span data-count="3.2" data-suffix=" km">0</span></b><span>Today Distance</span></div>
-          <div class="qstat"><b><span data-count="28" data-suffix=" min">0</span></b><span>Today Time</span></div>
-          <div class="qstat"><b><span data-count="312" data-suffix=" kcal">0</span></b><span>Today Calories</span></div>
-        </div>
 
         <div class="ctaRow">
           <a class="btn" href="https://apps.apple.com/jp/app/motionly/id6752832437" rel="noopener">App Store で入手 • JP</a>
@@ -240,6 +299,46 @@
             天気や日々のコンディションも一緒に見える化して、
             習慣化をサポートするフィットネスアプリです。
           </p>
+        </div>
+      </div>
+
+      <!-- Middle: App Preview (RUN/WALK + Weather + Stats) -->
+      <div class="preview" aria-label="App preview">
+        <div class="tabs" role="tablist" aria-label="Workout type">
+          <div class="tab active" role="tab" aria-selected="true" data-mode="run">🏃 RUN</div>
+          <div class="tab" role="tab" aria-selected="false" data-mode="walk">🚶 WALK</div>
+        </div>
+
+        <div class="phone" aria-label="Phone mock">
+          <!-- ✅ 형이 실제 캡처 넣을 자리 -->
+          <!-- 파일 넣기: /assets/shot_run.jpg , /assets/shot_walk.jpg -->
+          <img class="shot" id="shot" src="/assets/shot_run.jpg" alt="Motionly screenshot">
+
+          <!-- Weather badge overlay -->
+          <div class="weatherBadge" aria-label="Weather badge">
+            <div class="wIcon" id="wIcon">🌤</div>
+            <div class="wText">
+              <b id="wTitle">Sunny · 16°C</b>
+              <span id="wSub">Feels like 15°C · Wind 2m/s</span>
+            </div>
+          </div>
+
+          <!-- subtle pulse line (rhythm) -->
+          <svg class="pulse" viewBox="0 0 600 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M0 34 L60 34 L88 20 L114 44 L140 30 L176 30 L208 14 L240 46 L276 34 L320 34 L352 22 L382 44 L412 30 L450 30 L486 16 L520 46 L560 34 L600 34"></path>
+          </svg>
+
+          <!-- workout HUD -->
+          <div class="hud" aria-label="Workout stats">
+            <div class="hudItem"><b id="s1">3.2 km</b><span>Distance</span></div>
+            <div class="hudItem"><b id="s2">28 min</b><span>Time</span></div>
+            <div class="hudItem"><b id="s3">312 kcal</b><span>Calories</span></div>
+          </div>
+        </div>
+
+        <div style="margin-top:14px;color:var(--muted);font-size:.9rem;line-height:1.55;text-align:center">
+          ※ ここに “実際のアプリ画面” を置くと、運動アプリ感が一気に上がる。<br>
+          RUN/WALK 切替でスクショと数値が変わる。
         </div>
       </div>
 
@@ -268,7 +367,7 @@
             <div class="ico">🫀</div>
             <div class="ft">
               <h3>バイオリズム / Biorhythm</h3>
-              <p>今日のコンディションを目安に、無理なく続けるための指標。</p>
+              <p>今日のコンディションを目安に、無理なく継続するための指標。</p>
             </div>
           </li>
 
@@ -312,36 +411,55 @@
   </div>
 
   <script>
-    // ✅ 숫자 카운트업(가벼운 애니메이션) — 외부 라이브러리 없음
+    // RUN/WALK 토글: 스크린샷 + 날씨 배지 + 스탯을 “운동하는 것처럼” 바꿔치기
     (function(){
-      const els = document.querySelectorAll('[data-count]');
-      if(!els.length) return;
+      const tabs = Array.from(document.querySelectorAll('.tab'));
+      const shot = document.getElementById('shot');
+      const wIcon = document.getElementById('wIcon');
+      const wTitle = document.getElementById('wTitle');
+      const wSub = document.getElementById('wSub');
+      const s1 = document.getElementById('s1');
+      const s2 = document.getElementById('s2');
+      const s3 = document.getElementById('s3');
 
-      const prefersReduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      if(prefersReduce){
-        els.forEach(el => {
-          const v = el.getAttribute('data-count') || '0';
-          const suf = el.getAttribute('data-suffix') || '';
-          el.textContent = v + suf;
+      const DATA = {
+        run: {
+          img: "/assets/shot_run.jpg",
+          weatherIcon: "🌤",
+          weatherTitle: "Sunny · 16°C",
+          weatherSub: "Feels like 15°C · Wind 2m/s",
+          stats: ["5.4 km", "32 min", "420 kcal"]
+        },
+        walk: {
+          img: "/assets/shot_walk.jpg",
+          weatherIcon: "🌧",
+          weatherTitle: "Light Rain · 12°C",
+          weatherSub: "Feels like 11°C · Wind 3m/s",
+          stats: ["3.2 km", "28 min", "312 kcal"]
+        }
+      };
+
+      function setMode(mode){
+        const d = DATA[mode];
+        if(!d) return;
+
+        tabs.forEach(t=>{
+          const on = t.dataset.mode === mode;
+          t.classList.toggle('active', on);
+          t.setAttribute('aria-selected', on ? 'true' : 'false');
         });
-        return;
+
+        shot.src = d.img; // ✅ 여기만 실제 캡처로 교체하면 “앱 느낌” 확 살아남
+        wIcon.textContent = d.weatherIcon;
+        wTitle.textContent = d.weatherTitle;
+        wSub.textContent = d.weatherSub;
+        s1.textContent = d.stats[0];
+        s2.textContent = d.stats[1];
+        s3.textContent = d.stats[2];
       }
 
-      const start = performance.now();
-      const dur = 900; // ms
-      function tick(now){
-        const t = Math.min(1, (now - start) / dur);
-        const ease = 1 - Math.pow(1 - t, 3);
-        els.forEach(el => {
-          const raw = parseFloat(el.getAttribute('data-count') || '0');
-          const suf = el.getAttribute('data-suffix') || '';
-          const isFloat = String(el.getAttribute('data-count')).includes('.');
-          const val = raw * ease;
-          el.textContent = (isFloat ? val.toFixed(1) : Math.round(val)) + suf;
-        });
-        if(t < 1) requestAnimationFrame(tick);
-      }
-      requestAnimationFrame(tick);
+      tabs.forEach(t => t.addEventListener('click', () => setMode(t.dataset.mode)));
+      setMode('run');
     })();
   </script>
 </body>
