@@ -8,7 +8,9 @@ Static marketing and support site for the Motionly iOS app, served at [motionly.
 - `/ko.html` — Korean landing page
 - `/en.html` — English landing page
 - `/support.html` — Support information in Japanese, Korean, and English
-- `/privacy.html` — Privacy policy in Japanese, Korean, and English
+- `/privacy.html` — Japanese privacy policy
+- `/privacy-ko.html` — Korean privacy policy
+- `/privacy-en.html` — English privacy policy
 - `/news.html` — Localized updates loaded from `news.json`
 
 ## Structure
