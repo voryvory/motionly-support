@@ -1,106 +1,30 @@
 <!doctype html>
-<html lang="ko">
+<html lang="ja" class="no-js">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Motionly — 공지 / Updates</title>
-<meta name="description" content="Motionly 공지 / Updates / お知らせ">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<style>
-:root{--bg:#0f1220;--fg:#eaeaf2;--mut:#9aa3c7;--card:#151a2f;--bd:#2b3565;--acc:#7c3aed}
-*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--fg);font-family:ui-sans-serif,system-ui,Apple SD Gothic Neo,Segoe UI,Roboto,Helvetica,Arial}
-.wrap{max-width:920px;margin:0 auto;padding:24px}
-.header{display:flex;justify-content:space-between;align-items:center;gap:12px}
-a{color:#9ecbff;text-decoration:none}
-.badge{border:1px solid var(--bd);padding:6px 10px;border-radius:999px;color:#c7cff9;font-size:.85rem}
-.card{background:rgba(21,26,47,.7);border:1px solid var(--bd);border-radius:14px;padding:16px;margin:12px 0}
-.h1{font-size:clamp(22px,4vw,32px);margin:0 0 6px}
-.lang{display:flex;gap:8px}
-.lang button{background:transparent;border:1px solid var(--bd);border-radius:10px;color:var(--fg);padding:6px 10px;cursor:pointer}
-.lang button.active{background:var(--acc);border-color:transparent}
-.post{padding:14px 16px;border:1px solid var(--bd);border-radius:12px;background:#0e152e;margin:10px 0}
-.post .meta{color:var(--mut);font-size:.9rem;display:flex;gap:8px;flex-wrap:wrap}
-.tag{border:1px solid var(--bd);border-radius:999px;padding:2px 8px;color:#c9d3ff;font-size:.8rem}
-.pin{color:#ffd966}
-hr{border:none;border-top:1px solid var(--bd);margin:16px 0}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>お知らせ — Motionly</title>
+  <meta name="description" content="Motionlyからのお知らせと更新情報。">
+  <meta name="theme-color" content="#06080b">
+  <link rel="canonical" href="https://motionly.net/news.html">
+  <link rel="icon" href="/assets/app-icon.png" type="image/png">
+  <link rel="stylesheet" href="/styles/site.css?v=20260818">
 </head>
 <body>
-  <div class="wrap">
-    <div class="header">
-      <div>
-        <div class="badge">Motionly</div>
-        <h1 class="h1">공지 / Updates / お知らせ</h1>
-      </div>
-      <div class="lang" role="tablist" aria-label="Language">
-        <button data-lang="ko" class="active">한국어</button>
-        <button data-lang="en">EN</button>
-        <button data-lang="ja">日本語</button>
-      </div>
-    </div>
+  <a class="skip-link" href="#main">本文へ移動</a>
+  <header class="site-header"><div class="container header-inner">
+    <a class="brand" href="/" aria-label="Motionly ホーム"><img src="/assets/app-icon.png" alt="" width="38" height="38"><span>Motionly</span></a>
+    <div class="header-actions"><nav class="main-nav" aria-label="メインナビゲーション"><a href="/">ホーム</a><a href="/support.html">サポート</a><a href="/privacy.html">プライバシー</a></nav><nav class="language-nav" aria-label="表示言語"><a href="?lang=ja" data-news-lang="ja">JA</a><a href="?lang=ko" data-news-lang="ko">KO</a><a href="?lang=en" data-news-lang="en">EN</a></nav></div>
+  </div></header>
 
-    <div class="card">
-      <p style="margin:8px 0;color:#cbd5ff">
-        새 글 올리기: <code>news.json</code>에 항목 추가 후 커밋하면 자동 반영됩니다. (백엔드/로그인 불필요)
-      </p>
-      <p style="margin:0"><a href="/">← 홈으로</a> · <a href="/privacy.html">Privacy</a></p>
-    </div>
+  <main id="main" class="container subpage-main">
+    <div class="subpage-hero reveal"><p class="eyebrow">Updates</p><h1 data-news-heading>Motionlyからのお知らせ</h1><p data-news-intro>サイト、機能、プライバシーに関する更新をお知らせします。</p></div>
+    <div id="news-list" class="update-list" aria-live="polite"><article class="update-card"><h2>読み込み中…</h2></article></div>
+    <noscript><p class="legal-note">お知らせを表示するにはJavaScriptを有効にしてください。 / JavaScript is required to load updates.</p></noscript>
+  </main>
 
-    <div id="list"></div>
-  </div>
-
-<script>
-// ===== 설정 =====
-const NEWS_SRC = '/news.json'; // 루트의 JSON 사용               // ← JSON 경로
-let currentLang = (localStorage.getItem('motionly_news_lang') || 'ko');
-
-// ===== 렌더러 =====
-function render(posts){
-  const list = document.getElementById('list');
-  list.innerHTML = '';
-  // 고정글 먼저, 이후 날짜 내림차순                          // ← pin 우선, 최신 정렬
-  posts.sort((a,b)=> (b.pin?1:0)-(a.pin?1:0) || b.date.localeCompare(a.date));
-  for(const p of posts){
-    const title = p.title[currentLang] || p.title.ko || '';
-    const body  = p.body[currentLang]  || p.body.ko  || '';
-    const tags  = (p.tags||[]).map(t=>`<span class="tag">#${t}</span>`).join(' ');
-    const pin   = p.pin ? `<span class="pin">📌 PIN</span>` : '';
-    const html = `
-      <article class="post" aria-labelledby="${p.id}">
-        <div class="meta">${pin}<span>${p.date}</span> ${tags}</div>
-        <h3 id="${p.id}" style="margin:8px 0 6px">${title}</h3>
-        <p style="margin:0;white-space:pre-wrap;color:#d6dcff">${body}</p>
-      </article>`;
-    list.insertAdjacentHTML('beforeend', html);
-  }
-}
-
-// ===== 언어 토글 =====
-function setLang(lang){
-  currentLang = lang;
-  localStorage.setItem('motionly_news_lang', lang);
-  document.querySelectorAll('.lang button').forEach(b=>{
-    b.classList.toggle('active', b.dataset.lang === lang);
-  });
-  // 기존 데이터로 재렌더                                    // ← 마지막 데이터 캐시로 보관
-  if(window.__NEWS_DATA__) render(window.__NEWS_DATA__);
-}
-document.querySelectorAll('.lang button').forEach(b=>{
-  b.addEventListener('click', ()=> setLang(b.dataset.lang));
-});
-
-// ===== 데이터 로드 =====
-fetch(NEWS_SRC, {cache:'no-store'})
-  .then(r=>r.json())
-  .then(json=>{
-    window.__NEWS_DATA__ = json;                             // ← 재렌더용 캐시
-    setLang(currentLang);                                    // ← 버튼 상태 먼저
-    render(json);
-  })
-  .catch(()=> {
-    document.getElementById('list').innerHTML =
-      `<div class="card">뉴스를 불러올 수 없습니다. (<code>${NEWS_SRC}</code>)</div>`;
-  });
-</script>
+  <footer class="site-footer"><div class="container footer-inner"><span>© <span data-current-year>2026</span> Motionly</span><nav class="footer-links" aria-label="Footer"><a href="/">Home</a><a href="/support.html">Support</a><a href="/privacy.html">Privacy</a><a href="mailto:sposedon0@gmail.com">Contact</a></nav></div></footer>
+  <script src="/scripts/site.js?v=20260818" defer></script>
+  <script src="/scripts/news.js?v=20260818" defer></script>
 </body>
 </html>
