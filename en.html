@@ -1,544 +1,70 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Motionly — Move Better, Live Brighter</title>
-  <meta name="description" content="Motionly: Weather, Workout, Biorhythm, Ranking, and History—built to help you stay consistent every day.">
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <meta property="og:title" content="Motionly">
-  <meta property="og:description" content="Weather · Workout · Biorhythm · Ranking · History">
+  <title>Motionly — Turn “maybe later” into today’s run.</title>
+  <meta name="description" content="Check your location and destination, record your route, distance, and time with GPS, then review this week and the workouts you have built up.">
+  <meta name="theme-color" content="#06080b">
+  <link rel="canonical" href="https://motionly.net/en.html">
+  <link rel="alternate" hreflang="ja" href="https://motionly.net/">
+  <link rel="alternate" hreflang="ko" href="https://motionly.net/ko.html">
+  <link rel="alternate" hreflang="en" href="https://motionly.net/en.html">
+  <link rel="alternate" hreflang="x-default" href="https://motionly.net/">
+  <link rel="icon" href="/assets/app-icon.png" type="image/png">
+  <link rel="stylesheet" href="/styles/site.css?v=20260818">
+  <meta property="og:title" content="Motionly — Turn “maybe later” into today’s run.">
+  <meta property="og:description" content="Check the weather, track with GPS, and look back on the days you kept moving.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://motionly.net/">
-
-  <style>
-    :root{
-      --bg:#0f1220; --fg:#eaeaf2; --muted:#a7adcc;
-      --accent:#7c3aed; --accent2:#22d3ee;
-      --card:rgba(21,26,47,.62); --border:rgba(255,255,255,.08);
-
-      --phoneW: 340px;
-      --phoneRadius: 34px;
-      --inset: 14px;
-
-      /* ✅ Replace these with your real asset paths */
-      --shotRun: url("/assets/shot_run.png");
-      --shotWalk: url("/assets/shot_walk.png");
-    }
-
-    *{box-sizing:border-box} html,body{height:100%}
-    body{
-      margin:0;
-      font-family:ui-sans-serif,system-ui,Apple SD Gothic Neo,Segoe UI,Roboto,Helvetica,Arial;
-      color:var(--fg);
-      background:
-        radial-gradient(1200px 700px at 80% -10%, rgba(124,58,237,.14), transparent 55%),
-        radial-gradient(900px 600px at 10% 110%, rgba(34,211,238,.10), transparent 55%),
-        var(--bg);
-      overflow-x:hidden;
-    }
-
-    .wrap{max-width:1120px;margin:0 auto;padding:24px}
-    header{display:flex;align-items:center;justify-content:space-between;gap:16px}
-    .logo{display:flex;align-items:center;gap:12px;font-weight:700;letter-spacing:.2px}
-    .logo-dot{
-      width:12px;height:12px;border-radius:50%;
-      background:linear-gradient(45deg,var(--accent),var(--accent2));
-      box-shadow:0 0 18px rgba(124,58,237,.55);
-    }
-    .lang{display:flex;gap:8px;flex-wrap:wrap}
-    .lang a{
-      color:var(--muted);text-decoration:none;
-      border:1px solid rgba(43,53,101,.75);
-      padding:6px 10px;border-radius:10px;
-      transition:transform .18s ease, border-color .18s ease;
-    }
-    .lang a:hover{transform:translateY(-1px);border-color:rgba(34,211,238,.45)}
-    .lang a.current{
-      color:#0b0f1a;
-      background:linear-gradient(90deg,var(--accent),var(--accent2));
-      border-color:transparent;
-      font-weight:800;
-    }
-
-    .btn{
-      display:inline-block;padding:14px 18px;border-radius:14px;
-      background:linear-gradient(90deg,var(--accent),var(--accent2));
-      color:#0b0f1a;text-decoration:none;font-weight:800;
-      box-shadow:0 10px 26px rgba(34,211,238,.18);
-      transition:transform .18s ease, box-shadow .18s ease;
-      white-space:nowrap;
-    }
-    .btn:hover{transform:translateY(-2px);box-shadow:0 16px 34px rgba(34,211,238,.22)}
-    .badge{
-      font-size:.85rem;color:#c7cff9;background:rgba(14,19,39,.7);
-      border:1px solid rgba(43,53,101,.75);
-      padding:7px 10px;border-radius:999px;
-      display:inline-flex;gap:8px;align-items:center
-    }
-
-    .hero{
-      display:grid;
-      grid-template-columns: 1.05fr .95fr 1.0fr;
-      gap:22px;
-      margin:64px 0 10px;
-      align-items:start;
-    }
-
-    .card{
-      background:var(--card);
-      backdrop-filter: blur(10px);
-      border:1px solid var(--border);
-      border-radius:22px;
-      padding:20px;
-    }
-
-    .kicker{color:var(--muted);font-size:.9rem;letter-spacing:.08em;text-transform:uppercase}
-    h1{font-size:clamp(34px,5.6vw,56px);line-height:1.05;margin:10px 0 12px}
-    .glow{text-shadow:0 0 10px rgba(124,58,237,.45)}
-    p.lead{font-size:1.08rem;color:var(--muted);margin:0;line-height:1.55}
-    .ctaRow{display:flex;gap:12px;align-items:center;margin-top:22px;flex-wrap:wrap}
-
-    .miniCard{margin-top:14px}
-    .miniCard strong{display:block;margin-bottom:6px}
-    .miniCard p{margin:0;color:var(--muted);line-height:1.6}
-
-    /* ========= Preview ========= */
-    .preview{
-      position:relative;
-      padding:16px;
-      border-radius:26px;
-      background:rgba(14,19,39,.52);
-      border:1px solid rgba(255,255,255,.08);
-      overflow:hidden;
-      min-height:560px;
-    }
-    .tabs{
-      display:flex;gap:10px;align-items:center;justify-content:center;
-      margin-bottom:12px;
-    }
-    .tab{
-      cursor:pointer; user-select:none;
-      padding:9px 12px;border-radius:999px;
-      border:1px solid rgba(43,53,101,.75);
-      background:rgba(14,19,39,.55);
-      color:#c7cff9;
-      font-size:.9rem;
-      display:inline-flex;gap:8px;align-items:center;
-      transition:transform .15s ease, border-color .15s ease;
-    }
-    .tab:hover{transform:translateY(-1px);border-color:rgba(34,211,238,.35)}
-    .tab.active{
-      color:#0b0f1a;border-color:transparent;
-      background:linear-gradient(90deg,var(--accent),var(--accent2));
-      font-weight:800;
-    }
-
-    .phone{
-      position:relative;
-      margin:0 auto;
-      width:min(var(--phoneW), 94%);
-      aspect-ratio: 9 / 19.5;
-      border-radius:var(--phoneRadius);
-      border:1px solid rgba(255,255,255,.12);
-      background:#0a0c18;
-      box-shadow:0 22px 70px rgba(0,0,0,.35);
-      overflow:hidden;
-      isolation:isolate;
-    }
-
-    /* ✅ Render screenshot as background (prevents broken alt text) */
-    .shotBg{
-      position:absolute;inset:0;
-      background-image: var(--shotRun);
-      background-size: cover;
-      background-position: center;
-      background-repeat:no-repeat;
-      transform:scale(1.02);
-      filter:saturate(1.02);
-      z-index:0;
-    }
-    .shotBg::after{
-      content:"";
-      position:absolute;inset:0;
-      background:
-        radial-gradient(700px 380px at 50% 15%, rgba(34,211,238,.10), transparent 60%),
-        radial-gradient(700px 380px at 50% 85%, rgba(124,58,237,.12), transparent 60%);
-      pointer-events:none;
-    }
-
-    .safe{
-      position:absolute;inset:0;
-      z-index:1;
-      padding:var(--inset);
-      display:grid;
-      grid-template-rows: auto 1fr auto;
-      gap:12px;
-      pointer-events:none;
-    }
-
-    .topPill{
-      width:100%;
-      max-width: 92%;
-      justify-self:center;
-      padding:10px 12px;
-      border-radius:18px;
-      background:rgba(0,0,0,.46);
-      border:1px solid rgba(255,255,255,.12);
-      backdrop-filter: blur(10px);
-      display:flex;align-items:center;justify-content:space-between;
-      gap:10px;
-    }
-    .topPill .left{
-      display:flex;flex-direction:column;gap:2px;
-      font-weight:900;font-size:.95rem;line-height:1.1;
-    }
-    .topPill .left span{
-      font-weight:700;font-size:.82rem;color:rgba(255,255,255,.75);
-    }
-    .topPill .right{
-      display:flex;align-items:center;gap:6px;
-      font-weight:900;font-size:.92rem;color:rgba(255,255,255,.92);
-      white-space:nowrap;
-    }
-
-    .midSpace{min-height:0}
-
-    .bottom{
-      width:100%;
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      gap:12px;
-    }
-
-    .statsCard{
-      width:100%;
-      border-radius:18px;
-      background:rgba(230,235,245,.16);
-      border:1px solid rgba(255,255,255,.12);
-      backdrop-filter: blur(12px);
-      padding:12px 12px;
-      color:rgba(255,255,255,.92);
-    }
-
-    /* ✅ Prevent text overlap: label=1fr / value=auto + 1-column on narrow phones */
-    .statsGrid{
-      display:grid;
-      grid-template-columns: repeat(2, minmax(0,1fr));
-      gap:10px 14px;
-      font-size:14px;
-      line-height:1.35;
-    }
-    .row{
-      display:grid;
-      grid-template-columns: 1fr auto;
-      align-items:center;
-      gap:10px;
-      min-width:0;
-    }
-    .row span{
-      color:rgba(255,255,255,.72);
-      font-weight:700;
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
-    }
-    .row b{
-      font-weight:900;
-      letter-spacing:.2px;
-      justify-self:end;
-      white-space:nowrap;
-    }
-    .row.wide{ grid-column: 1 / -1; }
-
-    .startBtn{
-      width:min(240px, 78%);
-      height:52px;
-      border-radius:16px;
-      border:1px solid rgba(255,255,255,.14);
-      background:linear-gradient(180deg, rgba(34,211,238,.95), rgba(124,58,237,.85));
-      color:#071018;
-      font-weight:900;
-      display:flex;align-items:center;justify-content:center;
-      gap:10px;
-      box-shadow:0 18px 36px rgba(34,211,238,.14);
-      user-select:none;
-    }
-    .play{
-      width:0;height:0;
-      border-left:12px solid #071018;
-      border-top:7px solid transparent;
-      border-bottom:7px solid transparent;
-      margin-left:2px;
-    }
-
-    .rightTitle{margin:0 0 10px;font-size:1.05rem;font-weight:800;color:#dfe3ff}
-    .featureList{margin:0;padding:0;list-style:none;display:grid;gap:10px}
-    .feature{
-      display:flex;gap:10px;align-items:flex-start;
-      padding:10px 12px;border-radius:16px;
-      background:rgba(14,19,39,.55);
-      border:1px solid rgba(43,53,101,.55);
-    }
-    .ico{
-      width:30px;height:30px;border-radius:10px;
-      display:grid;place-items:center;
-      background:linear-gradient(135deg, rgba(124,58,237,.25), rgba(34,211,238,.18));
-      border:1px solid rgba(255,255,255,.06);
-      flex:0 0 auto;
-    }
-    .ft h3{margin:0;font-size:.98rem}
-    .ft p{margin:2px 0 0;color:var(--muted);font-size:.9rem;line-height:1.45}
-
-    .subRow{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
-    .chip{
-      font-size:.85rem;color:#c7cff9;background:rgba(14,19,39,.7);
-      border:1px solid rgba(43,53,101,.65);
-      padding:7px 10px;border-radius:999px;
-      display:inline-flex;gap:8px;align-items:center
-    }
-
-    .support{
-      margin-top:14px;color:var(--muted);font-size:.92rem;line-height:1.55
-    }
-    .support a{color:#c9d3ff;text-decoration:none}
-    .support a:hover{text-decoration:underline}
-    .support .link{color:var(--accent2);text-decoration:none}
-    .support .link:hover{text-decoration:underline}
-
-    footer{margin:50px 0 20px;color:#8891b8;font-size:.9rem;text-align:center}
-    footer a{color:var(--accent2);text-decoration:none;margin-left:8px}
-    footer a:hover{text-decoration:underline}
-
-    @media (max-width:1100px){
-      .hero{grid-template-columns:1fr;gap:18px}
-      .preview{min-height:auto}
-    }
-
-    @media (max-width:420px){
-      :root{ --phoneW: 320px; --inset: 12px; }
-      .startBtn{width:min(220px, 80%)}
-      .topPill{max-width: 94%}
-      .statsGrid{ grid-template-columns: 1fr; gap:10px; }
-      .row.wide{ grid-column: auto; }
-    }
-  </style>
+  <meta property="og:url" content="https://motionly.net/en.html">
+  <meta property="og:site_name" content="Motionly">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary">
 </head>
-
 <body>
-  <div class="wrap">
-    <header>
-      <div class="logo"><span class="logo-dot"></span><span>Motionly</span></div>
-      <nav class="lang" aria-label="Languages">
-        <a href="/ko.html">KR</a>
-        <a href="/en.html" class="current">EN</a>
-        <a href="/">JP</a>
-      </nav>
-    </header>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header"><div class="container header-inner">
+    <a class="brand" href="/en.html" aria-label="Motionly home"><img src="/assets/app-icon.png" alt="" width="38" height="38"><span>Motionly</span></a>
+    <div class="header-actions"><nav class="main-nav" aria-label="Main navigation"><a href="#how">How it works</a><a href="#records">History</a><a href="#features">Features</a><a href="#faq">FAQ</a></nav><nav class="language-nav" aria-label="Language"><a href="/" lang="ja">JA</a><a href="/ko.html" lang="ko">KO</a><a href="/en.html" lang="en" aria-current="page">EN</a></nav></div>
+  </div></header>
 
-    <section class="hero">
-      <!-- Left -->
-      <div>
-        <div class="kicker">Move Better · Live Brighter</div>
-        <h1 class="glow">Your workouts,<br>drawn on the map</h1>
-        <p class="lead">
-          Weather, Workout, Biorhythm, Ranking, and History.<br>
-          Built for consistency—so your daily step feels lighter. iOS only.
-        </p>
-
-        <div class="ctaRow">
-          <a class="btn" href="https://apps.apple.com/jp/app/motionly/id6752832437" rel="noopener">Get on the App Store • JP</a>
-          <span class="badge">iOS 18+ • Korean / English / Japanese</span>
-        </div>
-
-        <p class="badge" style="margin-top:12px">
-          🔔 <a href="/news.html" style="color:#c9d3ff;text-decoration:none">Updates</a>
-        </p>
-
-        <div class="card miniCard">
-          <strong>About</strong>
-          <p>
-            Motionly helps you track distance, calories, and routes—while also showing
-            your weather and daily condition at a glance, so you can build a habit that lasts.
-          </p>
-        </div>
-      </div>
-
-      <!-- Middle -->
-      <div class="preview" aria-label="App preview">
-        <div class="tabs" role="tablist" aria-label="Workout type">
-          <div class="tab active" role="tab" aria-selected="true" data-mode="run">🏃 RUN</div>
-          <div class="tab" role="tab" aria-selected="false" data-mode="walk">🚶 WALK</div>
-        </div>
-
-        <div class="phone" aria-label="Phone mock">
-          <div class="shotBg" id="shotBg" aria-hidden="true"></div>
-
-          <div class="safe">
-            <div class="topPill" aria-label="Weather bar">
-              <div class="left">
-                <div id="pillMain">24 / 40</div>
-                <span id="pillSub">Biorhythm</span>
-              </div>
-              <div class="right">
-                <span id="pillIcon">☁️</span>
-                <span id="pillTemp">10°</span>
-              </div>
-            </div>
-
-            <div class="midSpace" aria-hidden="true"></div>
-
-            <div class="bottom" aria-label="Workout HUD">
-              <div class="statsCard">
-                <div class="statsGrid">
-                  <div class="row"><span>Elapsed Time</span><b id="sTime">00:00:00</b></div>
-                  <div class="row"><span>Distance</span><b id="sDist">0.00 m</b></div>
-                  <div class="row"><span>Calories</span><b id="sKcal">0.0 kcal</b></div>
-                  <div class="row"><span>Steps</span><b id="sSteps">7151</b></div>
-                  <div class="row wide"><span>Altitude</span><b id="sAlt">0.0 m</b></div>
-                </div>
-              </div>
-
-              <div class="startBtn" aria-label="Start button">
-                <span class="play" aria-hidden="true"></span>
-                <span id="startLabel">Start</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Right -->
-      <aside class="card">
-        <h2 class="rightTitle">Key Features</h2>
-
-        <ul class="featureList">
-          <li class="feature">
-            <div class="ico">🌤</div>
-            <div class="ft">
-              <h3>Weather</h3>
-              <p>Check today’s weather at a glance and decide your workout faster.</p>
-            </div>
-          </li>
-
-          <li class="feature">
-            <div class="ico">🏃</div>
-            <div class="ft">
-              <h3>Workout</h3>
-              <p>Track distance, time, and calories—simple progress that adds up.</p>
-            </div>
-          </li>
-
-          <li class="feature">
-            <div class="ico">🫀</div>
-            <div class="ft">
-              <h3>Biorhythm</h3>
-              <p>A daily condition guide to help you stay consistent without overdoing it.</p>
-            </div>
-          </li>
-
-          <li class="feature">
-            <div class="ico">🏆</div>
-            <div class="ft">
-              <h3>Ranking</h3>
-              <p>Stay motivated with friends—keep it simple, keep it fun.</p>
-            </div>
-          </li>
-
-          <li class="feature">
-            <div class="ico">🗓</div>
-            <div class="ft">
-              <h3>History</h3>
-              <p>Look back anytime—your consistency becomes proof.</p>
-            </div>
-          </li>
-        </ul>
-
-        <div class="subRow">
-          <span class="chip">🔒 Privacy-first</span>
-          <span class="chip">📍 Route tracking</span>
-          <span class="chip">☁️ Minimal data</span>
-        </div>
-
-        <div class="support">
-          Support:
-          <a href="mailto:sposedon0@gmail.com">sposedon0@gmail.com</a><br>
-          🔒 <a class="link" href="/privacy.html">Privacy Policy</a><br>
-          🔔 <a class="link" href="/news.html">Updates</a>
-        </div>
-      </aside>
+  <main id="main">
+    <section class="container hero">
+      <div class="hero-copy reveal"><p class="eyebrow">Running &amp; walking log</p><h1>Turn “maybe later” into <span class="accent-text">today’s run.</span></h1><p class="lead">Check your current location and destination, record your route, distance, and time with GPS, then review this week’s goal and the workouts you’ve built up.</p><div class="cta-row"><a class="button orange" href="https://apps.apple.com/us/app/id6752832437" target="_blank" rel="noopener">View on the App Store <span aria-hidden="true">↗</span></a><a class="button secondary" href="#how">Explore features</a></div><p class="support-line">Made for iPhone · iOS 18.5 or later · 日本語 / 한국어 / English</p></div>
+      <div class="hero-visual reveal"><img class="hero-image" src="/assets/hero-map.jpg" alt="Motionly map, weather, and destination search screen" width="830" height="1800" fetchpriority="high"></div>
     </section>
 
-    <footer>
-      © 2025 Motionly • All rights reserved.
-      <a href="/privacy.html">Privacy Policy</a>
-      <a href="/news.html">Updates</a>
-    </footer>
-  </div>
+    <section id="how" class="section"><div class="container"><div class="section-heading centered reveal"><p class="eyebrow">Simple flow</p><h2>Spend less time deciding.<br>Keep the time you moved.</h2><p>Long runs, short jogs, and walking days all count. Motionly keeps the information and record in one simple flow.</p></div><div class="steps-grid">
+      <article class="step-card reveal"><span class="step-number">01</span><h3>Check before you go</h3><p>See your current location and destination, then preview a walking-friendly route. Eligible accounts can also view temperature, wind speed, and direction.</p></article>
+      <article class="step-card reveal"><span class="step-number">02</span><h3>Track with GPS</h3><p>Record route, distance, time, steps, and estimated calories while keeping the live view focused on the essentials.</p></article>
+      <article class="step-card reveal"><span class="step-number">03</span><h3>Look back later</h3><p>Review this week’s workout count, total distance, total time, and the sessions you have saved over time.</p></article>
+    </div></div></section>
 
-  <script>
-    (function(){
-      const tabs = Array.from(document.querySelectorAll('.tab'));
-      const shotBg = document.getElementById('shotBg');
+    <section id="records" class="section"><div class="container showcase-list">
+      <article class="showcase-row"><div class="showcase-media reveal"><img src="/assets/workout-history.jpg" alt="Example of a saved workout history in Motionly" width="830" height="1800" loading="lazy"></div><div class="showcase-copy reveal"><span class="label">Your history</span><h3>Your history becomes<br>your own pace.</h3><p>A short jog and a first run back both deserve a place in your record. Quickly see when you moved and how far you went.</p><ul class="detail-list"><li>Review date, distance, time, and steps</li><li>Open saved routes and export CSV files</li><li>Set a weekly target from 1 to 7 workouts</li></ul></div></article>
+      <article class="showcase-row"><div class="showcase-media reveal"><img src="/assets/challenges.jpg" alt="Example of public challenges in Motionly" width="830" height="1800" loading="lazy"></div><div class="showcase-copy reveal"><span class="label">Keep going</span><h3>Make the next goal<br>one you can reach.</h3><p>Use distance and streak challenges as a small reason to keep moving. They are designed to support your next step, not turn every workout into a competition.</p><ul class="detail-list"><li>Find and join public challenges</li><li>Create a personal goal</li><li>Connect with a 16-digit friend code or QR</li></ul></div></article>
+      <article class="showcase-row"><div class="showcase-media reveal"><img src="/assets/biorhythm.jpg" alt="Motionly biorhythm screen" width="830" height="1800" loading="lazy"></div><div class="showcase-copy reveal"><span class="label">For reference</span><h3>A small prompt<br>to change your mood.</h3><p>Motionly calculates a daily cycle from your birth date on the device. Biorhythm is entertainment and reference content, not a scientific or medical assessment.</p><ul class="detail-list"><li>Physical, emotional, and intellectual cycles</li><li>Calculated on the device</li><li>Always prioritize how you actually feel</li></ul></div></article>
+    </div></section>
 
-      const pillMain = document.getElementById('pillMain');
-      const pillSub  = document.getElementById('pillSub');
-      const pillIcon = document.getElementById('pillIcon');
-      const pillTemp = document.getElementById('pillTemp');
+    <section id="features" class="section"><div class="container"><div class="section-heading centered reveal"><p class="eyebrow">More useful details</p><h2>More than a finish button.</h2><p>Thoughtful details help you keep moving and protect private places when you share a result.</p></div><div class="feature-grid">
+      <article class="feature-card reveal"><span class="feature-icon">MAP</span><h3>Walking-friendly routes</h3><p>Search for a destination and preview a route suited to walking or running before you begin.</p></article>
+      <article class="feature-card reveal"><span class="feature-icon">CARD</span><h3>One-card results</h3><p>Share route, distance, time, and steps. You can omit 200 m at both ends of the route from the image.</p></article>
+      <article class="feature-card reveal"><span class="feature-icon">LOCAL</span><h3>Account-scoped storage</h3><p>On-device workout records are separated by account. Only online features use the information they need in Firebase.</p></article>
+    </div></div></section>
 
-      const sTime  = document.getElementById('sTime');
-      const sDist  = document.getElementById('sDist');
-      const sKcal  = document.getElementById('sKcal');
-      const sSteps = document.getElementById('sSteps');
-      const sAlt   = document.getElementById('sAlt');
+    <section class="section"><div class="container"><div class="privacy-panel reveal"><div><p class="eyebrow">Privacy by context</p><h2>Local records and online features are treated differently.</h2><p>GPS workout records are primarily stored on your device. Account, friends, challenges, and optional location sharing use Firebase for the information required to provide those features.</p><a class="button secondary" href="/privacy.html#en">Read the privacy policy</a></div><ul class="privacy-points"><li>Location is shared only for a period you choose</li><li>Hide both ends of a route on share cards</li><li>Keep workout files in an account-specific device area</li></ul></div></div></section>
 
-      const DATA = {
-        run: {
-          shotVar: "--shotRun",
-          pillMain: "24 / 40",
-          pillSub: "Biorhythm",
-          pillIcon: "☁️",
-          pillTemp: "10°",
-          stats: { time:"00:00:00", dist:"0.00 m", kcal:"0.0 kcal", steps:"7151", alt:"0.0 m" }
-        },
-        walk: {
-          shotVar: "--shotWalk",
-          pillMain: "18 / 40",
-          pillSub: "Biorhythm",
-          pillIcon: "🌤",
-          pillTemp: "16°",
-          stats: { time:"00:00:00", dist:"0.00 m", kcal:"0.0 kcal", steps:"7151", alt:"0.0 m" }
-        }
-      };
+    <section id="faq" class="section"><div class="container"><div class="section-heading centered reveal"><p class="eyebrow">FAQ</p><h2>Frequently asked questions</h2></div><div class="faq-grid">
+      <details class="faq-card reveal"><summary>Who is Motionly for?</summary><p>People starting to run, returning after a break, or looking for a simple way to track short runs and walks.</p></details>
+      <details class="faq-card reveal"><summary>Is every feature free?</summary><p>Motionly includes core GPS recording and features that depend on account access. Check the App Store and in-app purchase screen for current prices and eligibility.</p></details>
+      <details class="faq-card reveal"><summary>Does a workout automatically share my location?</summary><p>No. Friend location sharing stays off unless you explicitly choose a sharing period.</p></details>
+      <details class="faq-card reveal"><summary>Can biorhythm guide health decisions?</summary><p>No. It is entertainment and reference content and should not be used for medical, health, or workout-intensity decisions.</p></details>
+    </div></div></section>
 
-      function setMode(mode){
-        const d = DATA[mode] || DATA.run;
+    <section class="section"><div class="container final-cta reveal"><h2>Where will today take you?</h2><p>A short run or a walk still counts. Keep today’s step in Motionly.</p><div class="cta-row" style="justify-content:center"><a class="button orange" href="https://apps.apple.com/us/app/id6752832437" target="_blank" rel="noopener">View on the App Store <span aria-hidden="true">↗</span></a></div></div></section>
+  </main>
 
-        tabs.forEach(t=>{
-          const on = t.dataset.mode === mode;
-          t.classList.toggle('active', on);
-          t.setAttribute('aria-selected', on ? 'true' : 'false');
-        });
-
-        shotBg.style.backgroundImage =
-          getComputedStyle(document.documentElement).getPropertyValue(d.shotVar).trim() || "none";
-
-        pillMain.textContent = d.pillMain;
-        pillSub.textContent  = d.pillSub;
-        pillIcon.textContent = d.pillIcon;
-        pillTemp.textContent = d.pillTemp;
-
-        sTime.textContent  = d.stats.time;
-        sDist.textContent  = d.stats.dist;
-        sKcal.textContent  = d.stats.kcal;
-        sSteps.textContent = d.stats.steps;
-        sAlt.textContent   = d.stats.alt;
-      }
-
-      tabs.forEach(t => t.addEventListener('click', () => setMode(t.dataset.mode)));
-      setMode('run');
-    })();
-  </script>
+  <footer class="site-footer"><div class="container footer-inner"><span>© <span data-current-year>2026</span> Motionly</span><nav class="footer-links" aria-label="Footer"><a href="/support.html#en">Support</a><a href="/privacy.html#en">Privacy</a><a href="/news.html?lang=en">Updates</a><a href="mailto:sposedon0@gmail.com">Contact</a></nav></div></footer>
+  <script src="/scripts/site.js?v=20260818" defer></script>
 </body>
 </html>

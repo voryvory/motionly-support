@@ -1,280 +1,61 @@
 <!doctype html>
-<html lang="ko">
+<html lang="ja" class="no-js">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Motionly – 개인정보 처리방침 | Privacy Policy</title>
-  <meta name="description" content="Motionly 개인정보 처리방침 / Privacy Policy / プライバシーポリシー">
-  <meta name="color-scheme" content="light dark">
-  <meta property="og:title" content="Motionly – Privacy Policy">
-  <meta property="og:description" content="We do not collect or transmit your date of birth. It is stored only in Apple Keychain on your device.">
+  <title>プライバシーポリシー — Motionly</title>
+  <meta name="description" content="Motionlyのプライバシーポリシー。端末内の運動記録と、アカウント・友だち・位置共有などのオンライン機能で扱う情報を説明します。">
+  <meta name="theme-color" content="#06080b">
+  <link rel="canonical" href="https://motionly.net/privacy.html">
+  <link rel="icon" href="/assets/app-icon.png" type="image/png">
+  <link rel="stylesheet" href="/styles/site.css?v=20260818">
+  <meta property="og:title" content="Motionly — Privacy Policy">
+  <meta property="og:description" content="How Motionly handles on-device records and information used by online features.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://voryvory.github.io/motionly-support/privacy.html">
-  <meta property="og:site_name" content="Motionly">
-  <style>
-    :root{
-      --bg: #0b0e13;
-      --card: rgba(255,255,255,.08);
-      --text: #e7eaef;
-      --muted: #a7b0bd;
-      --accent: #6ea8ff;
-      --ok: #46d17f;
-      --warn: #ffb74d;
-      --danger: #ff6b6b;
-      --border: rgba(255,255,255,.12);
-      --shadow: 0 10px 30px rgba(0,0,0,.35)
-    }
-    @media (prefers-color-scheme: light){
-      :root{
-        --bg: #f6f7fb;
-        --card: rgba(255,255,255,1);
-        --text: #111827;
-        --muted: #5b6677;
-        --accent: #2563eb;
-        --ok: #0ea5a0;
-        --warn: #d97706;
-        --danger: #dc2626;
-        --border: rgba(17,24,39,.08);
-        --shadow: 0 8px 24px rgba(0,0,0,.08)
-      }
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0; font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple SD Gothic Neo", "Hiragino Kaku Gothic ProN", "Meiryo", "Noto Sans JP", "Noto Sans KR", sans-serif;
-      background: var(--bg); color: var(--text);
-    }
-    .wrap{max-width:920px; margin:0 auto; padding:48px 20px 64px}
-    header{display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:28px}
-    .brand{display:flex; align-items:center; gap:12px}
-    .logo{
-      width:40px; height:40px; border-radius:12px; background: linear-gradient(135deg, #3b82f6, #06b6d4);
-      box-shadow: var(--shadow);
-    }
-    h1{font-size:24px; margin:0}
-    .lang {display:flex; gap:8px}
-    .lang button{
-      padding:8px 12px; border-radius:10px; border:1px solid var(--border); background:transparent; color:var(--text); cursor:pointer
-    }
-    .lang button.active{background:var(--accent); color:white; border-color:transparent}
-    .card{
-      background:var(--card); border:1px solid var(--border); border-radius:16px; padding:20px; box-shadow: var(--shadow); margin-bottom:14px
-    }
-    h2{font-size:18px; margin:0 0 10px}
-    p,li{color:var(--muted); line-height:1.7; margin:8px 0}
-    .tag{display:inline-block; padding:3px 8px; border-radius:999px; font-size:12px; border:1px solid var(--border); color:var(--muted)}
-    .ok{color:var(--ok)} .warn{color:var(--warn)} .danger{color:var(--danger)}
-    ul{padding-left:18px}
-    .grid{display:grid; grid-template-columns:1fr 1fr; gap:14px}
-    @media (max-width:760px){ .grid{grid-template-columns:1fr} }
-    footer{margin-top:28px; display:flex; gap:12px; flex-wrap:wrap; align-items:center; color:var(--muted)}
-    a{color:var(--accent); text-decoration:none}
-    .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace}
-    .badge{padding:2px 8px; border-radius:999px; font-size:12px; background: rgba(125,125,125,.15); border:1px solid var(--border)}
-    .sep{height:1px; background:var(--border); margin:10px 0 16px}
-  </style>
+  <meta property="og:url" content="https://motionly.net/privacy.html">
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <div class="brand">
-        <div class="logo" aria-hidden="true"></div>
-        <div>
-          <h1 class="title">Motionly • Privacy</h1>
-          <div class="badge">Last updated: <span id="updated">2025-11-03</span></div>
-        </div>
-      </div>
-      <div class="lang" role="tablist" aria-label="Language switch">
-        <button class="active" data-lang="ko" role="tab" aria-selected="true">한국어</button>
-        <button data-lang="en" role="tab" aria-selected="false">English</button>
-        <button data-lang="ja" role="tab" aria-selected="false">日本語</button>
-      </div>
-    </header>
+  <a class="skip-link" href="#main">本文へ移動</a>
+  <header class="site-header"><div class="container header-inner">
+    <a class="brand" href="/" aria-label="Motionly ホーム"><img src="/assets/app-icon.png" alt="" width="38" height="38"><span>Motionly</span></a>
+    <div class="header-actions"><nav class="main-nav" aria-label="ページ内ナビゲーション"><a href="#ja">日本語</a><a href="#ko">한국어</a><a href="#en">English</a></nav><nav class="language-nav" aria-label="サイト言語"><a href="/" lang="ja">JA</a><a href="/ko.html" lang="ko">KO</a><a href="/en.html" lang="en">EN</a></nav></div>
+  </div></header>
 
-    <!-- 한국어 -->
-    <section class="l l-ko">
-      <div class="card">
-        <h2>개요</h2>
-        <p><strong>Motionly</strong>는 경로 기록·거리/시간/칼로리 계산 등 운동 시 بص(on-device) 처리를 최우선으로 합니다. 기본적으로 당사는 사용자를 식별하는 데이터를 수집하지 않습니다.</p>
-        <p class="tag">기본 설정: 데이터 수집 없음</p>
-      </div>
+  <main id="main" class="container subpage-main">
+    <div class="subpage-hero reveal"><p class="eyebrow">Privacy policy</p><h1>プライバシーを、<br>機能ごとに明確に。</h1><p>端末内に保存する運動記録と、オンライン機能で処理する情報を分けて説明します。</p><p class="meta-line">Effective date: 2026-08-18 · Contact: <a href="mailto:sposedon0@gmail.com">sposedon0@gmail.com</a></p></div>
 
-      <div class="grid">
-        <div class="card">
-          <h2>생년월일과 키체인 저장</h2>
-          <div class="sep"></div>
-          <p><span class="ok">•</span> <strong>서버 전송/수집 없음.</strong> 생년월일은 <strong>Apple Keychain</strong>에만 암호화되어 저장되며, <em>바이오리듬 계산</em>을 위해서만 기기 내에서 사용됩니다.</p>
-          <p><span class="ok">•</span> 앱을 삭제하면 키체인 항목도 제거됩니다(동일 계정에서 iCloud 키체인 동기화를 끈 경우 즉시, 켠 경우 동기화 정책에 따름).</p>
-          <p class="mono">Purpose: Biorhythm only · Storage: Apple Keychain · Transfer: None</p>
-        </div>
-
-        <div class="card">
-          <h2>기기 내 저장(On-device)</h2>
-          <div class="sep"></div>
-          <ul>
-            <li>환경설정(언어, UI 옵션 등): <span class="mono">UserDefaults</span></li>
-            <li>운동 로그/경로(선택): 로컬 파일 또는 사진(스크린샷)로 저장</li>
-            <li>생년월일: <span class="mono">Keychain</span></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="card">
-        <h2>권한 및 사용 목적</h2>
-        <div class="sep"></div>
-        <ul>
-          <li><strong>위치</strong> (필수) – 실시간 경로 기록 및 거리 계산, 지도 표시</li>
-          <li><strong>알림</strong> (선택) – 운동 진행 알림/리마인더</li>
-          <li><strong>Apple Health</strong> (선택) – 걸음 수 등을 읽기 전용으로 사용할 수 있습니다(승인 시). <em>서버 전송 없음</em></li>
-        </ul>
-        <p class="warn">권한은 iOS 설정에서 언제든 변경/철회할 수 있습니다.</p>
-      </div>
-
-      <div class="card">
-        <h2>클라우드 기능(선택)</h2>
-        <div class="sep"></div>
-        <p>친구 코드, 위치 공유 등 <strong>사용자가 명시적으로 선택한 경우에만</strong> 네트워크가 사용될 수 있습니다. 이 경우에도 생년월일은 전송/저장하지 않습니다.</p>
-      </div>
-
-      <div class="card">
-        <h2>문의</h2>
-        <div class="sep"></div>
-        <p>문의/삭제 요청: <a href="mailto:sposedon0@gmail.com">sposedon0@gmail.com</a></p>
-        <p>App Store: <a href="https://apps.apple.com/jp/app/motionly/id6752832437" target="_blank" rel="noopener">Motionly (JP)</a></p>
-      </div>
+    <section id="ja" class="legal-stack" lang="ja" aria-labelledby="ja-title">
+      <article class="legal-card reveal"><h2 id="ja-title">日本語</h2><p>Motionly（以下「本アプリ」）は、GPS運動記録、アカウント、友だち、チャレンジ、任意の位置共有などの機能を提供します。本ポリシーは、それぞれの機能で扱う情報を説明するものです。</p><p class="legal-note">すべてのデータが端末内だけに保存されるわけではありません。運動記録を中心としたローカルデータと、Firebaseを利用するオンライン機能があります。</p></article>
+      <article class="legal-card reveal"><h2>1. 取り扱う情報</h2><h3>端末内を中心に保存する情報</h3><ul><li>GPSルート、運動日時、距離、時間、歩数、推定消費カロリーなどの運動記録</li><li>運動中に追加した写真、BMI・体重・身長、目標、アプリ設定</li><li>バイオリズムや四柱推命などの参考コンテンツに使用する入力情報の一部</li></ul><h3>オンライン機能で扱う情報</h3><ul><li>Firebase AuthenticationのユーザーID、メールアドレス、認証方法</li><li>ニックネーム、プロフィール情報（入力した場合は生年月日を含むことがあります）</li><li>フレンドコード、友だち申請・関係、ブロック情報</li><li>チャレンジ、参加・進捗情報、特典・利用資格の状態</li><li>位置共有を自分で有効にした場合の緯度・経度・高度、および表示に必要な歩数・距離・推定カロリーなど</li></ul></article>
+      <article class="legal-card reveal"><h2>2. 利用目的</h2><ul><li>GPS運動の記録、復元、履歴表示、共有カード作成</li><li>ログイン、プロフィール、友だち、チャレンジなどのオンライン機能提供</li><li>購入状態・利用資格の確認、不正利用の抑制、障害対応</li><li>位置共有を選択した期間だけ、許可された友だちへ現在地を表示</li></ul></article>
+      <article class="legal-card reveal"><h2>3. 外部サービス</h2><p>本アプリは、機能に応じてFirebase（Authentication、Firestore、App Check）、Apple（Maps、WeatherKit、HealthKit、StoreKit）、周辺検索用のOpenStreetMap/Overpass系サービス、およびユーザーが任意のAIモデルをダウンロードする場合のモデル配布元を利用することがあります。各サービスでは、サービス提供に必要な端末・通信情報や検索地点などが処理される場合があります。</p><p>HealthKitのデータは、ユーザーの許可を得た範囲でAppleの仕組みを通じて読み取ります。購入・定期購読はApple IDで管理されます。</p></article>
+      <article class="legal-card reveal"><h2>4. 位置情報</h2><p>運動記録では、許可された位置情報を使用します。友だちへの位置共有は、運動開始だけでは自動的に有効になりません。ユーザーが共有期間を選択した場合に限り、その期間中の座標をオンラインで処理します。</p><p>共有する結果画像では、設定によりルートの両端各200mを表示から除外できます。この処理は画像の表示に適用され、保存済み運動記録自体を変更するものではありません。</p></article>
+      <article class="legal-card reveal"><h2>5. 保存期間と削除</h2><p>端末内の記録は、アプリ内で削除するか、端末から関連データを削除するまで保存されます。Apple Keychainに保存された項目は、アプリをアンインストールしても端末に残る場合があります。</p><p>オンライン情報の削除を希望する場合は、アプリ内のアカウント画面またはサポート窓口から申請できます。本人確認や処理状況を案内する場合があります。Appleの定期購読はアカウント削除とは別に、Appleの「サブスクリプション」画面で管理してください。</p></article>
+      <article class="legal-card reveal"><h2>6. 安全管理・変更・お問い合わせ</h2><p>アクセス制御、アカウントごとのローカル保存領域、通信先の認証など、利用可能な安全対策を講じます。ただし、通信や保存の絶対的な安全を保証するものではありません。</p><p>機能や法令の変更に応じて本ポリシーを更新し、重要な変更は本ページまたはアプリ内で案内します。お問い合わせは <a href="mailto:sposedon0@gmail.com">sposedon0@gmail.com</a> までお願いします。</p></article>
     </section>
 
-    <!-- English -->
-    <section class="l l-en" hidden>
-      <div class="card">
-        <h2>Overview</h2>
-        <p><strong>Motionly</strong> prioritizes on-device processing for route logging and workout metrics. By default, we do not collect user-identifying data.</p>
-        <p class="tag">Default: No data collected</p>
-      </div>
-
-      <div class="grid">
-        <div class="card">
-          <h2>Date of Birth & Keychain</h2>
-          <div class="sep"></div>
-          <p><span class="ok">•</span> <strong>No server collection or transmission.</strong> Your date of birth is stored only in the <strong>Apple Keychain</strong> and used locally for <em>biorhythm</em> calculations.</p>
-          <p><span class="ok">•</span> Removing the app also removes related Keychain items subject to iCloud Keychain sync settings.</p>
-          <p class="mono">Purpose: Biorhythm only · Storage: Apple Keychain · Transfer: None</p>
-        </div>
-
-        <div class="card">
-          <h2>On-device Storage</h2>
-          <div class="sep"></div>
-          <ul>
-            <li>Preferences (language, UI): <span class="mono">UserDefaults</span></li>
-            <li>Workout logs/routes (optional): Local files or screenshots</li>
-            <li>Date of birth: <span class="mono">Keychain</span></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="card">
-        <h2>Permissions</h2>
-        <div class="sep"></div>
-        <ul>
-          <li><strong>Location</strong> (required) – live route logging and distance</li>
-          <li><strong>Notifications</strong> (optional) – workout reminders</li>
-          <li><strong>Apple Health</strong> (optional) – read step counts if authorized. <em>No server transmission.</em></li>
-        </ul>
-        <p class="warn">Permissions can be changed anytime in iOS Settings.</p>
-      </div>
-
-      <div class="card">
-        <h2>Optional Cloud Features</h2>
-        <div class="sep"></div>
-        <p>Friend codes or location sharing may use network <strong>only when you explicitly opt in</strong>. Date of birth is never transmitted or stored on servers.</p>
-      </div>
-
-      <div class="card">
-        <h2>Contact</h2>
-        <div class="sep"></div>
-        <p>Email: <a href="mailto:sposedon0@gmail.com">sposedon0@gmail.com</a></p>
-        <p>App Store: <a href="https://apps.apple.com/jp/app/motionly/id6752832437" target="_blank" rel="noopener">Motionly (JP)</a></p>
-      </div>
+    <section id="ko" class="legal-stack section" lang="ko" aria-labelledby="ko-title">
+      <article class="legal-card reveal"><h2 id="ko-title">한국어</h2><p>Motionly(이하 “앱”)는 GPS 운동 기록, 계정, 친구, 챌린지, 선택적 위치 공유 기능을 제공합니다. 본 방침은 각 기능에서 처리하는 정보를 설명합니다.</p><p class="legal-note">모든 데이터가 기기 안에만 저장되는 것은 아닙니다. 운동 기록 중심의 로컬 데이터와 Firebase를 이용하는 온라인 기능이 구분되어 있습니다.</p></article>
+      <article class="legal-card reveal"><h2>1. 처리하는 정보</h2><h3>기기 안 저장을 중심으로 하는 정보</h3><ul><li>GPS 경로, 운동 일시, 거리, 시간, 걸음 수, 예상 소모 칼로리</li><li>운동 사진, BMI·체중·키, 목표, 앱 설정</li><li>바이오리듬·사주 등 참고 콘텐츠에 사용하는 입력값 일부</li></ul><h3>온라인 기능에서 처리하는 정보</h3><ul><li>Firebase Authentication 사용자 ID, 이메일, 인증 방식</li><li>닉네임 및 입력한 프로필 정보(생년월일이 포함될 수 있음)</li><li>친구 코드, 친구 요청·관계, 차단 정보</li><li>챌린지, 참여·진행 정보, 혜택·이용 자격 상태</li><li>직접 위치 공유를 켠 경우 좌표·고도 및 표시에 필요한 걸음·거리·예상 칼로리</li></ul></article>
+      <article class="legal-card reveal"><h2>2. 이용 목적</h2><ul><li>GPS 운동 기록, 복구, 내역 표시, 공유 카드 생성</li><li>로그인, 프로필, 친구, 챌린지 등 온라인 기능 제공</li><li>구매 상태·이용 자격 확인, 부정 사용 방지, 오류 대응</li><li>선택한 기간에만 허용된 친구에게 현재 위치 표시</li></ul></article>
+      <article class="legal-card reveal"><h2>3. 외부 서비스</h2><p>기능에 따라 Firebase(Authentication, Firestore, App Check), Apple(Maps, WeatherKit, HealthKit, StoreKit), 주변 검색을 위한 OpenStreetMap/Overpass 계열 서비스, 선택적 AI 모델의 배포 서비스를 이용할 수 있습니다. 이 과정에서 서비스 제공에 필요한 기기·통신 정보나 검색 위치 등이 처리될 수 있습니다.</p><p>HealthKit 데이터는 사용자가 허용한 범위에서 Apple의 기능을 통해 읽습니다. 구매와 구독은 Apple ID에서 관리됩니다.</p></article>
+      <article class="legal-card reveal"><h2>4. 위치정보</h2><p>운동 기록에는 허용된 위치정보를 사용합니다. 운동을 시작하는 것만으로 친구 위치 공유가 자동으로 켜지지 않습니다. 사용자가 공유 기간을 직접 선택한 경우에만 해당 기간의 좌표를 온라인에서 처리합니다.</p><p>공유 결과 이미지에서는 설정에 따라 경로 양 끝 각 200m를 표시에서 제외할 수 있습니다. 저장된 운동 기록 자체는 변경되지 않습니다.</p></article>
+      <article class="legal-card reveal"><h2>5. 보관 및 삭제</h2><p>기기 안 기록은 앱에서 삭제하거나 관련 기기 데이터를 삭제할 때까지 보관됩니다. Apple Keychain 항목은 앱을 삭제한 뒤에도 기기에 남을 수 있습니다.</p><p>온라인 정보 삭제는 앱의 계정 화면 또는 지원 이메일에서 요청할 수 있으며, 본인 확인과 처리 상태를 안내할 수 있습니다. Apple 구독은 계정 삭제와 별개이므로 Apple의 구독 관리 화면에서 직접 관리해야 합니다.</p></article>
+      <article class="legal-card reveal"><h2>6. 보호·변경·문의</h2><p>접근 통제, 계정별 로컬 저장 영역, 통신 서비스 인증 등 가능한 안전 조치를 적용합니다. 다만 통신과 저장의 절대적인 안전을 보장할 수는 없습니다.</p><p>기능이나 법령 변경에 따라 이 방침을 갱신하며 중요한 변경은 이 페이지 또는 앱에서 안내합니다. 문의: <a href="mailto:sposedon0@gmail.com">sposedon0@gmail.com</a></p></article>
     </section>
 
-    <!-- 日本語 -->
-    <section class="l l-ja" hidden>
-      <div class="card">
-        <h2>概要</h2>
-        <p><strong>Motionly</strong> はルート記録や運動計測において <em>オンデバイス処理</em> を重視しています。デフォルトでは、ユーザーを特定できるデータを収集しません。</p>
-        <p class="tag">既定: 収集なし</p>
-      </div>
-
-      <div class="grid">
-        <div class="card">
-          <h2>生年月日と Keychain</h2>
-          <div class="sep"></div>
-          <p><span class="ok">•</span> <strong>サーバーへの送信/収集は一切ありません。</strong> 生年月日は <strong>Apple Keychain</strong> にのみ安全に保存され、<em>バイオリズム計算</em> のためにデバイス上でのみ使用されます。</p>
-          <p><span class="ok">•</span> アプリを削除すると、関連する Keychain 項目も削除されます（iCloud キーチェーン設定に依存）。</p>
-          <p class="mono">目的: バイオリズムのみ · 保存: Apple Keychain · 送信: なし</p>
-        </div>
-
-        <div class="card">
-          <h2>デバイス内保存</h2>
-          <div class="sep"></div>
-          <ul>
-            <li>設定（言語・UI）: <span class="mono">UserDefaults</span></li>
-            <li>ワークアウト記録/ルート（任意）: ローカル保存またはスクリーンショット</li>
-            <li>生年月日: <span class="mono">Keychain</span></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="card">
-        <h2>権限</h2>
-        <div class="sep"></div>
-        <ul>
-          <li><strong>位置情報</strong>（必須）– ルート記録と距離計測</li>
-          <li><strong>通知</strong>（任意）– リマインダー</li>
-          <li><strong>Apple Health</strong>（任意）– 許可された場合、歩数を読み取りのみ使用。<em>サーバー送信なし。</em></li>
-        </ul>
-        <p class="warn">権限は iOS 設定からいつでも変更できます。</p>
-      </div>
-
-      <div class="card">
-        <h2>クラウド機能（任意）</h2>
-        <div class="sep"></div>
-        <p>フレンドコードや位置共有は、<strong>ユーザーが明示的に選択した場合のみ</strong> ネットワークを使用します。生年月日がサーバーに送信・保存されることはありません。</p>
-      </div>
-
-      <div class="card">
-        <h2>連絡先</h2>
-        <div class="sep"></div>
-        <p>メール: <a href="mailto:sposedon0@gmail.com">sposedon0@gmail.com</a></p>
-        <p>App Store: <a href="https://apps.apple.com/jp/app/motionly/id6752832437" target="_blank" rel="noopener">Motionly (JP)</a></p>
-      </div>
+    <section id="en" class="legal-stack section" lang="en" aria-labelledby="en-title">
+      <article class="legal-card reveal"><h2 id="en-title">English</h2><p>Motionly (“the App”) provides GPS workout recording, accounts, friends, challenges, and optional location sharing. This policy explains the information handled by each type of feature.</p><p class="legal-note">Not every item stays only on your device. Motionly separates primarily local workout data from online features that use Firebase.</p></article>
+      <article class="legal-card reveal"><h2>1. Information we handle</h2><h3>Information primarily stored on the device</h3><ul><li>GPS routes, workout date and time, distance, duration, steps, and estimated calories</li><li>Workout photos, BMI, weight, height, goals, and app settings</li><li>Some inputs used for reference content such as biorhythm and Four Pillars</li></ul><h3>Information handled by online features</h3><ul><li>Firebase Authentication user ID, email address, and sign-in provider</li><li>Nickname and profile details you enter, which may include birth date</li><li>Friend code, requests, relationships, and blocks</li><li>Challenges, participation and progress, trial or entitlement state</li><li>When you enable location sharing: coordinates, altitude, and metrics needed for display such as steps, distance, and estimated calories</li></ul></article>
+      <article class="legal-card reveal"><h2>2. Why we use it</h2><ul><li>Record, recover, display, and share GPS workouts</li><li>Provide account, profile, friend, and challenge features</li><li>Check purchases and access, reduce abuse, and troubleshoot failures</li><li>Show your location to permitted friends only during a sharing period you choose</li></ul></article>
+      <article class="legal-card reveal"><h2>3. Service providers</h2><p>Depending on the feature, Motionly may use Firebase (Authentication, Firestore, and App Check), Apple services (Maps, WeatherKit, HealthKit, and StoreKit), OpenStreetMap/Overpass services for nearby search, and a model host when you choose to download an optional AI model. Those services may process device, network, or search-location information required to provide the request.</p><p>HealthKit data is read through Apple frameworks only within the permission you grant. Purchases and subscriptions are managed through your Apple ID.</p></article>
+      <article class="legal-card reveal"><h2>4. Location</h2><p>Workout recording uses location when you grant permission. Starting a workout does not automatically enable friend location sharing. Coordinates are handled online only when you explicitly select a sharing period.</p><p>Shared result images can omit 200 m from each end of the route. This changes what the image displays, not the saved workout record.</p></article>
+      <article class="legal-card reveal"><h2>5. Retention and deletion</h2><p>On-device records remain until you delete them in the App or remove the related device data. Apple Keychain items may remain on the device after uninstalling the App.</p><p>You may request deletion of online information from the in-app account screen or by contacting support. We may provide identity-verification and processing-status instructions. Apple subscriptions are separate and must be managed from Apple’s subscription settings.</p></article>
+      <article class="legal-card reveal"><h2>6. Security, changes, and contact</h2><p>We use available safeguards such as access controls, account-scoped local storage, and authenticated service requests. No method of transmission or storage can be guaranteed absolutely secure.</p><p>We may update this policy when features or legal requirements change. Material updates will be explained on this page or in the App. Contact: <a href="mailto:sposedon0@gmail.com">sposedon0@gmail.com</a></p></article>
     </section>
+  </main>
 
-    <footer>
-      <span class="badge">© Motionly</span>
-      <span class="badge">No Ads</span>
-      <span class="badge">No Third-Party Trackers</span>
-      <span class="badge">On-device First</span>
-    </footer>
-  </div>
-
-  <script>
-    // 언어 토글 (기본 ko)
-    const btns = document.querySelectorAll('.lang button');
-    const sections = {
-      ko: document.querySelector('.l-ko'),
-      en: document.querySelector('.l-en'),
-      ja: document.querySelector('.l-ja')
-    };
-    function setLang(code){
-      Object.values(sections).forEach(s => s.hidden = true);
-      sections[code].hidden = false;
-      btns.forEach(b => b.classList.toggle('active', b.dataset.lang===code));
-      localStorage.setItem('motionly_privacy_lang', code);
-      document.documentElement.lang = code;
-      document.querySelector('.title').textContent = `Motionly • ${code==='ko'?'Privacy':'Privacy'}`;
-    }
-    btns.forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
-    setLang(localStorage.getItem('motionly_privacy_lang') || 'ko');
-  </script>
+  <footer class="site-footer"><div class="container footer-inner"><span>© <span data-current-year>2026</span> Motionly</span><nav class="footer-links" aria-label="Footer"><a href="/">Home</a><a href="/support.html">Support</a><a href="/news.html">Updates</a><a href="mailto:sposedon0@gmail.com">Contact</a></nav></div></footer>
+  <script src="/scripts/site.js?v=20260818" defer></script>
 </body>
 </html>

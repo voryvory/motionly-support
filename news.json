@@ -1,25 +1,44 @@
 [
   {
+    "id": "2026-08-18-site",
+    "date": "2026-08-18",
+    "title": {
+      "ja": "Motionlyのサイトをリニューアル",
+      "ko": "Motionly 사이트 개편",
+      "en": "Motionly website refresh"
+    },
+    "body": {
+      "ja": "GPS記録、週間目標、運動履歴を中心に、実際のアプリ画面で機能を分かりやすく紹介する構成へ更新しました。",
+      "ko": "GPS 기록, 주간 목표, 운동 내역을 중심으로 실제 앱 화면을 활용해 기능을 더 명확하게 소개하도록 개편했습니다.",
+      "en": "The site now explains GPS tracking, weekly goals, and workout history with real in-app screens."
+    }
+  },
+  {
     "id": "2025-11-04-privacy",
     "date": "2025-11-04",
-    "title": { "ko": "개인정보 처리방침 페이지 공개", "en": "Privacy Policy is Live", "ja": "プライバシーポリシーを公開" },
-    "body": {
-      "ko": "motionly.net/privacy.html에서 확인 가능. 생년월일은 기기 키체인에만 저장됩니다.",
-      "en": "Now available at motionly.net/privacy.html. DOB stays only in Keychain.",
-      "ja": "motionly.net/privacy.html で確認できます。生年月日は端末のKeychainのみに保存。"
+    "title": {
+      "ja": "プライバシーポリシーを公開",
+      "ko": "개인정보 처리방침 공개",
+      "en": "Privacy policy published"
     },
-    "tags": ["공지", "privacy"],
-    "pin": true
+    "body": {
+      "ja": "端末内の運動記録と、アカウント・友だち・位置共有などのオンライン機能で扱う情報を説明しています。",
+      "ko": "기기 안 운동 기록과 계정·친구·위치 공유 같은 온라인 기능에서 처리하는 정보를 설명합니다.",
+      "en": "The policy explains on-device workout records and information used by account, friend, and location-sharing features."
+    }
   },
   {
     "id": "2025-11-01-launch-note",
     "date": "2025-11-01",
-    "title": { "ko": "사이트 개편", "en": "Site Refresh", "ja": "サイト刷新" },
-    "body": {
-      "ko": "히어로/다국어/지원 메일 정리.",
-      "en": "Updated hero, i18n, support email.",
-      "ja": "ヒーロー・多言語・サポートメールを整理。"
+    "title": {
+      "ja": "サポートサイトを公開",
+      "ko": "지원 사이트 공개",
+      "en": "Support site launched"
     },
-    "tags": ["업데이트"]
+    "body": {
+      "ja": "Motionlyの多言語案内とサポート窓口を公開しました。",
+      "ko": "Motionly 다국어 안내와 지원 창구를 공개했습니다.",
+      "en": "Motionly’s multilingual information and support contact are now available."
+    }
   }
 ]
