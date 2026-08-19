@@ -13,11 +13,20 @@ const labels = {
   en: { heading: "Motionly updates", intro: "News about the site, features, and privacy.", error: "Updates could not be loaded." }
 };
 
+const privacyPages = {
+  ja: "/privacy.html",
+  ko: "/privacy-ko.html",
+  en: "/privacy-en.html"
+};
+
 document.documentElement.lang = language;
 document.querySelector("[data-news-heading]").textContent = labels[language].heading;
 document.querySelector("[data-news-intro]").textContent = labels[language].intro;
 document.querySelectorAll("[data-news-lang]").forEach((link) => {
   if (link.dataset.newsLang === language) link.setAttribute("aria-current", "page");
+});
+document.querySelectorAll("[data-privacy-link]").forEach((link) => {
+  link.href = privacyPages[language];
 });
 
 const renderUpdates = (items) => {

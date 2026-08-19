@@ -33,6 +33,30 @@
     <lastmod>2026-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://motionly.net/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://motionly.net/privacy-ko.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://motionly.net/privacy-en.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://motionly.net/privacy.html"/>
+  </url>
+  <url>
+    <loc>https://motionly.net/privacy-ko.html</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://motionly.net/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://motionly.net/privacy-ko.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://motionly.net/privacy-en.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://motionly.net/privacy.html"/>
+  </url>
+  <url>
+    <loc>https://motionly.net/privacy-en.html</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://motionly.net/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://motionly.net/privacy-ko.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://motionly.net/privacy-en.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://motionly.net/privacy.html"/>
   </url>
   <url>
     <loc>https://motionly.net/news.html</loc>
