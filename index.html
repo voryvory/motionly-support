@@ -13,6 +13,7 @@
   <link rel="alternate" hreflang="x-default" href="https://motionly.net/">
   <link rel="icon" href="/assets/app-icon.png" type="image/png">
   <link rel="stylesheet" href="/styles/site.css?v=20260818">
+  <link rel="stylesheet" href="/styles/app-demo.css?v=20260819">
   <meta property="og:title" content="Motionly — 走ろうか迷う日を、走る日に。">
   <meta property="og:description" content="天気を見て、GPSで記録。続けた日々を振り返る。">
   <meta property="og:type" content="website">
@@ -42,10 +43,64 @@
         <p class="eyebrow">Running &amp; walking log</p>
         <h1>走ろうか迷う日を、<span class="accent-text">走る日に。</span></h1>
         <p class="lead">現在地と行き先を確認し、GPSでルート・距離・時間を記録。今週の目標と、続けてきた日々をひと目で振り返れます。</p>
-        <div class="cta-row"><a class="button orange" href="https://apps.apple.com/jp/app/id6752832437" target="_blank" rel="noopener">App Storeで見る <span aria-hidden="true">↗</span></a><a class="button secondary" href="#how">機能を見る</a></div>
+        <div class="cta-row"><a class="button orange" href="https://apps.apple.com/jp/app/id6752832437" target="_blank" rel="noopener">App Storeで見る <span aria-hidden="true">↗</span></a><a class="button secondary" href="#demo">デモを試す</a></div>
         <p class="support-line">iPhone対応 · iOS 18.5以降 · 日本語 / 한국어 / English</p>
       </div>
-      <div class="hero-visual reveal"><img class="hero-image" src="/assets/hero-map.jpg" alt="Motionlyの地図、天気、行き先検索画面" width="830" height="1800" fetchpriority="high"></div>
+      <div id="demo" class="hero-visual hero-demo-visual reveal">
+        <div class="app-demo" data-motionly-demo data-demo-locale="ja" data-state="0">
+          <p class="sr-only" role="status" aria-live="polite" data-demo-status></p>
+          <div class="demo-aurora" aria-hidden="true"></div>
+          <div class="demo-topbar">
+            <span class="demo-clock" aria-hidden="true">8:26</span>
+            <span class="demo-badge"><span class="demo-badge-dot" aria-hidden="true"></span><span data-demo-badge>画面デモ</span></span>
+            <button class="demo-reset" type="button" data-demo-reset aria-label="デモを最初から見る">↻</button>
+          </div>
+          <div class="demo-canvas">
+            <div class="demo-map" aria-hidden="true">
+              <span class="map-grid"></span>
+              <svg class="demo-route" viewBox="0 0 360 480" focusable="false">
+                <path class="route-shadow" d="M68 414 C112 364 80 304 150 268 S264 240 250 174 S292 102 316 64"></path>
+                <path class="route-line" d="M68 414 C112 364 80 304 150 268 S264 240 250 174 S292 102 316 64"></path>
+              </svg>
+              <span class="route-pin route-pin-start"></span>
+              <span class="route-pin route-pin-end"></span>
+              <div class="demo-weather weather-temperature"><span aria-hidden="true">☀︎</span><strong>24°C</strong></div>
+              <div class="demo-weather weather-wind"><span aria-hidden="true">↗</span><strong>0.9 m/s</strong></div>
+              <div class="demo-destination"><span aria-hidden="true">⌖</span><span data-demo-destination>日比谷公園</span><small>1.8 km</small></div>
+              <div class="demo-live-metrics">
+                <div><span data-demo-distance>0.00</span><small>km</small></div>
+                <div><span data-demo-time>00:00</span><small>時間</small></div>
+                <div><span data-demo-steps>0</span><small>歩数</small></div>
+              </div>
+              <div class="demo-summary-card">
+                <span class="demo-card-kicker" data-demo-summary-kicker>THIS WEEK</span>
+                <strong data-demo-summary-title>3回、続けられました。</strong>
+                <div class="demo-summary-stats"><span><b>3</b><small>回</small></span><span><b>8.4</b><small>km</small></span><span><b>52</b><small>分</small></span></div>
+              </div>
+              <div class="demo-challenge-card">
+                <span class="demo-card-kicker" data-demo-challenge-kicker>NEXT GOAL</span>
+                <div class="challenge-heading"><span aria-hidden="true">🎯</span><div><strong data-demo-challenge-title>最初の10K</strong><small data-demo-challenge-subtitle>30日以内に合計10km。</small></div></div>
+                <div class="challenge-meta"><span><b>10 km</b><small>目標</small></span><span><b>30日</b><small>期間</small></span><span><b>公開</b><small>設定</small></span></div>
+              </div>
+            </div>
+            <div class="demo-sheet">
+              <span class="demo-sheet-handle" aria-hidden="true"></span>
+              <p class="demo-kicker" data-demo-kicker>TODAY</p>
+              <h2 data-demo-title>走る前に、今日を確認。</h2>
+              <p data-demo-description>利用できる場合は、天気と風を見て今日の運動を決められます。</p>
+              <button class="demo-primary" type="button" data-demo-next>行き先を選ぶ <span aria-hidden="true">→</span></button>
+            </div>
+          </div>
+          <div class="demo-stepper" role="group" aria-label="デモ画面を選択">
+            <button type="button" data-demo-step="0" aria-label="天気" aria-current="step"></button>
+            <button type="button" data-demo-step="1" aria-label="ルート"></button>
+            <button type="button" data-demo-step="2" aria-label="運動記録"></button>
+            <button type="button" data-demo-step="3" aria-label="今週の記録"></button>
+            <button type="button" data-demo-step="4" aria-label="チャレンジ"></button>
+          </div>
+          <p class="demo-privacy-note">位置情報やアカウント情報は使用しない画面デモです。</p>
+        </div>
+      </div>
     </section>
 
     <section id="how" class="section"><div class="container">
@@ -101,5 +156,6 @@
 
   <footer class="site-footer"><div class="container footer-inner"><span>© <span data-current-year>2026</span> Motionly</span><nav class="footer-links" aria-label="フッターナビゲーション"><a href="/support.html">サポート</a><a href="/privacy.html">プライバシー</a><a href="/news.html">お知らせ</a><a href="mailto:sposedon0@gmail.com">お問い合わせ</a></nav></div></footer>
   <script src="/scripts/site.js?v=20260818" defer></script>
+  <script src="/scripts/app-demo.js?v=20260819" defer></script>
 </body>
 </html>
