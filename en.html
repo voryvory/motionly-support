@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Motionly — Turn “maybe later” into today’s run.</title>
-  <meta name="description" content="Check your location and destination, record your route, distance, and time with GPS, then review this week and the workouts you have built up.">
+  <meta name="description" content="Check your location and destination, record your route, distance, and time with GPS, then review this week and your workout history.">
   <meta name="theme-color" content="#06080b">
   <link rel="canonical" href="https://motionly.net/en.html">
   <link rel="alternate" hreflang="ja" href="https://motionly.net/">
@@ -13,6 +13,7 @@
   <link rel="alternate" hreflang="x-default" href="https://motionly.net/">
   <link rel="icon" href="/assets/app-icon.png" type="image/png">
   <link rel="stylesheet" href="/styles/site.css?v=20260818">
+  <link rel="stylesheet" href="/styles/app-demo.css?v=20260819">
   <meta property="og:title" content="Motionly — Turn “maybe later” into today’s run.">
   <meta property="og:description" content="Check the weather, track with GPS, and look back on the days you kept moving.">
   <meta property="og:type" content="website">
@@ -30,8 +31,34 @@
 
   <main id="main">
     <section class="container hero">
-      <div class="hero-copy reveal"><p class="eyebrow">Running &amp; walking log</p><h1>Turn “maybe later” into <span class="accent-text">today’s run.</span></h1><p class="lead">Check your current location and destination, record your route, distance, and time with GPS, then review this week’s goal and the workouts you’ve built up.</p><div class="cta-row"><a class="button orange" href="https://apps.apple.com/us/app/id6752832437" target="_blank" rel="noopener">View on the App Store <span aria-hidden="true">↗</span></a><a class="button secondary" href="#how">Explore features</a></div><p class="support-line">Made for iPhone · iOS 18.5 or later · 日本語 / 한국어 / English</p></div>
-      <div class="hero-visual reveal"><img class="hero-image" src="/assets/hero-map.jpg" alt="Motionly map, weather, and destination search screen" width="830" height="1800" fetchpriority="high"></div>
+      <div class="hero-copy reveal"><p class="eyebrow">Running &amp; walking log</p><h1>Turn “maybe later” into <span class="accent-text">today’s run.</span></h1><p class="lead">Check your current location and destination, record your route, distance, and time with GPS, then review this week’s goal and your workout history.</p><div class="cta-row"><a class="button orange" href="https://apps.apple.com/us/app/id6752832437" target="_blank" rel="noopener">View on the App Store <span aria-hidden="true">↗</span></a><a class="button secondary" href="#demo">Try the demo</a></div><p class="support-line">Made for iPhone · iOS 18.5 or later · 日本語 / 한국어 / English</p></div>
+      <div id="demo" class="hero-visual hero-demo-visual reveal">
+        <div class="app-demo" data-motionly-demo data-demo-locale="en" data-state="0">
+          <p class="sr-only" role="status" aria-live="polite" data-demo-status></p>
+          <div class="demo-aurora" aria-hidden="true"></div>
+          <div class="demo-topbar">
+            <span class="demo-clock" aria-hidden="true">8:26</span>
+            <span class="demo-badge"><span class="demo-badge-dot" aria-hidden="true"></span><span data-demo-badge>Screen demo</span></span>
+            <button class="demo-reset" type="button" data-demo-reset aria-label="Restart demo">↻</button>
+          </div>
+          <div class="demo-canvas">
+            <div class="demo-map" aria-hidden="true">
+              <span class="map-grid"></span>
+              <svg class="demo-route" viewBox="0 0 360 480" focusable="false"><path class="route-shadow" d="M68 414 C112 364 80 304 150 268 S264 240 250 174 S292 102 316 64"></path><path class="route-line" d="M68 414 C112 364 80 304 150 268 S264 240 250 174 S292 102 316 64"></path></svg>
+              <span class="route-pin route-pin-start"></span><span class="route-pin route-pin-end"></span>
+              <div class="demo-weather weather-temperature"><span aria-hidden="true">☀︎</span><strong>24°C</strong></div>
+              <div class="demo-weather weather-wind"><span aria-hidden="true">↗</span><strong>0.9 m/s</strong></div>
+              <div class="demo-destination"><span aria-hidden="true">⌖</span><span data-demo-destination>Hibiya Park</span><small>1.8 km</small></div>
+              <div class="demo-live-metrics"><div><span data-demo-distance>0.00</span><small>km</small></div><div><span data-demo-time>00:00</span><small>time</small></div><div><span data-demo-steps>0</span><small>steps</small></div></div>
+              <div class="demo-summary-card"><span class="demo-card-kicker" data-demo-summary-kicker>THIS WEEK</span><strong data-demo-summary-title>You moved three times this week.</strong><div class="demo-summary-stats"><span><b>3</b><small>workouts</small></span><span><b>8.4</b><small>km</small></span><span><b>52</b><small>min</small></span></div></div>
+              <div class="demo-challenge-card"><span class="demo-card-kicker" data-demo-challenge-kicker>NEXT GOAL</span><div class="challenge-heading"><span aria-hidden="true">🎯</span><div><strong data-demo-challenge-title>First 10K</strong><small data-demo-challenge-subtitle>Log 10 km in 30 days.</small></div></div><div class="challenge-meta"><span><b>10 km</b><small>goal</small></span><span><b>30 days</b><small>period</small></span><span><b>public</b><small>setting</small></span></div></div>
+            </div>
+            <div class="demo-sheet"><span class="demo-sheet-handle" aria-hidden="true"></span><p class="demo-kicker" data-demo-kicker>TODAY</p><h2 data-demo-title>Check the weather before you go.</h2><p data-demo-description>Where available, check weather and wind before deciding how far to go.</p><button class="demo-primary" type="button" data-demo-next>Choose a destination <span aria-hidden="true">→</span></button></div>
+          </div>
+          <div class="demo-stepper" role="group" aria-label="Choose demo screen"><button type="button" data-demo-step="0" aria-label="Weather" aria-current="step"></button><button type="button" data-demo-step="1" aria-label="Route"></button><button type="button" data-demo-step="2" aria-label="Workout tracking"></button><button type="button" data-demo-step="3" aria-label="Weekly history"></button><button type="button" data-demo-step="4" aria-label="Challenge"></button></div>
+          <p class="demo-privacy-note">A screen demo that does not use your location or account data.</p>
+        </div>
+      </div>
     </section>
 
     <section id="how" class="section"><div class="container"><div class="section-heading centered reveal"><p class="eyebrow">Simple flow</p><h2>Spend less time deciding.<br>Keep the time you moved.</h2><p>Long runs, short jogs, and walking days all count. Motionly keeps the information and record in one simple flow.</p></div><div class="steps-grid">
@@ -66,5 +93,6 @@
 
   <footer class="site-footer"><div class="container footer-inner"><span>© <span data-current-year>2026</span> Motionly</span><nav class="footer-links" aria-label="Footer"><a href="/support.html#en">Support</a><a href="/privacy-en.html">Privacy</a><a href="/news.html?lang=en">Updates</a><a href="mailto:sposedon0@gmail.com">Contact</a></nav></div></footer>
   <script src="/scripts/site.js?v=20260818" defer></script>
+  <script src="/scripts/app-demo.js?v=20260819" defer></script>
 </body>
 </html>
