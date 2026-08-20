@@ -145,6 +145,7 @@
     let animationFrame = 0;
     let animationProgress = 0;
     let animationStartedAt = 0;
+    let lastCounterPaint = 0;
 
     const setCounterValues = (progress) => {
       const seconds = Math.round(138 * progress);
@@ -175,7 +176,10 @@
 
       const tick = (now) => {
         animationProgress = Math.min((now - animationStartedAt) / 4000, 1);
-        setCounterValues(animationProgress);
+        if (now - lastCounterPaint >= 66 || animationProgress === 1) {
+          setCounterValues(animationProgress);
+          lastCounterPaint = now;
+        }
 
         if (animationProgress < 1 && state === 2 && !document.hidden) {
           animationFrame = window.requestAnimationFrame(tick);
@@ -234,24 +238,54 @@
     });
 
     if (finePointer && !reducedMotion) {
-      demo.addEventListener("pointermove", (event) => {
-        const bounds = demo.getBoundingClientRect();
-        const x = (event.clientX - bounds.left) / bounds.width - 0.5;
-        const y = (event.clientY - bounds.top) / bounds.height - 0.5;
-        demo.style.setProperty("--demo-rotate-x", `${(-y * 3).toFixed(2)}deg`);
-        demo.style.setProperty("--demo-rotate-y", `${(x * 3).toFixed(2)}deg`);
-        demo.style.setProperty("--demo-shift-x", `${(x * 3).toFixed(2)}px`);
-        demo.style.setProperty("--demo-shift-y", `${(y * 3).toFixed(2)}px`);
-        demo.classList.add("is-pointer-active");
-      });
+      let tiltFrame = 0;
+      let tiltBounds = null;
+      let tiltPoint = null;
 
-      demo.addEventListener("pointerleave", () => {
+      const resetTilt = () => {
+        if (tiltFrame) {
+          window.cancelAnimationFrame(tiltFrame);
+          tiltFrame = 0;
+        }
+        tiltPoint = null;
         demo.style.removeProperty("--demo-rotate-x");
         demo.style.removeProperty("--demo-rotate-y");
         demo.style.removeProperty("--demo-shift-x");
         demo.style.removeProperty("--demo-shift-y");
         demo.classList.remove("is-pointer-active");
+      };
+
+      demo.addEventListener("pointerenter", () => {
+        tiltBounds = demo.getBoundingClientRect();
       });
+
+      demo.addEventListener("pointermove", (event) => {
+        if (event.target.closest("button, a, input, select, textarea, summary")) {
+          resetTilt();
+          return;
+        }
+
+        tiltPoint = { x: event.clientX, y: event.clientY };
+        if (tiltFrame) return;
+        tiltFrame = window.requestAnimationFrame(() => {
+          tiltFrame = 0;
+          if (!tiltPoint) return;
+          const bounds = tiltBounds || demo.getBoundingClientRect();
+          const x = (tiltPoint.x - bounds.left) / bounds.width - 0.5;
+          const y = (tiltPoint.y - bounds.top) / bounds.height - 0.5;
+          demo.style.setProperty("--demo-rotate-x", `${(-y * 3).toFixed(2)}deg`);
+          demo.style.setProperty("--demo-rotate-y", `${(x * 3).toFixed(2)}deg`);
+          demo.style.setProperty("--demo-shift-x", `${(x * 3).toFixed(2)}px`);
+          demo.style.setProperty("--demo-shift-y", `${(y * 3).toFixed(2)}px`);
+          demo.classList.add("is-pointer-active");
+        });
+      });
+
+      demo.addEventListener("pointerleave", resetTilt);
+      window.addEventListener("resize", () => {
+        tiltBounds = null;
+      }, { passive: true });
+      window.addEventListener("pagehide", resetTilt, { once: true });
     }
 
     document.addEventListener("visibilitychange", () => {
