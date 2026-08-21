@@ -8,111 +8,111 @@
   const copy = {
     ja: [
       {
-        kicker: "TODAY",
-        title: "走る前に、今日を確認。",
-        description: "利用できる場合は、天気と風を見て今日の運動を決められます。",
+        kicker: "天気",
+        title: "運動前の天気を確認",
+        description: "購読中または14日間の体験利用中は、気温・風速・風向を確認できます。",
         action: "行き先を選ぶ",
-        announcement: "天気の画面デモです。気温24度、風速0.9メートル毎秒の表示例です。"
+        announcement: "天気の表示例です。気温24度、風速0.9メートル毎秒です。"
       },
       {
-        kicker: "ROUTE PREVIEW",
-        title: "行き先までのルートを確認。",
-        description: "徒歩向けのサンプルルートを確認してから、記録を始めます。",
-        action: "GPS記録を試す",
+        kicker: "ルート",
+        title: "行き先までのルートを表示",
+        description: "日比谷公園までの徒歩・ランニング向けサンプルルートです。",
+        action: "記録画面を見る",
         announcement: "日比谷公園まで1.8キロメートルのルートプレビュー例です。"
       },
       {
-        kicker: "RECORDING",
-        title: "GPSで、今日の一歩を記録。",
-        description: "距離・時間・歩数が進む様子を、短時間で体験できます。",
+        kicker: "GPS記録",
+        title: "距離・時間・歩数を表示",
+        description: "デモでは、距離・時間・歩数のサンプル値が短時間で変わります。",
         action: "記録を終了",
-        announcement: "GPS運動記録の画面デモです。距離、時間、歩数の例が変化します。"
+        announcement: "GPS運動記録の表示例です。距離、時間、歩数のサンプル値が変化します。"
       },
       {
-        kicker: "THIS WEEK",
-        title: "続けた日々を、ひと目で。",
-        description: "今週の回数・合計距離・合計時間を振り返れます。",
-        action: "次の目標を見る",
+        kicker: "今週の記録",
+        title: "今週の運動記録を確認",
+        description: "ログイン後に、今週の回数・合計距離・合計時間を確認できます。",
+        action: "チャレンジを見る",
         announcement: "今週の記録例です。3回、8.4キロメートル、52分です。"
       },
       {
-        kicker: "NEXT GOAL",
-        title: "次の目標は、無理のないところから。",
-        description: "公開チャレンジが、運動を続けるきっかけになります。",
+        kicker: "チャレンジ",
+        title: "公開チャレンジを確認",
+        description: "目標距離と期間を確認して、参加するチャレンジを選べます。",
         action: "最初から見る",
         announcement: "30日以内に合計10キロメートルを目指す公開チャレンジの例です。"
       }
     ],
     ko: [
       {
-        kicker: "TODAY",
-        title: "달리기 전에 오늘의 날씨를 확인하세요.",
-        description: "이용 가능한 경우 날씨와 바람을 보고 오늘의 운동을 정할 수 있습니다.",
+        kicker: "날씨",
+        title: "운동 전 날씨 확인",
+        description: "구독 중이거나 14일 체험 이용 중에는 기온·풍속·풍향을 확인할 수 있습니다.",
         action: "목적지 선택",
-        announcement: "날씨 화면 데모입니다. 기온 24도, 풍속 초속 0.9미터의 표시 예시입니다."
+        announcement: "날씨 표시 예시입니다. 기온 24도, 풍속 초속 0.9미터입니다."
       },
       {
-        kicker: "ROUTE PREVIEW",
-        title: "목적지까지의 경로를 확인하세요.",
-        description: "걷기와 달리기에 맞춘 예시 경로를 본 뒤 기록을 시작합니다.",
-        action: "GPS 기록 체험",
+        kicker: "경로",
+        title: "목적지까지의 경로 표시",
+        description: "히비야 공원까지의 걷기·달리기용 예시 경로입니다.",
+        action: "기록 화면 보기",
         announcement: "히비야 공원까지 1.8킬로미터의 경로 미리보기 예시입니다."
       },
       {
-        kicker: "RECORDING",
-        title: "GPS로 오늘의 움직임을 기록하세요.",
-        description: "거리·시간·걸음 수가 변하는 과정을 짧게 보여주는 데모입니다.",
-        action: "기록 마치기",
-        announcement: "GPS 운동 기록 화면 데모입니다. 거리, 시간, 걸음 수 예시가 변합니다."
+        kicker: "GPS 기록",
+        title: "거리·시간·걸음 수 표시",
+        description: "기능 미리보기에서는 거리·시간·걸음 수의 예시 값이 짧은 시간 동안 변합니다.",
+        action: "기록 화면 종료",
+        announcement: "GPS 운동 기록 표시 예시입니다. 거리, 시간, 걸음 수의 예시 값이 변합니다."
       },
       {
-        kicker: "THIS WEEK",
-        title: "이어온 날들을 한눈에.",
-        description: "이번 주 운동 횟수·총 거리·총 시간을 돌아볼 수 있습니다.",
-        action: "다음 목표 보기",
+        kicker: "이번 주 기록",
+        title: "이번 주 운동 기록 확인",
+        description: "로그인 후 이번 주 운동 횟수·총 거리·총 시간을 확인할 수 있습니다.",
+        action: "챌린지 보기",
         announcement: "이번 주 기록 예시입니다. 3회, 8.4킬로미터, 52분입니다."
       },
       {
-        kicker: "NEXT GOAL",
-        title: "다음 목표는 무리 없는 수준부터.",
-        description: "공개 챌린지를 꾸준히 운동하는 계기로 활용할 수 있습니다.",
+        kicker: "챌린지",
+        title: "공개 챌린지 확인",
+        description: "목표 거리와 기간을 확인하고 참여할 챌린지를 선택할 수 있습니다.",
         action: "처음부터 보기",
         announcement: "30일 동안 누적 10킬로미터를 목표로 하는 공개 챌린지 예시입니다."
       }
     ],
     en: [
       {
-        kicker: "TODAY",
-        title: "Check the weather before you go.",
-        description: "Where available, check weather and wind before deciding how far to go.",
+        kicker: "WEATHER",
+        title: "Check weather before a workout",
+        description: "Temperature and wind are available with a subscription or active 14-day trial.",
         action: "Choose a destination",
-        announcement: "Weather screen demo showing 24 degrees Celsius and wind at 0.9 meters per second."
+        announcement: "Sample weather display showing 24 degrees Celsius and wind at 0.9 meters per second."
       },
       {
-        kicker: "ROUTE PREVIEW",
-        title: "Preview the route ahead.",
-        description: "See a sample walking-friendly route before you start tracking.",
-        action: "Try GPS tracking",
+        kicker: "ROUTE",
+        title: "Preview the route to your destination",
+        description: "This is a sample route for walking or running to Hibiya Park.",
+        action: "View tracking screen",
         announcement: "Sample 1.8 kilometer route preview to Hibiya Park."
       },
       {
-        kicker: "RECORDING",
-        title: "Track today’s movement with GPS.",
-        description: "A shortened demo of distance, time, and step tracking.",
-        action: "Finish tracking",
-        announcement: "Sample distance, time, and step count update during the demo."
+        kicker: "GPS TRACKING",
+        title: "View distance, time, and steps",
+        description: "The feature preview updates sample distance, time, and step values over a few seconds.",
+        action: "Close tracking screen",
+        announcement: "Sample distance, time, and step values update during the feature preview."
       },
       {
         kicker: "THIS WEEK",
-        title: "Look back on the days you kept moving.",
-        description: "Review this week’s workout count, total distance, and total time.",
-        action: "See the next goal",
+        title: "View this week’s workouts",
+        description: "After signing in, view this week’s workout count, total distance, and total time.",
+        action: "View a challenge",
         announcement: "Sample weekly recap: 3 workouts, 8.4 kilometers, and 52 minutes."
       },
       {
-        kicker: "NEXT GOAL",
-        title: "Make the next goal achievable.",
-        description: "Use a public challenge as one more reason to keep moving.",
+        kicker: "CHALLENGE",
+        title: "View a public challenge",
+        description: "Check the target distance and duration before choosing a challenge.",
         action: "Start again",
         announcement: "Sample public challenge to log 10 kilometers within 30 days."
       }
@@ -122,9 +122,9 @@
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
   const badgeLabels = {
-    ja: "操作できるデモ",
-    ko: "직접 체험 데모",
-    en: "Interactive demo"
+    ja: "機能プレビュー",
+    ko: "기능 미리보기",
+    en: "Feature preview"
   };
 
   demos.forEach((demo) => {

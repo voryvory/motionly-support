@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Motionly — 달릴까 망설이는 날을, 달리는 날로.</title>
-  <meta name="description" content="현재 위치와 목적지를 확인하고 GPS로 경로·거리·시간을 기록하세요. 저장한 운동 기록을 나중에 한눈에 돌아볼 수 있습니다.">
+  <title>Motionly — GPS 러닝·걷기 기록</title>
+  <meta name="description" content="목적지까지의 경로를 확인하고 GPS로 거리·시간·걸음 수를 기록할 수 있습니다. 저장한 운동은 목록에서 다시 볼 수 있습니다.">
   <meta name="theme-color" content="#06080b">
   <link rel="canonical" href="https://motionly.net/ko.html">
   <link rel="alternate" hreflang="ja" href="https://motionly.net/">
@@ -14,8 +14,8 @@
   <link rel="icon" href="/assets/app-icon.png" type="image/png">
   <link rel="stylesheet" href="/styles/site.css?v=20260818">
   <link rel="stylesheet" href="/styles/app-demo.css?v=20260820">
-  <meta property="og:title" content="Motionly — 달릴까 망설이는 날을, 달리는 날로.">
-  <meta property="og:description" content="날씨를 보고, GPS로 기록하고, 이어온 날들을 돌아보세요.">
+  <meta property="og:title" content="Motionly — GPS 러닝·걷기 기록">
+  <meta property="og:description" content="목적지까지의 경로를 확인하고 GPS로 거리·시간·걸음 수를 기록할 수 있습니다.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://motionly.net/ko.html">
   <meta property="og:site_name" content="Motionly">
@@ -31,14 +31,14 @@
 
   <main id="main">
     <section class="container hero">
-      <div class="hero-copy reveal"><p class="eyebrow">Running &amp; walking log</p><h1>달릴까 망설이는 날을, <span class="accent-text">달리는 날로.</span></h1><p class="lead">현재 위치와 목적지를 확인하고 GPS로 경로·거리·시간을 기록하세요. 이번 주 목표와 쌓인 운동 기록을 한눈에 돌아볼 수 있습니다.</p><div class="cta-row"><a class="button orange" href="https://apps.apple.com/kr/app/id6752832437" target="_blank" rel="noopener">App Store에서 보기 <span aria-hidden="true">↗</span></a><a class="button secondary" href="#demo">화면 데모 보기</a></div><p class="support-line">iPhone · iOS 18.5 이상 · 日本語 / 한국어 / English</p></div>
+      <div class="hero-copy reveal"><p class="eyebrow">GPS 러닝·걷기 기록</p><h1>달리기와 걷기를<br><span class="accent-text">GPS로 기록하세요.</span></h1><p class="lead">목적지까지의 경로를 확인하고, 운동을 시작하면 GPS로 경로·거리·시간·걸음 수를 기록합니다. 저장한 기록은 목록에서 다시 볼 수 있습니다.</p><div class="cta-row"><a class="button orange" href="https://apps.apple.com/kr/app/id6752832437" target="_blank" rel="noopener">App Store에서 보기 <span aria-hidden="true">↗</span></a><a class="button secondary" href="#demo">기능 확인</a></div><p class="support-line">iPhone · iOS 18.5 이상 · 日本語 / 한국어 / English</p></div>
       <div id="demo" class="hero-visual hero-demo-visual reveal">
         <div class="app-demo" data-motionly-demo data-demo-locale="ko" data-state="0">
           <p class="sr-only" role="status" aria-live="polite" data-demo-status></p>
           <div class="demo-aurora" aria-hidden="true"></div>
           <div class="demo-topbar">
             <span class="demo-clock" aria-hidden="true">8:26</span>
-            <span class="demo-badge"><span class="demo-badge-dot" aria-hidden="true"></span><span data-demo-badge>화면 데모</span></span>
+            <span class="demo-badge"><span class="demo-badge-dot" aria-hidden="true"></span><span data-demo-badge>기능 미리보기</span></span>
             <button class="demo-reset" type="button" data-demo-reset aria-label="데모 처음부터 보기">↻</button>
           </div>
           <div class="demo-canvas">
@@ -50,50 +50,50 @@
               <div class="demo-weather weather-wind"><span aria-hidden="true">↗</span><strong>0.9 m/s</strong></div>
               <div class="demo-destination"><span aria-hidden="true">⌖</span><span data-demo-destination>히비야 공원</span><small>1.8 km</small></div>
               <div class="demo-live-metrics"><div><span data-demo-distance>0.00</span><small>km</small></div><div><span data-demo-time>00:00</span><small>시간</small></div><div><span data-demo-steps>0</span><small>걸음 수</small></div></div>
-              <div class="demo-summary-card"><span class="demo-card-kicker" data-demo-summary-kicker>THIS WEEK</span><strong data-demo-summary-title>이번 주 3번 움직였어요.</strong><div class="demo-summary-stats"><span><b>3</b><small>회</small></span><span><b>8.4</b><small>km</small></span><span><b>52</b><small>분</small></span></div></div>
-              <div class="demo-challenge-card"><span class="demo-card-kicker" data-demo-challenge-kicker>NEXT GOAL</span><div class="challenge-heading"><span aria-hidden="true">🎯</span><div><strong data-demo-challenge-title>첫 10K</strong><small data-demo-challenge-subtitle>30일 동안 누적 10km.</small></div></div><div class="challenge-meta"><span><b>10 km</b><small>목표</small></span><span><b>30일</b><small>기간</small></span><span><b>공개</b><small>설정</small></span></div></div>
+              <div class="demo-summary-card"><span class="demo-card-kicker" data-demo-summary-kicker>이번 주 기록</span><strong data-demo-summary-title>이번 주 운동 3회</strong><div class="demo-summary-stats"><span><b>3</b><small>회</small></span><span><b>8.4</b><small>km</small></span><span><b>52</b><small>분</small></span></div></div>
+              <div class="demo-challenge-card"><span class="demo-card-kicker" data-demo-challenge-kicker>챌린지</span><div class="challenge-heading"><span aria-hidden="true">🎯</span><div><strong data-demo-challenge-title>첫 10K</strong><small data-demo-challenge-subtitle>30일 동안 누적 10km.</small></div></div><div class="challenge-meta"><span><b>10 km</b><small>목표</small></span><span><b>30일</b><small>기간</small></span><span><b>공개</b><small>설정</small></span></div></div>
             </div>
-            <div class="demo-sheet"><span class="demo-sheet-handle" aria-hidden="true"></span><p class="demo-kicker" data-demo-kicker>TODAY</p><h2 data-demo-title>달리기 전에 오늘의 날씨를 확인하세요.</h2><p data-demo-description>이용 가능한 경우 날씨와 바람을 보고 오늘의 운동을 정할 수 있습니다.</p><button class="demo-primary" type="button" data-demo-next>목적지 선택 <span aria-hidden="true">→</span></button></div>
+            <div class="demo-sheet"><span class="demo-sheet-handle" aria-hidden="true"></span><p class="demo-kicker" data-demo-kicker>날씨</p><h2 data-demo-title>운동 전 날씨 확인</h2><p data-demo-description>구독 중이거나 14일 체험 이용 중에는 기온·풍속·풍향을 확인할 수 있습니다.</p><button class="demo-primary" type="button" data-demo-next>목적지 선택 <span aria-hidden="true">→</span></button></div>
           </div>
           <div class="demo-stepper" role="group" aria-label="데모 화면 선택"><button type="button" data-demo-step="0" aria-label="날씨" aria-current="step"></button><button type="button" data-demo-step="1" aria-label="경로"></button><button type="button" data-demo-step="2" aria-label="운동 기록"></button><button type="button" data-demo-step="3" aria-label="이번 주 기록"></button><button type="button" data-demo-step="4" aria-label="챌린지"></button></div>
-          <p class="demo-privacy-note">위치나 계정 정보를 사용하지 않는 화면 데모입니다.</p>
+          <p class="demo-privacy-note">위치나 계정 정보를 사용하지 않는 기능 미리보기입니다.</p>
         </div>
       </div>
     </section>
 
-    <section id="how" class="section"><div class="container"><div class="section-heading centered reveal"><p class="eyebrow">Simple flow</p><h2>망설이는 시간은 줄이고,<br>움직인 시간은 남기세요.</h2><p>길게 달리지 못한 날도, 걷기만 한 날도 괜찮습니다. 필요한 정보와 기록을 한 흐름으로 묶었습니다.</p></div><div class="steps-grid">
-      <article class="step-card reveal"><span class="step-number">01</span><h3>운동 전 확인</h3><p>현재 위치와 목적지를 확인하고 걷기·달리기에 적합한 경로를 미리 봅니다. 대상 계정에서는 기온·풍속·풍향도 확인할 수 있습니다.</p></article>
-      <article class="step-card reveal"><span class="step-number">02</span><h3>GPS로 기록</h3><p>경로·거리·시간·걸음 수·예상 소모 칼로리를 기록합니다. 운동 중에는 꼭 필요한 숫자에 집중할 수 있습니다.</p></article>
-      <article class="step-card reveal"><span class="step-number">03</span><h3>나중에 돌아보기</h3><p>저장한 운동의 날짜·거리·시간·걸음 수를 목록에서 돌아봅니다.</p></article>
+    <section id="how" class="section"><div class="container"><div class="section-heading centered reveal"><p class="eyebrow">사용 방법</p><h2>경로 확인부터<br>운동 기록 저장까지</h2><p>목적지와 경로를 확인한 뒤 GPS 기록을 시작합니다. 저장한 운동은 목록에서 다시 볼 수 있습니다.</p></div><div class="steps-grid">
+      <article class="step-card reveal"><span class="step-number">01</span><h3>경로 확인</h3><p>현재 위치에서 목적지까지 걷기·달리기용 경로를 표시합니다. 구독 중이거나 14일 체험 이용 중에는 기온·풍속·풍향도 확인할 수 있습니다.</p></article>
+      <article class="step-card reveal"><span class="step-number">02</span><h3>GPS 기록</h3><p>경로·거리·시간·걸음 수·예상 소모 칼로리를 기록합니다. 운동 중에는 거리와 시간을 화면에서 확인할 수 있습니다.</p></article>
+      <article class="step-card reveal"><span class="step-number">03</span><h3>기록 확인</h3><p>저장한 운동의 날짜·거리·시간·걸음 수를 목록에서 확인할 수 있습니다.</p></article>
     </div></div></section>
 
     <section id="records" class="section"><div class="container showcase-list">
-      <article class="showcase-row"><div class="showcase-media reveal"><img src="/assets/workout-history.jpg" alt="실제 Motionly 일본어 앱의 운동 기록 화면" width="830" height="1800" loading="lazy" decoding="async"></div><div class="showcase-copy reveal"><span class="label">Your history</span><h3>이어온 기록이<br>나만의 페이스가 됩니다.</h3><p>짧게 달린 날도, 오랜만에 다시 시작한 날도 같은 방식으로 남습니다. 언제, 얼마나 움직였는지 목록에서 바로 확인하세요.</p><ul class="detail-list"><li>날짜·거리·시간·걸음 수를 목록으로 확인</li><li>저장한 경로 확인과 CSV 내보내기</li><li>새로운 기록부터 차례로 돌아보기</li></ul></div></article>
-      <article class="showcase-row"><div class="showcase-media reveal"><img src="/assets/challenges.jpg" alt="실제 Motionly 일본어 앱의 챌린지 목록 화면" width="830" height="1800" loading="lazy" decoding="async"></div><div class="showcase-copy reveal"><span class="label">Keep going</span><h3>다음 목표는<br>무리하지 않는 곳부터.</h3><p>거리나 연속 일수 챌린지를 꾸준히 움직이는 계기로 사용하세요. 경쟁보다 나에게 맞는 다음 한 걸음을 찾는 보조 기능입니다.</p><ul class="detail-list"><li>공개 챌린지 탐색과 참여</li><li>나만의 목표 만들기</li><li>16자리 코드나 QR로 친구 연결</li></ul></div></article>
-      <article class="showcase-row"><div class="showcase-media reveal"><img src="/assets/biorhythm.jpg" alt="실제 Motionly 일본어 앱의 바이오리듬 화면" width="830" height="1800" loading="lazy" decoding="async"></div><div class="showcase-copy reveal"><span class="label">For reference</span><h3>기분을 전환하는<br>작은 참고로.</h3><p>생년월일을 기준으로 오늘의 주기를 기기 안에서 계산합니다. 과학적·의학적 판단이 아닌 재미·참고용 콘텐츠입니다.</p><ul class="detail-list"><li>신체·감정·지성 주기 표시</li><li>기기 안에서 계산</li><li>운동과 건강 판단은 실제 몸 상태를 우선</li></ul></div></article>
-      <article class="showcase-row"><div class="showcase-media reveal"><img src="/assets/friends.jpg" alt="친구 코드를 가린 실제 Motionly 일본어 앱 화면" width="830" height="1800" loading="lazy" decoding="async"></div><div class="showcase-copy reveal"><span class="label">Move together</span><h3>혼자 달리는 날에도<br>이어질 계기를.</h3><p>16자리 코드나 QR로 상대를 찾고, 신청을 승인한 뒤 친구로 연결할 수 있습니다.</p><ul class="detail-list"><li>16자리 코드로 상대 확인</li><li>보내기 전 닉네임 미리보기</li><li>상대방 승인 후 친구로 추가</li></ul></div></article>
+      <article class="showcase-row"><div class="showcase-media reveal"><img src="/assets/workout-history.jpg" alt="실제 Motionly 일본어 앱의 운동 기록 화면" width="830" height="1800" loading="lazy" decoding="async"></div><div class="showcase-copy reveal"><span class="label">운동 기록</span><h3>저장한 운동을<br>날짜별로 확인하세요.</h3><p>달리기와 걷기 기록을 같은 목록에 저장합니다. 언제 운동했는지, 거리와 시간이 얼마였는지 다시 볼 수 있습니다.</p><ul class="detail-list"><li>날짜·거리·시간·걸음 수 확인</li><li>저장한 경로 열기 및 CSV 내보내기</li><li>최신 운동 기록부터 차례로 표시</li></ul></div></article>
+      <article class="showcase-row"><div class="showcase-media reveal"><img src="/assets/challenges.jpg" alt="실제 Motionly 일본어 앱의 챌린지 목록 화면" width="830" height="1800" loading="lazy" decoding="async"></div><div class="showcase-copy reveal"><span class="label">챌린지</span><h3>공개 챌린지에 참여하거나<br>개인 챌린지를 만드세요.</h3><p>거리와 연속 운동일을 기준으로 한 공개 챌린지에 참여하거나 개인 챌린지를 만들 수 있습니다.</p><ul class="detail-list"><li>공개 챌린지 검색 및 참여</li><li>개인 챌린지 만들기</li><li>거리·기간·참가자 수 확인</li></ul></div></article>
+      <article class="showcase-row"><div class="showcase-media reveal"><img src="/assets/biorhythm.jpg" alt="실제 Motionly 일본어 앱의 바이오리듬 화면" width="830" height="1800" loading="lazy" decoding="async"></div><div class="showcase-copy reveal"><span class="label">바이오리듬</span><h3>오늘의 바이오리듬을<br>참고 정보로 표시합니다.</h3><p>생년월일을 기준으로 신체·감정·지성 주기를 기기에서 계산합니다. 과학적·의학적 판단이 아닌 재미·참고용 기능입니다.</p><ul class="detail-list"><li>신체·감정·지성 주기 표시</li><li>기기에서 계산</li><li>건강·운동 판단 용도로 사용하지 않음</li></ul></div></article>
+      <article class="showcase-row"><div class="showcase-media reveal"><img src="/assets/friends.jpg" alt="친구 코드를 가린 실제 Motionly 일본어 앱 화면" width="830" height="1800" loading="lazy" decoding="async"></div><div class="showcase-copy reveal"><span class="label">친구</span><h3>16자리 코드로 검색하고<br>승인 후 친구로 추가하세요.</h3><p>16자리 코드로 상대를 검색하고, 신청이 승인되면 친구로 추가됩니다. QR 스캔은 구독 중이거나 14일 체험 이용 중에 사용할 수 있습니다.</p><ul class="detail-list"><li>16자리 코드로 사용자 검색</li><li>신청 전에 닉네임 확인</li><li>상대방 승인 후 친구 추가</li></ul></div></article>
     </div></section>
 
-    <section id="features" class="section"><div class="container"><div class="section-heading centered reveal"><p class="eyebrow">More useful details</p><h2>기록만 하고 끝나지 않도록.</h2><p>운동을 이어가기 쉽고, 공유할 때는 사생활을 고려할 수 있는 기능을 담았습니다.</p></div><div class="feature-grid">
-      <article class="feature-card reveal"><span class="feature-icon">MAP</span><h3>도보 중심 경로</h3><p>목적지를 검색하고 걷기·달리기에 적합한 경로를 미리 확인한 뒤 시작할 수 있습니다.</p></article>
-      <article class="feature-card reveal"><span class="feature-icon">CARD</span><h3>결과를 한 장으로</h3><p>경로·거리·시간·걸음 수를 공유 카드로 만듭니다. 시작·종료 지점 양쪽 200m를 표시에서 제외할 수 있습니다.</p></article>
-      <article class="feature-card reveal"><span class="feature-icon">LOCAL</span><h3>계정별 로컬 저장</h3><p>기기 안 운동 기록은 계정별로 분리합니다. 온라인 기능에 필요한 정보만 Firebase에서 처리합니다.</p></article>
+    <section id="features" class="section"><div class="container"><div class="section-heading centered reveal"><p class="eyebrow">추가 기능</p><h2>경로 표시·공유·기기 저장</h2><p>걷기·달리기용 경로 표시, 운동 결과 공유, 계정별 기기 저장 기능을 제공합니다.</p></div><div class="feature-grid">
+      <article class="feature-card reveal"><span class="feature-icon">MAP</span><h3>걷기·달리기용 경로</h3><p>목적지를 검색하고 걷기·달리기용 경로를 미리 확인한 뒤 기록을 시작할 수 있습니다.</p></article>
+      <article class="feature-card reveal"><span class="feature-icon">CARD</span><h3>운동 결과 공유 카드</h3><p>경로·거리·시간·걸음 수를 공유 카드로 만듭니다. 경로 양 끝에서 각각 200m를 이미지에 표시하지 않도록 설정할 수 있습니다.</p></article>
+      <article class="feature-card reveal"><span class="feature-icon">LOCAL</span><h3>계정별 기기 저장</h3><p>기기의 운동 기록은 로그인한 계정별로 분리합니다. 온라인 기능에 필요한 정보는 Firebase에서 처리합니다.</p></article>
     </div></div></section>
 
-    <section class="section"><div class="container"><div class="privacy-panel reveal"><div><p class="eyebrow">Privacy by context</p><h2>로컬 기록과 온라인 기능을 구분합니다.</h2><p>GPS 운동 기록 등은 기기 안 저장을 중심으로 합니다. 계정, 친구, 챌린지, 선택적 위치 공유 같은 온라인 기능에서는 제공에 필요한 정보를 Firebase에서 처리합니다.</p><a class="button secondary" href="/privacy-ko.html">개인정보 처리방침</a></div><ul class="privacy-points"><li>직접 기간을 선택할 때만 위치 공유</li><li>공유 카드에서 경로 양 끝을 숨길 수 있음</li><li>운동 기록은 계정별 기기 영역에 저장</li></ul></div></div></section>
+    <section class="section"><div class="container"><div class="privacy-panel reveal"><div><p class="eyebrow">데이터 저장</p><h2>기기 저장과 온라인 저장</h2><p>GPS 운동 기록은 주로 기기에 저장합니다. 계정·친구·챌린지·선택적 위치 공유 기능에 필요한 정보는 Firebase에서 처리합니다.</p><a class="button secondary" href="/privacy-ko.html">개인정보 처리방침</a></div><ul class="privacy-points"><li>직접 기간을 선택해 켠 경우에만 위치 공유</li><li>공유 카드에서 경로 양 끝 각 200m를 숨길 수 있음</li><li>기기 운동 기록은 계정별로 분리해 저장</li></ul></div></div></section>
 
     <section id="faq" class="section"><div class="container"><div class="section-heading centered reveal"><p class="eyebrow">FAQ</p><h2>자주 묻는 질문</h2></div><div class="faq-grid">
       <details class="faq-card reveal"><summary>어떤 사람을 위한 앱인가요?</summary><p>처음 달리는 사람, 오랜만에 다시 시작하는 사람, 짧은 러닝이나 걷기를 간단히 기록하고 싶은 사람을 위한 앱입니다.</p></details>
-      <details class="faq-card reveal"><summary>모든 기능이 무료인가요?</summary><p>GPS 기록 같은 기본 기능과 계정 상태에 따라 사용할 수 있는 기능이 있습니다. 가격과 이용 조건은 App Store 및 앱 내 구매 화면에서 확인하세요.</p></details>
+      <details class="faq-card reveal"><summary>모든 기능이 무료인가요?</summary><p>GPS 기록 같은 기본 기능이 있습니다. 일부 기능은 구독 중이거나 14일 체험 이용 중에 사용할 수 있습니다. 가격과 이용 조건은 App Store 및 앱 내 구매 화면에서 확인하세요.</p></details>
       <details class="faq-card reveal"><summary>운동을 시작하면 위치가 자동 공유되나요?</summary><p>아닙니다. 위치 공유는 자동으로 켜지지 않으며 직접 공유 기간을 선택한 경우에만 전송됩니다.</p></details>
       <details class="faq-card reveal"><summary>바이오리듬을 건강 판단에 쓸 수 있나요?</summary><p>아닙니다. 재미·참고용 콘텐츠이며 의료·건강·운동 강도 판단의 근거로 사용하면 안 됩니다.</p></details>
     </div></div></section>
 
-    <section class="section"><div class="container final-cta reveal"><h2>오늘은 어디까지 가볼까요?</h2><p>짧아도, 걸어도 괜찮습니다. Motionly에 오늘의 한 걸음을 기록하세요.</p><div class="cta-row" style="justify-content:center"><a class="button orange" href="https://apps.apple.com/kr/app/id6752832437" target="_blank" rel="noopener">App Store에서 보기 <span aria-hidden="true">↗</span></a></div></div></section>
+    <section class="section"><div class="container final-cta reveal"><h2>Motionly를 App Store에서 확인하세요.</h2><p>달리기와 걷기의 경로·거리·시간을 GPS로 기록할 수 있습니다.</p><div class="cta-row" style="justify-content:center"><a class="button orange" href="https://apps.apple.com/kr/app/id6752832437" target="_blank" rel="noopener">App Store에서 보기 <span aria-hidden="true">↗</span></a></div></div></section>
   </main>
 
   <footer class="site-footer"><div class="container footer-inner"><span>© <span data-current-year>2026</span> Motionly</span><nav class="footer-links" aria-label="하단 메뉴"><a href="/support.html#ko">지원</a><a href="/privacy-ko.html">개인정보</a><a href="/news.html?lang=ko">소식</a><a href="mailto:sposedon0@gmail.com">문의</a></nav></div></footer>
   <script src="/scripts/site.js?v=20260818" defer></script>
-  <script src="/scripts/app-demo.js?v=20260820" defer></script>
+  <script src="/scripts/app-demo.js?v=20260821" defer></script>
 </body>
 </html>

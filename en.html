@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Motionly — Turn “maybe later” into today’s run.</title>
-  <meta name="description" content="Check your location and destination, record your route, distance, and time with GPS, then review your saved workout history.">
+  <title>Motionly — GPS Run &amp; Walk Tracker</title>
+  <meta name="description" content="Preview a route to your destination, then record distance, time, and steps with GPS. Review saved workouts in one list.">
   <meta name="theme-color" content="#06080b">
   <link rel="canonical" href="https://motionly.net/en.html">
   <link rel="alternate" hreflang="ja" href="https://motionly.net/">
@@ -14,8 +14,8 @@
   <link rel="icon" href="/assets/app-icon.png" type="image/png">
   <link rel="stylesheet" href="/styles/site.css?v=20260818">
   <link rel="stylesheet" href="/styles/app-demo.css?v=20260820">
-  <meta property="og:title" content="Motionly — Turn “maybe later” into today’s run.">
-  <meta property="og:description" content="Check the weather, track with GPS, and look back on the days you kept moving.">
+  <meta property="og:title" content="Motionly — GPS Run &amp; Walk Tracker">
+  <meta property="og:description" content="Preview a route, then record distance, time, and steps with GPS. Review saved workouts in one list.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://motionly.net/en.html">
   <meta property="og:site_name" content="Motionly">
@@ -31,14 +31,14 @@
 
   <main id="main">
     <section class="container hero">
-      <div class="hero-copy reveal"><p class="eyebrow">Running &amp; walking log</p><h1>Turn “maybe later” into <span class="accent-text">today’s run.</span></h1><p class="lead">Check your current location and destination, record your route, distance, and time with GPS, then review this week’s goal and your workout history.</p><div class="cta-row"><a class="button orange" href="https://apps.apple.com/us/app/id6752832437" target="_blank" rel="noopener">View on the App Store <span aria-hidden="true">↗</span></a><a class="button secondary" href="#demo">Try the demo</a></div><p class="support-line">Made for iPhone · iOS 18.5 or later · 日本語 / 한국어 / English</p></div>
+      <div class="hero-copy reveal"><p class="eyebrow">GPS run &amp; walk tracking</p><h1>Track runs and walks<br><span class="accent-text">with GPS.</span></h1><p class="lead">Preview a route to your destination, then record your route, distance, time, and steps with GPS. Open saved workouts whenever you want to review them.</p><div class="cta-row"><a class="button orange" href="https://apps.apple.com/us/app/id6752832437" target="_blank" rel="noopener">View on the App Store <span aria-hidden="true">↗</span></a><a class="button secondary" href="#demo">See the features</a></div><p class="support-line">Made for iPhone · iOS 18.5 or later · 日本語 / 한국어 / English</p></div>
       <div id="demo" class="hero-visual hero-demo-visual reveal">
         <div class="app-demo" data-motionly-demo data-demo-locale="en" data-state="0">
           <p class="sr-only" role="status" aria-live="polite" data-demo-status></p>
           <div class="demo-aurora" aria-hidden="true"></div>
           <div class="demo-topbar">
             <span class="demo-clock" aria-hidden="true">8:26</span>
-            <span class="demo-badge"><span class="demo-badge-dot" aria-hidden="true"></span><span data-demo-badge>Screen demo</span></span>
+            <span class="demo-badge"><span class="demo-badge-dot" aria-hidden="true"></span><span data-demo-badge>Feature preview</span></span>
             <button class="demo-reset" type="button" data-demo-reset aria-label="Restart demo">↻</button>
           </div>
           <div class="demo-canvas">
@@ -50,50 +50,50 @@
               <div class="demo-weather weather-wind"><span aria-hidden="true">↗</span><strong>0.9 m/s</strong></div>
               <div class="demo-destination"><span aria-hidden="true">⌖</span><span data-demo-destination>Hibiya Park</span><small>1.8 km</small></div>
               <div class="demo-live-metrics"><div><span data-demo-distance>0.00</span><small>km</small></div><div><span data-demo-time>00:00</span><small>time</small></div><div><span data-demo-steps>0</span><small>steps</small></div></div>
-              <div class="demo-summary-card"><span class="demo-card-kicker" data-demo-summary-kicker>THIS WEEK</span><strong data-demo-summary-title>You moved three times this week.</strong><div class="demo-summary-stats"><span><b>3</b><small>workouts</small></span><span><b>8.4</b><small>km</small></span><span><b>52</b><small>min</small></span></div></div>
-              <div class="demo-challenge-card"><span class="demo-card-kicker" data-demo-challenge-kicker>NEXT GOAL</span><div class="challenge-heading"><span aria-hidden="true">🎯</span><div><strong data-demo-challenge-title>First 10K</strong><small data-demo-challenge-subtitle>Log 10 km in 30 days.</small></div></div><div class="challenge-meta"><span><b>10 km</b><small>goal</small></span><span><b>30 days</b><small>period</small></span><span><b>public</b><small>setting</small></span></div></div>
+              <div class="demo-summary-card"><span class="demo-card-kicker" data-demo-summary-kicker>THIS WEEK</span><strong data-demo-summary-title>3 workouts this week</strong><div class="demo-summary-stats"><span><b>3</b><small>workouts</small></span><span><b>8.4</b><small>km</small></span><span><b>52</b><small>min</small></span></div></div>
+              <div class="demo-challenge-card"><span class="demo-card-kicker" data-demo-challenge-kicker>CHALLENGE</span><div class="challenge-heading"><span aria-hidden="true">🎯</span><div><strong data-demo-challenge-title>First 10K</strong><small data-demo-challenge-subtitle>Log 10 km in 30 days.</small></div></div><div class="challenge-meta"><span><b>10 km</b><small>goal</small></span><span><b>30 days</b><small>period</small></span><span><b>public</b><small>setting</small></span></div></div>
             </div>
-            <div class="demo-sheet"><span class="demo-sheet-handle" aria-hidden="true"></span><p class="demo-kicker" data-demo-kicker>TODAY</p><h2 data-demo-title>Check the weather before you go.</h2><p data-demo-description>Where available, check weather and wind before deciding how far to go.</p><button class="demo-primary" type="button" data-demo-next>Choose a destination <span aria-hidden="true">→</span></button></div>
+            <div class="demo-sheet"><span class="demo-sheet-handle" aria-hidden="true"></span><p class="demo-kicker" data-demo-kicker>WEATHER</p><h2 data-demo-title>Check weather before a workout</h2><p data-demo-description>Temperature and wind are available with a subscription or active 14-day trial.</p><button class="demo-primary" type="button" data-demo-next>Choose a destination <span aria-hidden="true">→</span></button></div>
           </div>
           <div class="demo-stepper" role="group" aria-label="Choose demo screen"><button type="button" data-demo-step="0" aria-label="Weather" aria-current="step"></button><button type="button" data-demo-step="1" aria-label="Route"></button><button type="button" data-demo-step="2" aria-label="Workout tracking"></button><button type="button" data-demo-step="3" aria-label="Weekly history"></button><button type="button" data-demo-step="4" aria-label="Challenge"></button></div>
-          <p class="demo-privacy-note">A screen demo that does not use your location or account data.</p>
+          <p class="demo-privacy-note">This feature preview does not use your location or account data.</p>
         </div>
       </div>
     </section>
 
-    <section id="how" class="section"><div class="container"><div class="section-heading centered reveal"><p class="eyebrow">Simple flow</p><h2>Spend less time deciding.<br>Keep the time you moved.</h2><p>Long runs, short jogs, and walking days all count. Motionly keeps the information and record in one simple flow.</p></div><div class="steps-grid">
-      <article class="step-card reveal"><span class="step-number">01</span><h3>Check before you go</h3><p>See your current location and destination, then preview a walking-friendly route. Eligible accounts can also view temperature, wind speed, and direction.</p></article>
-      <article class="step-card reveal"><span class="step-number">02</span><h3>Track with GPS</h3><p>Record route, distance, time, steps, and estimated calories while keeping the live view focused on the essentials.</p></article>
-      <article class="step-card reveal"><span class="step-number">03</span><h3>Look back later</h3><p>Review the date, distance, time, and steps from workouts you have saved.</p></article>
+    <section id="how" class="section"><div class="container"><div class="section-heading centered reveal"><p class="eyebrow">How it works</p><h2>From route preview<br>to saved workout</h2><p>Choose a destination, preview the route, and start GPS tracking. Saved workouts remain available in your history.</p></div><div class="steps-grid">
+      <article class="step-card reveal"><span class="step-number">01</span><h3>Preview a route</h3><p>View a route for walking or running from your current location to the destination. Temperature and wind are available with a subscription or active 14-day trial.</p></article>
+      <article class="step-card reveal"><span class="step-number">02</span><h3>Track with GPS</h3><p>Record route, distance, time, steps, and estimated calories. View distance and time on screen during a workout.</p></article>
+      <article class="step-card reveal"><span class="step-number">03</span><h3>Review saved workouts</h3><p>View the date, distance, time, and steps for each saved workout.</p></article>
     </div></div></section>
 
     <section id="records" class="section"><div class="container showcase-list">
-      <article class="showcase-row"><div class="showcase-media reveal"><img src="/assets/workout-history.jpg" alt="Actual Motionly app screen in Japanese showing workout history" width="830" height="1800" loading="lazy" decoding="async"></div><div class="showcase-copy reveal"><span class="label">Your history</span><h3>Your history becomes<br>your own pace.</h3><p>A short jog and a first run back both deserve a place in your record. Quickly see when you moved and how far you went.</p><ul class="detail-list"><li>Review date, distance, time, and steps</li><li>Open saved routes and export CSV files</li><li>Review saved workouts from newest to oldest</li></ul></div></article>
-      <article class="showcase-row"><div class="showcase-media reveal"><img src="/assets/challenges.jpg" alt="Actual Motionly app screen in Japanese showing the challenge list" width="830" height="1800" loading="lazy" decoding="async"></div><div class="showcase-copy reveal"><span class="label">Keep going</span><h3>Make the next goal<br>one you can reach.</h3><p>Use distance and streak challenges as a small reason to keep moving. They are designed to support your next step, not turn every workout into a competition.</p><ul class="detail-list"><li>Find and join public challenges</li><li>Create a personal goal</li><li>Connect with a 16-digit friend code or QR</li></ul></div></article>
-      <article class="showcase-row"><div class="showcase-media reveal"><img src="/assets/biorhythm.jpg" alt="Actual Motionly app screen in Japanese showing biorhythm" width="830" height="1800" loading="lazy" decoding="async"></div><div class="showcase-copy reveal"><span class="label">For reference</span><h3>A small prompt<br>to change your mood.</h3><p>Motionly calculates a daily cycle from your birth date on the device. Biorhythm is entertainment and reference content, not a scientific or medical assessment.</p><ul class="detail-list"><li>Physical, emotional, and intellectual cycles</li><li>Calculated on the device</li><li>Always prioritize how you actually feel</li></ul></div></article>
-      <article class="showcase-row"><div class="showcase-media reveal"><img src="/assets/friends.jpg" alt="Actual Motionly app screen in Japanese with the friend code masked" width="830" height="1800" loading="lazy" decoding="async"></div><div class="showcase-copy reveal"><span class="label">Move together</span><h3>Make connection<br>one more reason to move.</h3><p>Find someone with a 16-digit code or QR, then connect as friends after they approve the request.</p><ul class="detail-list"><li>Check a profile with a 16-digit code</li><li>Preview a nickname before sending</li><li>Connect only after the other person approves</li></ul></div></article>
+      <article class="showcase-row"><div class="showcase-media reveal"><img src="/assets/workout-history.jpg" alt="Actual Motionly app screen in Japanese showing workout history" width="830" height="1800" loading="lazy" decoding="async"></div><div class="showcase-copy reveal"><span class="label">Workout history</span><h3>Review saved workouts<br>by date.</h3><p>Runs and walks are saved in the same list. View when you exercised, how far you went, and how long it took.</p><ul class="detail-list"><li>View date, distance, time, and steps</li><li>Open saved routes and export CSV files</li><li>View the newest workouts first</li></ul></div></article>
+      <article class="showcase-row"><div class="showcase-media reveal"><img src="/assets/challenges.jpg" alt="Actual Motionly app screen in Japanese showing the challenge list" width="830" height="1800" loading="lazy" decoding="async"></div><div class="showcase-copy reveal"><span class="label">Challenges</span><h3>Join public challenges<br>or create your own.</h3><p>Join public distance or workout-streak challenges, or create a personal challenge.</p><ul class="detail-list"><li>Browse and join public challenges</li><li>Create a personal challenge</li><li>View distance, duration, and participant count</li></ul></div></article>
+      <article class="showcase-row"><div class="showcase-media reveal"><img src="/assets/biorhythm.jpg" alt="Actual Motionly app screen in Japanese showing biorhythm" width="830" height="1800" loading="lazy" decoding="async"></div><div class="showcase-copy reveal"><span class="label">Biorhythm</span><h3>View today’s biorhythm.</h3><p>Motionly calculates physical, emotional, and intellectual cycles from your birth date on the device. This is for entertainment and reference, not a scientific or medical assessment.</p><ul class="detail-list"><li>View three daily cycles</li><li>Calculated on the device</li><li>Not intended for health or workout decisions</li></ul></div></article>
+      <article class="showcase-row"><div class="showcase-media reveal"><img src="/assets/friends.jpg" alt="Actual Motionly app screen in Japanese with the friend code masked" width="830" height="1800" loading="lazy" decoding="async"></div><div class="showcase-copy reveal"><span class="label">Friends</span><h3>Search by 16-digit code<br>and add friends after approval.</h3><p>Search with a 16-digit code. The person is added as a friend after they approve the request. QR scanning is available with a subscription or active 14-day trial.</p><ul class="detail-list"><li>Search with a 16-digit code</li><li>Check the nickname before sending</li><li>Add the person after approval</li></ul></div></article>
     </div></section>
 
-    <section id="features" class="section"><div class="container"><div class="section-heading centered reveal"><p class="eyebrow">More useful details</p><h2>More than a finish button.</h2><p>Thoughtful details help you keep moving and protect private places when you share a result.</p></div><div class="feature-grid">
-      <article class="feature-card reveal"><span class="feature-icon">MAP</span><h3>Walking-friendly routes</h3><p>Search for a destination and preview a route suited to walking or running before you begin.</p></article>
-      <article class="feature-card reveal"><span class="feature-icon">CARD</span><h3>One-card results</h3><p>Share route, distance, time, and steps. You can omit 200 m at both ends of the route from the image.</p></article>
-      <article class="feature-card reveal"><span class="feature-icon">LOCAL</span><h3>Account-scoped storage</h3><p>On-device workout records are separated by account. Only online features use the information they need in Firebase.</p></article>
+    <section id="features" class="section"><div class="container"><div class="section-heading centered reveal"><p class="eyebrow">Additional features</p><h2>Route preview, sharing, and storage</h2><p>Preview routes, create workout share cards, and keep on-device records separated by account.</p></div><div class="feature-grid">
+      <article class="feature-card reveal"><span class="feature-icon">MAP</span><h3>Routes for walking and running</h3><p>Search for a destination and preview a route for walking or running before you start tracking.</p></article>
+      <article class="feature-card reveal"><span class="feature-icon">CARD</span><h3>Workout share cards</h3><p>Create a card with route, distance, time, and steps. You can omit 200 m from each end of the route in the image.</p></article>
+      <article class="feature-card reveal"><span class="feature-icon">LOCAL</span><h3>Separate records by account</h3><p>On-device workout records are separated by the signed-in account. Firebase processes information required by online features.</p></article>
     </div></div></section>
 
-    <section class="section"><div class="container"><div class="privacy-panel reveal"><div><p class="eyebrow">Privacy by context</p><h2>Local records and online features are treated differently.</h2><p>GPS workout records are primarily stored on your device. Account, friends, challenges, and optional location sharing use Firebase for the information required to provide those features.</p><a class="button secondary" href="/privacy-en.html">Read the privacy policy</a></div><ul class="privacy-points"><li>Location is shared only for a period you choose</li><li>Hide both ends of a route on share cards</li><li>Keep workout files in an account-specific device area</li></ul></div></div></section>
+    <section class="section"><div class="container"><div class="privacy-panel reveal"><div><p class="eyebrow">Data storage</p><h2>On-device and online storage</h2><p>GPS workout records are stored primarily on the device. Firebase processes information required for accounts, friends, challenges, and optional location sharing.</p><a class="button secondary" href="/privacy-en.html">Read the privacy policy</a></div><ul class="privacy-points"><li>Location is shared only after you choose a duration</li><li>Hide 200 m from each end of the route on share cards</li><li>Keep on-device workout files separated by account</li></ul></div></div></section>
 
     <section id="faq" class="section"><div class="container"><div class="section-heading centered reveal"><p class="eyebrow">FAQ</p><h2>Frequently asked questions</h2></div><div class="faq-grid">
       <details class="faq-card reveal"><summary>Who is Motionly for?</summary><p>People starting to run, returning after a break, or looking for a simple way to track short runs and walks.</p></details>
-      <details class="faq-card reveal"><summary>Is every feature free?</summary><p>Motionly includes core GPS recording and features that depend on account access. Check the App Store and in-app purchase screen for current prices and eligibility.</p></details>
+      <details class="faq-card reveal"><summary>Is every feature free?</summary><p>Motionly includes core GPS recording. Some features are available with a subscription or active 14-day trial. Check the App Store and in-app purchase screen for current prices and eligibility.</p></details>
       <details class="faq-card reveal"><summary>Does a workout automatically share my location?</summary><p>No. Friend location sharing stays off unless you explicitly choose a sharing period.</p></details>
       <details class="faq-card reveal"><summary>Can biorhythm guide health decisions?</summary><p>No. It is entertainment and reference content and should not be used for medical, health, or workout-intensity decisions.</p></details>
     </div></div></section>
 
-    <section class="section"><div class="container final-cta reveal"><h2>Where will today take you?</h2><p>A short run or a walk still counts. Keep today’s step in Motionly.</p><div class="cta-row" style="justify-content:center"><a class="button orange" href="https://apps.apple.com/us/app/id6752832437" target="_blank" rel="noopener">View on the App Store <span aria-hidden="true">↗</span></a></div></div></section>
+    <section class="section"><div class="container final-cta reveal"><h2>View Motionly on the App Store.</h2><p>Track route, distance, and time for runs and walks with GPS.</p><div class="cta-row" style="justify-content:center"><a class="button orange" href="https://apps.apple.com/us/app/id6752832437" target="_blank" rel="noopener">View on the App Store <span aria-hidden="true">↗</span></a></div></div></section>
   </main>
 
   <footer class="site-footer"><div class="container footer-inner"><span>© <span data-current-year>2026</span> Motionly</span><nav class="footer-links" aria-label="Footer"><a href="/support.html#en">Support</a><a href="/privacy-en.html">Privacy</a><a href="/news.html?lang=en">Updates</a><a href="mailto:sposedon0@gmail.com">Contact</a></nav></div></footer>
   <script src="/scripts/site.js?v=20260818" defer></script>
-  <script src="/scripts/app-demo.js?v=20260820" defer></script>
+  <script src="/scripts/app-demo.js?v=20260821" defer></script>
 </body>
 </html>

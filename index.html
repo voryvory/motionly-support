@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Motionly — 走ろうか迷う日を、走る日に。</title>
-  <meta name="description" content="天気と行き先を確認し、GPSでルート・距離・時間を記録。保存した運動をあとから振り返れるiPhoneランニングアプリです。">
+  <title>Motionly — GPSでランニング・ウォーキングを記録</title>
+  <meta name="description" content="行き先までのルートを確認し、GPSで距離・時間・歩数を記録できるiPhone向けアプリです。保存した運動は一覧で確認できます。">
   <meta name="theme-color" content="#06080b">
   <link rel="canonical" href="https://motionly.net/">
   <link rel="alternate" hreflang="ja" href="https://motionly.net/">
@@ -14,15 +14,15 @@
   <link rel="icon" href="/assets/app-icon.png" type="image/png">
   <link rel="stylesheet" href="/styles/site.css?v=20260818">
   <link rel="stylesheet" href="/styles/app-demo.css?v=20260820">
-  <meta property="og:title" content="Motionly — 走ろうか迷う日を、走る日に。">
-  <meta property="og:description" content="天気を見て、GPSで記録。続けた日々を振り返る。">
+  <meta property="og:title" content="Motionly — GPSでランニング・ウォーキングを記録">
+  <meta property="og:description" content="行き先までのルートを確認し、GPSで距離・時間・歩数を記録。保存した運動は一覧で確認できます。">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://motionly.net/">
   <meta property="og:site_name" content="Motionly">
   <meta property="og:locale" content="ja_JP">
   <meta name="twitter:card" content="summary">
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"SoftwareApplication","name":"Motionly - GPS ランニング","applicationCategory":"HealthApplication","operatingSystem":"iOS 18.5 or later","url":"https://motionly.net/","downloadUrl":"https://apps.apple.com/jp/app/id6752832437","description":"GPSでルート・距離・時間を記録し、保存した運動を振り返れるiPhoneランニングアプリ。"}
+  {"@context":"https://schema.org","@type":"SoftwareApplication","name":"Motionly - GPS ランニング","applicationCategory":"HealthApplication","operatingSystem":"iOS 18.5 or later","url":"https://motionly.net/","downloadUrl":"https://apps.apple.com/jp/app/id6752832437","description":"GPSでルート・距離・時間・歩数を記録し、保存した運動を一覧で確認できるiPhone向けアプリ。"}
   </script>
 </head>
 <body>
@@ -40,10 +40,10 @@
   <main id="main">
     <section class="container hero">
       <div class="hero-copy reveal">
-        <p class="eyebrow">Running &amp; walking log</p>
-        <h1>走ろうか迷う日を、<span class="accent-text">走る日に。</span></h1>
-        <p class="lead">現在地と行き先を確認し、GPSでルート・距離・時間を記録。今週の目標と、続けてきた日々をひと目で振り返れます。</p>
-        <div class="cta-row"><a class="button orange" href="https://apps.apple.com/jp/app/id6752832437" target="_blank" rel="noopener">App Storeで見る <span aria-hidden="true">↗</span></a><a class="button secondary" href="#demo">デモを試す</a></div>
+        <p class="eyebrow">GPSランニング・ウォーキング記録</p>
+        <h1>ランニングとウォーキングを<br><span class="accent-text">GPSで記録。</span></h1>
+        <p class="lead">行き先までのルートを確認し、運動を始めるとGPSでルート・距離・時間・歩数を記録します。保存した記録は一覧から確認できます。</p>
+        <div class="cta-row"><a class="button orange" href="https://apps.apple.com/jp/app/id6752832437" target="_blank" rel="noopener">App Storeで見る <span aria-hidden="true">↗</span></a><a class="button secondary" href="#demo">機能を確認</a></div>
         <p class="support-line">iPhone対応 · iOS 18.5以降 · 日本語 / 한국어 / English</p>
       </div>
       <div id="demo" class="hero-visual hero-demo-visual reveal">
@@ -52,7 +52,7 @@
           <div class="demo-aurora" aria-hidden="true"></div>
           <div class="demo-topbar">
             <span class="demo-clock" aria-hidden="true">8:26</span>
-            <span class="demo-badge"><span class="demo-badge-dot" aria-hidden="true"></span><span data-demo-badge>画面デモ</span></span>
+            <span class="demo-badge"><span class="demo-badge-dot" aria-hidden="true"></span><span data-demo-badge>機能プレビュー</span></span>
             <button class="demo-reset" type="button" data-demo-reset aria-label="デモを最初から見る">↻</button>
           </div>
           <div class="demo-canvas">
@@ -73,21 +73,21 @@
                 <div><span data-demo-steps>0</span><small>歩数</small></div>
               </div>
               <div class="demo-summary-card">
-                <span class="demo-card-kicker" data-demo-summary-kicker>THIS WEEK</span>
-                <strong data-demo-summary-title>3回、続けられました。</strong>
+                <span class="demo-card-kicker" data-demo-summary-kicker>今週の記録</span>
+                <strong data-demo-summary-title>今週は3回記録</strong>
                 <div class="demo-summary-stats"><span><b>3</b><small>回</small></span><span><b>8.4</b><small>km</small></span><span><b>52</b><small>分</small></span></div>
               </div>
               <div class="demo-challenge-card">
-                <span class="demo-card-kicker" data-demo-challenge-kicker>NEXT GOAL</span>
+                <span class="demo-card-kicker" data-demo-challenge-kicker>チャレンジ</span>
                 <div class="challenge-heading"><span aria-hidden="true">🎯</span><div><strong data-demo-challenge-title>最初の10K</strong><small data-demo-challenge-subtitle>30日以内に合計10km。</small></div></div>
                 <div class="challenge-meta"><span><b>10 km</b><small>目標</small></span><span><b>30日</b><small>期間</small></span><span><b>公開</b><small>設定</small></span></div>
               </div>
             </div>
             <div class="demo-sheet">
               <span class="demo-sheet-handle" aria-hidden="true"></span>
-              <p class="demo-kicker" data-demo-kicker>TODAY</p>
-              <h2 data-demo-title>走る前に、今日を確認。</h2>
-              <p data-demo-description>利用できる場合は、天気と風を見て今日の運動を決められます。</p>
+              <p class="demo-kicker" data-demo-kicker>天気</p>
+              <h2 data-demo-title>運動前の天気を確認</h2>
+              <p data-demo-description>購読中または14日間の体験利用中は、気温・風速・風向を確認できます。</p>
               <button class="demo-primary" type="button" data-demo-next>行き先を選ぶ <span aria-hidden="true">→</span></button>
             </div>
           </div>
@@ -98,68 +98,68 @@
             <button type="button" data-demo-step="3" aria-label="今週の記録"></button>
             <button type="button" data-demo-step="4" aria-label="チャレンジ"></button>
           </div>
-          <p class="demo-privacy-note">位置情報やアカウント情報は使用しない画面デモです。</p>
+          <p class="demo-privacy-note">位置情報やアカウント情報を使用しない機能プレビューです。</p>
         </div>
       </div>
     </section>
 
     <section id="how" class="section"><div class="container">
-      <div class="section-heading centered reveal"><p class="eyebrow">Simple flow</p><h2>迷う時間を減らして、<br>走った時間を残す。</h2><p>長く走れない日も、歩くだけの日も。必要な情報と記録を一つの流れにまとめました。</p></div>
+      <div class="section-heading centered reveal"><p class="eyebrow">使い方</p><h2>ルート確認から<br>運動記録の保存まで</h2><p>行き先とルートを確認してからGPS記録を始めます。保存した運動は一覧から確認できます。</p></div>
       <div class="steps-grid">
-        <article class="step-card reveal"><span class="step-number">01</span><h3>走る前に確認</h3><p>現在地と行き先を確認し、歩行向けのルートをプレビュー。対象アカウントでは気温・風速・風向も確認できます。</p></article>
-        <article class="step-card reveal"><span class="step-number">02</span><h3>GPSで記録</h3><p>ルート・距離・時間・歩数・推定消費カロリーを記録。運動中は必要な数字に集中できます。</p></article>
-        <article class="step-card reveal"><span class="step-number">03</span><h3>あとから振り返る</h3><p>保存した運動の日付・距離・時間・歩数を一覧から見返せます。</p></article>
+        <article class="step-card reveal"><span class="step-number">01</span><h3>ルートを確認</h3><p>現在地から行き先までの徒歩・ランニング向けルートを表示します。購読中または14日間の体験利用中は、気温・風速・風向も確認できます。</p></article>
+        <article class="step-card reveal"><span class="step-number">02</span><h3>GPSで記録</h3><p>ルート・距離・時間・歩数・推定消費カロリーを記録します。運動中は距離や時間を画面で確認できます。</p></article>
+        <article class="step-card reveal"><span class="step-number">03</span><h3>記録を確認</h3><p>保存した運動の日付・距離・時間・歩数を一覧で確認できます。</p></article>
       </div>
     </div></section>
 
     <section id="records" class="section"><div class="container showcase-list">
       <article class="showcase-row">
         <div class="showcase-media reveal"><img src="/assets/workout-history.jpg" alt="実際のMotionly日本語アプリの運動記録画面" width="830" height="1800" loading="lazy" decoding="async"></div>
-        <div class="showcase-copy reveal"><span class="label">Your history</span><h3>続けた記録が、<br>自分のペースになる。</h3><p>短いランも、久しぶりの一歩も、同じように残ります。いつ走ったか、どれくらい動いたかを、一覧からすぐ確認できます。</p><ul class="detail-list"><li>日付・距離・時間・歩数を一覧表示</li><li>保存したルートの確認とCSV書き出し</li><li>新しい記録から順に振り返る</li></ul></div>
+        <div class="showcase-copy reveal"><span class="label">運動記録</span><h3>保存した運動を<br>日付ごとに確認。</h3><p>ランニングとウォーキングの記録を同じ一覧に保存します。日付・距離・時間・歩数をあとから確認できます。</p><ul class="detail-list"><li>日付・距離・時間・歩数を一覧表示</li><li>保存したルートの確認とCSV書き出し</li><li>新しい記録から順に表示</li></ul></div>
       </article>
       <article class="showcase-row">
         <div class="showcase-media reveal"><img src="/assets/challenges.jpg" alt="実際のMotionly日本語アプリのチャレンジ一覧画面" width="830" height="1800" loading="lazy" decoding="async"></div>
-        <div class="showcase-copy reveal"><span class="label">Keep going</span><h3>次の目標は、<br>無理のないところから。</h3><p>距離や連続日数のチャレンジを、続けるきっかけに。競うことよりも、自分に合う次の一歩を見つけるための補助機能です。</p><ul class="detail-list"><li>公開チャレンジを見つけて参加</li><li>自分の目標を作成</li><li>友だちとは16桁コードやQRで接続</li></ul></div>
+        <div class="showcase-copy reveal"><span class="label">チャレンジ</span><h3>公開チャレンジに参加し、<br>自分のチャレンジを作成。</h3><p>距離や連続日数を目標にした公開チャレンジに参加したり、自分でチャレンジを作成したりできます。</p><ul class="detail-list"><li>公開チャレンジを探して参加</li><li>個人チャレンジを作成</li><li>距離・期間・参加者数を確認</li></ul></div>
       </article>
       <article class="showcase-row">
         <div class="showcase-media reveal"><img src="/assets/biorhythm.jpg" alt="実際のMotionly日本語アプリのバイオリズム画面" width="830" height="1800" loading="lazy" decoding="async"></div>
-        <div class="showcase-copy reveal"><span class="label">For reference</span><h3>気分を切り替える、<br>小さな参考に。</h3><p>生年月日をもとに、今日の周期を端末内で計算します。科学的・医学的な判断ではなく、娯楽・参考用のコンテンツです。</p><ul class="detail-list"><li>体力・感情・知性の周期を表示</li><li>端末内で計算</li><li>運動や健康上の判断はご自身の状態を優先</li></ul></div>
+        <div class="showcase-copy reveal"><span class="label">バイオリズム</span><h3>今日のバイオリズムを<br>参考情報として表示。</h3><p>生年月日から体力・感情・知性の周期を端末内で計算します。科学的・医学的な判断には使えない、娯楽・参考用の機能です。</p><ul class="detail-list"><li>体力・感情・知性の周期を表示</li><li>計算は端末内で実行</li><li>体調や運動の判断には使用しない</li></ul></div>
       </article>
       <article class="showcase-row">
         <div class="showcase-media reveal"><img src="/assets/friends.jpg" alt="友だちコードをマスクした実際のMotionly日本語アプリ画面" width="830" height="1800" loading="lazy" decoding="async"></div>
-        <div class="showcase-copy reveal"><span class="label">Move together</span><h3>ひとりの日も、<br>つながるきっかけを。</h3><p>16桁のコードやQRから相手を見つけ、申請を承認したあとに友だちとしてつながれます。</p><ul class="detail-list"><li>16桁コードで相手を確認</li><li>送信前にニックネームをプレビュー</li><li>相手の承認後に友だちへ追加</li></ul></div>
+        <div class="showcase-copy reveal"><span class="label">友だち</span><h3>16桁コードで検索し、<br>承認後に友だちへ追加。</h3><p>16桁コードで相手を検索し、申請が承認されると友だちに追加されます。QRコードの読み取りは、購読中または14日間の体験利用中に使えます。</p><ul class="detail-list"><li>16桁コードで相手を検索</li><li>送信前にニックネームを確認</li><li>相手の承認後に友だちへ追加</li></ul></div>
       </article>
     </div></section>
 
     <section id="features" class="section"><div class="container">
-      <div class="section-heading centered reveal"><p class="eyebrow">More useful details</p><h2>記録するだけで終わらない。</h2><p>運動を続けやすく、共有するときはプライバシーにも配慮できる機能を用意しています。</p></div>
+      <div class="section-heading centered reveal"><p class="eyebrow">その他の機能</p><h2>ルート表示・共有・保存</h2><p>徒歩・ランニング向けルートの表示、運動結果の共有、アカウントごとの端末内保存に対応しています。</p></div>
       <div class="feature-grid">
-        <article class="feature-card reveal"><span class="feature-icon">MAP</span><h3>歩行向けルート</h3><p>行き先を検索し、徒歩・ランニングに適したルートをプレビューしてから開始できます。</p></article>
-        <article class="feature-card reveal"><span class="feature-icon">CARD</span><h3>結果を1枚に</h3><p>ルート・距離・時間・歩数を共有カードに。開始・終了地点の各200mを表示から除外できます。</p></article>
-        <article class="feature-card reveal"><span class="feature-icon">LOCAL</span><h3>アカウント別に保存</h3><p>端末内の運動記録はアカウントごとに分けて保存。オンライン機能だけ必要な情報をFirebaseで扱います。</p></article>
+        <article class="feature-card reveal"><span class="feature-icon">MAP</span><h3>徒歩・ランニング向けルート</h3><p>行き先を検索すると、徒歩・ランニング向けのルートを確認してから記録を始められます。</p></article>
+        <article class="feature-card reveal"><span class="feature-icon">CARD</span><h3>運動結果の共有カード</h3><p>ルート・距離・時間・歩数を1枚のカードにまとめます。ルートの両端から各200mを画像に表示しない設定にできます。</p></article>
+        <article class="feature-card reveal"><span class="feature-icon">LOCAL</span><h3>アカウント別の端末内保存</h3><p>端末内の運動記録は、ログインしているアカウントごとに分けて保存します。オンライン機能に必要な情報はFirebaseで扱います。</p></article>
       </div>
     </div></section>
 
     <section class="section"><div class="container"><div class="privacy-panel reveal">
-      <div><p class="eyebrow">Privacy by context</p><h2>ローカル記録とオンライン機能を、分けて考える。</h2><p>GPS運動記録などは端末内を中心に保存します。アカウント、友だち、チャレンジ、任意の位置共有などのオンライン機能では、提供に必要な情報をFirebaseで扱います。</p><a class="button secondary" href="/privacy.html">プライバシーポリシー</a></div>
-      <ul class="privacy-points"><li>位置共有は自分で期間を選んだときだけ</li><li>共有カードはルート両端を隠せる</li><li>運動記録はアカウント別の端末領域へ</li></ul>
+      <div><p class="eyebrow">データの保存</p><h2>端末内保存とオンライン保存</h2><p>GPS運動記録は主に端末内に保存します。アカウント、友だち、チャレンジ、任意の位置共有では、機能の提供に必要な情報をFirebaseで扱います。</p><a class="button secondary" href="/privacy.html">プライバシーポリシー</a></div>
+      <ul class="privacy-points"><li>位置共有は、期間を選んで有効にしたときだけ</li><li>共有カードではルートの両端各200mを非表示にできる</li><li>端末内の運動記録はアカウントごとに分けて保存</li></ul>
     </div></div></section>
 
     <section id="faq" class="section"><div class="container">
       <div class="section-heading centered reveal"><p class="eyebrow">FAQ</p><h2>よくある質問</h2></div>
       <div class="faq-grid">
-        <details class="faq-card reveal"><summary>どのような人向けですか？</summary><p>初めて走る人、久しぶりに再開する人、短いランやウォーキングをシンプルに記録したい人を想定しています。</p></details>
-        <details class="faq-card reveal"><summary>すべての機能は無料ですか？</summary><p>GPS記録などの基本機能と、アカウント状態により利用できる機能があります。価格や利用条件はApp Storeとアプリ内の購入画面でご確認ください。</p></details>
+        <details class="faq-card reveal"><summary>どのような人向けですか？</summary><p>初めて走る人、久しぶりに運動を再開する人、短いランやウォーキングを記録したい人を想定しています。</p></details>
+        <details class="faq-card reveal"><summary>すべての機能は無料ですか？</summary><p>GPS記録などの基本機能があります。一部の機能は購読中または14日間の体験利用中に使えます。価格や利用条件はApp Storeとアプリ内の購入画面でご確認ください。</p></details>
         <details class="faq-card reveal"><summary>位置情報は自動で友だちに共有されますか？</summary><p>いいえ。運動を始めても位置共有は自動で有効になりません。共有期間を自分で選んだ場合だけ送信されます。</p></details>
         <details class="faq-card reveal"><summary>バイオリズムは健康判断に使えますか？</summary><p>いいえ。娯楽・参考用のコンテンツです。医療・健康・運動強度などの判断には使用しないでください。</p></details>
       </div>
     </div></section>
 
-    <section class="section"><div class="container final-cta reveal"><h2>今日は、どこまで行こう。</h2><p>短くても、歩いても大丈夫。Motionlyで今日の一歩を記録してください。</p><div class="cta-row" style="justify-content:center"><a class="button orange" href="https://apps.apple.com/jp/app/id6752832437" target="_blank" rel="noopener">App Storeで見る <span aria-hidden="true">↗</span></a></div></div></section>
+    <section class="section"><div class="container final-cta reveal"><h2>App StoreでMotionlyを見る</h2><p>ランニングとウォーキングのルート・距離・時間をGPSで記録できます。</p><div class="cta-row" style="justify-content:center"><a class="button orange" href="https://apps.apple.com/jp/app/id6752832437" target="_blank" rel="noopener">App Storeで見る <span aria-hidden="true">↗</span></a></div></div></section>
   </main>
 
   <footer class="site-footer"><div class="container footer-inner"><span>© <span data-current-year>2026</span> Motionly</span><nav class="footer-links" aria-label="フッターナビゲーション"><a href="/support.html">サポート</a><a href="/privacy.html">プライバシー</a><a href="/news.html">お知らせ</a><a href="mailto:sposedon0@gmail.com">お問い合わせ</a></nav></div></footer>
   <script src="/scripts/site.js?v=20260818" defer></script>
-  <script src="/scripts/app-demo.js?v=20260820" defer></script>
+  <script src="/scripts/app-demo.js?v=20260821" defer></script>
 </body>
 </html>

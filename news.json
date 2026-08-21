@@ -8,9 +8,9 @@
       "en": "Motionly website refresh"
     },
     "body": {
-      "ja": "GPS記録、週間目標、運動履歴を中心に、実際のアプリ画面で機能を分かりやすく紹介する構成へ更新しました。",
-      "ko": "GPS 기록, 주간 목표, 운동 내역을 중심으로 실제 앱 화면을 활용해 기능을 더 명확하게 소개하도록 개편했습니다.",
-      "en": "The site now explains GPS tracking, weekly goals, and workout history with real in-app screens."
+      "ja": "GPS記録、運動履歴、チャレンジ、バイオリズム、友だち機能を、実際のアプリ画面で紹介する構成へ更新しました。",
+      "ko": "GPS 기록, 운동 기록, 챌린지, 바이오리듬, 친구 기능을 실제 앱 화면으로 소개하도록 개편했습니다.",
+      "en": "The site now uses actual app screens to explain GPS tracking, workout history, challenges, biorhythm, and friend features."
     }
   },
   {
